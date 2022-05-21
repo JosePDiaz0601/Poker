@@ -11,9 +11,11 @@ void startGame(int players);
 
 struct DECK
 {
-    struct CARD *first;
-    struct CARD *last;
-    int length;
+    struct CARD *first;      // Their First Card
+    struct DECK *nextPlayer; // The next player/deck
+    int points;
+    char number; // The player 'Number'
+    int length;  // The length of the deck
 };
 struct CARD
 {

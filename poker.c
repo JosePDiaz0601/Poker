@@ -2,7 +2,7 @@
 #include "poker.h"
 #include <time.h>
 
-int players = 6;
+int players = 7;
 
 void main()
 {
@@ -17,7 +17,14 @@ void startGame(int players)
     int dealerPlayer = rand() % players;
 
     // Dealer Deck
-    struct DECK *dealer = {NULL, dealer, 52};
+    struct DECK *dealer = {NULL, NULL, 1000, 'D', 52};
+    struct DECK *river = {NULL, NULL, 1000, 'R', 0};
+    struct DECK *player1 = {NULL, NULL, 1000, 1, 0};
+    struct DECK *player2 = {NULL, NULL, 1000, 1, 0};
+    struct DECK *player3 = {NULL, NULL, 1000, 1, 0};
+    struct DECK *player4 = {NULL, NULL, 1000, 1, 0};
+    struct DECK *player5 = {NULL, NULL, 1000, 1, 0};
+    struct DECK *player6 = {NULL, NULL, 1000, 1, 0};
     // Aces
     struct CARD *C1 = {'C', 14, NULL, *dealer};
     struct CARD *D1 = {'D', 14, NULL, *dealer};
@@ -159,4 +166,8 @@ void startGame(int players)
     C13->next = D13;
     D13->next = H13;
     H13->next = S13;
+
+    dealer->first = C1;
+
+    // Give all of the players their first cards and put the 2 cards in the river
 }
