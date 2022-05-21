@@ -1,5 +1,6 @@
 /* ClockClient.c: simple interactive TCP/IP client for ClockServer
- * Author: Rainer Doemer, 2/16/15 (updated 2/20/17)
+ * Author: Team Loading... based on file from
+ * Rainer Doemer, but adapted for poker application  
  */
 
 #include <stdio.h>
@@ -111,5 +112,40 @@ int main(int argc, char *argv[])
     printf("%s: Exiting...\n", Program);
     return 0;
 }
+
+/**Example string parsing provided by T.A. Yutong*/
+int i= 0;
+//strcpy(command.token)
+while( token != NULL ) {
+    if(i == 0)  {
+        strcpy(command, token);
+    printf("s\n", command ); //printing each token
+    }
+    else if(i ==1){
+        strcpy(amount, token);
+        printf("s\n", amount); //printing each token
+    }
+    //printf(" %s\n, command); //printing each toekn
+    token = strtok(NULL, "?");
+    i++;
+}
+
+while(1){
+    switch(command){
+        case 'R':
+            //function_for_Raise()
+            break;
+
+        case 'F':
+            //function_for_fold()
+            break;
+        case '....':
+            break;
+    }
+}
+
+
+
+
 
 /* EOF ClockClient.c */
