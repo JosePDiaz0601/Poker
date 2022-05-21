@@ -11,17 +11,16 @@ void startGame(int players);
 
 struct DECK
 {
-    struct CARD *first = NULL;
-    struct CARD *last = NULL;
+    struct CARD *first;
+    struct CARD *last;
     int length;
 };
 struct CARD
 {
     char suit;
-    char type;
-    struct CARD *next = NULL;
-    struct CARD *prev = NULL;
-    struct DECK *deck = NULL;
+    int type;
+    struct CARD *next;
+    struct DECK *deck;
 };
 
 #endif
