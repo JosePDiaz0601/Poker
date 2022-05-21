@@ -6,7 +6,7 @@ int players = 7;
 
 void main()
 {
-    print("Welcome to poker, go fuck yourself");
+    print("\nWelcome to Unoptimized Poker, our newly released poker game from LoadingTM!\n");
     // Change this later so that player count isnt hardcoded
     startGame(players);
 }
