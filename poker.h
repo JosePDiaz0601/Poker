@@ -22,6 +22,7 @@ struct CARD
     char suit;
     int type;
     struct CARD *next;
+    struct CARD *prev;
     struct DECK *deck;
 };
 
