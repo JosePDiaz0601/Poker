@@ -8,22 +8,14 @@
 #include <stdbool.h>
 
 void startGame(int players);
+void main();
+void newRound();
 
-struct DECK
-{
-    struct CARD *first;      // Their First Card
-    struct DECK *nextPlayer; // The next player/deck
-    int points;
-    char number; // The player 'Number'
-    int length;  // The length of the deck
-};
 struct CARD
 {
     char suit;
     int type;
-    struct CARD *next;
-    struct CARD *prev;
-    struct DECK *deck;
+    char taken;
 };
 
 #endif
