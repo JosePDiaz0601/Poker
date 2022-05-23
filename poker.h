@@ -8,8 +8,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+void printDecks();
 void startGame(int players);
-void main();
+int main(void);
 void newRound();
 
 struct CARD

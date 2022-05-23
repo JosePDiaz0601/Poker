@@ -13,8 +13,6 @@ struct CARD player6[2];
 int players = 7; // Change this later so that player count isnt hardcoded
 int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 // Main function of the game
-void startGame(int players);
-void printDecks();
 
 int main(void)
 {
