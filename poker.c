@@ -28,7 +28,7 @@ void main()
 void startGame(int players)
 {
 
-    srand(time(0));
+    srand(time(NULL));
     int dealerPlayer = rand() % players;
 
     // Aces
@@ -121,46 +121,46 @@ void startGame(int players)
     dealer[9] = D3;
     dealer[10] = H3;
     dealer[11] = S3;
-    dealer[12] = C1;
-    dealer[13] = D1;
-    dealer[14] = H1;
-    dealer[15] = S1;
-    dealer[16] = C1;
-    dealer[17] = D1;
-    dealer[18] = H1;
-    dealer[19] = S1;
-    dealer[20] = C1;
-    dealer[21] = D1;
-    dealer[22] = H1;
-    dealer[23] = S1;
-    dealer[24] = C1;
-    dealer[25] = D1;
-    dealer[26] = H1;
-    dealer[27] = S1;
-    dealer[28] = C1;
-    dealer[29] = D1;
-    dealer[30] = H1;
-    dealer[31] = S1;
-    dealer[32] = C1;
-    dealer[33] = D1;
-    dealer[34] = H1;
-    dealer[35] = S1;
-    dealer[36] = C1;
-    dealer[37] = D1;
-    dealer[38] = H1;
-    dealer[39] = S1;
-    dealer[40] = C1;
-    dealer[41] = D1;
-    dealer[42] = H1;
-    dealer[43] = S1;
-    dealer[44] = C1;
-    dealer[45] = D1;
-    dealer[46] = H1;
-    dealer[47] = S1;
-    dealer[48] = C1;
-    dealer[49] = D1;
-    dealer[50] = H1;
-    dealer[51] = S1;
+    dealer[12] = C4;
+    dealer[13] = D4;
+    dealer[14] = H4;
+    dealer[15] = S4;
+    dealer[16] = C5;
+    dealer[17] = D5;
+    dealer[18] = H5;
+    dealer[19] = S5;
+    dealer[20] = C6;
+    dealer[21] = D6;
+    dealer[22] = H6;
+    dealer[23] = S6;
+    dealer[24] = C7;
+    dealer[25] = D7;
+    dealer[26] = H7;
+    dealer[27] = S7;
+    dealer[28] = C8;
+    dealer[29] = D8;
+    dealer[30] = H8;
+    dealer[31] = S8;
+    dealer[32] = C9;
+    dealer[33] = D9;
+    dealer[34] = H9;
+    dealer[35] = S9;
+    dealer[36] = C10;
+    dealer[37] = D10;
+    dealer[38] = H10;
+    dealer[39] = S10;
+    dealer[40] = C11;
+    dealer[41] = D11;
+    dealer[42] = H11;
+    dealer[43] = S11;
+    dealer[44] = C12;
+    dealer[45] = D12;
+    dealer[46] = H12;
+    dealer[47] = S12;
+    dealer[48] = C13;
+    dealer[49] = D13;
+    dealer[50] = H13;
+    dealer[51] = S13;
 
     newRound();
 }
@@ -226,7 +226,7 @@ void newRound()
     }
     i = 0;
 
-    if (players == 4)
+    if (players >= 4)
     {
         while (i < 2)
         {
@@ -245,7 +245,7 @@ void newRound()
         i = 0;
     }
 
-    if (players == 5)
+    if (players >= 5)
     {
         while (i < 2)
         {
@@ -264,7 +264,7 @@ void newRound()
         i = 0;
     }
 
-    if (players == 6)
+    if (players >= 6)
     {
         while (i < 2)
         {
@@ -283,7 +283,7 @@ void newRound()
         i = 0;
     }
 
-    if (players == 7)
+    if (players >= 7)
     {
         while (i < 2)
         {
