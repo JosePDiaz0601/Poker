@@ -18,22 +18,23 @@ help:
 # S^ is all the dependency
 
 debug: poker.c poker.h
-	gcc $(CLFAGS) -g -DDEBUG $< -o $@
-	
-slow: poker.c graphics.c poker.h graphics.h
-	gcc $(CFLAGS) $^ -o $@
-	
-poker.o: poker.c poker.h ClockClient.h ClockServer.h
-	gcc $(CFLAGS) $^ -c -o $@
+	gcc $(CFLAGS) -g -DDEBUG $< -o $@
 
-graphics.o: graphics.c graphics.h
-	gcc $(CFLAGS) $^ -c -o $@
+poker: Poker.o Clock.o
+	$(CC) $(CFLAGS) ./bin/Poker.o ./bin/Graphics.o
+	
+Poker.o: ./src/poker.c ./src/poker.h ./src/grahics.h ./src/ClockClient.c ./src/ClockServer.c ./src/ClockClient.h ./src/ClockServer.h
+	$(CC) $(CFLAGS) -c ./src/chess.c -o ./bin/Chess.o
+	
+Graphics.o: ./src/graphics.c ./src/graphics.h ./src/ClockServer.h ./src/ClockClient.h
+	$(CC) $(CFLAGS) -c ./src/graphics.c -o ./bin/Graphics.o
 	
 print:
 	@echo $(Mymessage)
 
-poker: poker.c poker.h ClockServer.c ClockClient.c graphics.c graphics.h
-	gcc $(CFLAGS) $^ -o $@
+#poker: poker.c poker.h ClockServer.c ClockClient.c graphics.c graphics.h
+#	gcc $(CFLAGS) $^ -o $@
 
 clean: 
-	rm -f poker
+	rm ./bin/poker
+	rm ./bin/*.o
