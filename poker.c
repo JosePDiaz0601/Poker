@@ -328,7 +328,7 @@ void printDecks()
                 printf("Deck's %d card is a %d of Spades\n", y + 1, dealer[y].type);
             }
         }
-
+        printf("\n");
         for (int y = 0; y < 5; y++)
         {
             if (river[y].suit == 'C')
@@ -348,7 +348,7 @@ void printDecks()
                 printf("River's %d card is a %d of Spades\n", y + 1, river[y].type);
             }
         }
-
+        printf("\n");
         for (int y = 0; y < 2; y++)
         {
             if (player1[y].suit == 'C')
@@ -368,6 +368,7 @@ void printDecks()
                 printf("Player1's %d card is a %d of Spades\n", y + 1, player1[y].type);
             }
         }
+        printf("\n");
         for (int y = 0; y < 2; y++)
         {
             if (player2[y].suit == 'C')
@@ -390,7 +391,7 @@ void printDecks()
     }
     if (players >= 4)
     {
-        printf("entered player 3 loop\n");
+        printf("\n");
         for (int y = 0; y < 2; y++)
         {
             if (player3[y].suit == 'C')
@@ -413,7 +414,7 @@ void printDecks()
     }
     if (players >= 5)
     {
-        printf("entered player 4 loop\n");
+        printf("\n");
         for (int y = 0; y < 2; y++)
         {
             if (player4[y].suit == 'C')
@@ -436,7 +437,7 @@ void printDecks()
     }
     if (players >= 6)
     {
-        printf("entered player 5 loop\n");
+        printf("\n");
         for (int y = 0; y < 2; y++)
         {
             if (player5[y].suit == 'C')
@@ -459,7 +460,7 @@ void printDecks()
     }
     if (players >= 7)
     {
-        printf("entered player 6 loop\n");
+        printf("\n");
         for (int y = 0; y < 2; y++)
         {
             if (player6[y].suit == 'C')
