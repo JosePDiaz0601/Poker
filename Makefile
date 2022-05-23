@@ -2,7 +2,7 @@
 #Make sure to include trick showed by T.A. for object files and simplifying dependencies
 #Example Makefile for EECS22L
 
-CFLAGS = -Wall -O2
+CFLAGS = -Wall -ansi -std=c99
 Mymessage = success
 	
 test:
