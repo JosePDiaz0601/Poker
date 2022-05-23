@@ -6,7 +6,7 @@ CFLAGS = -Wall -O2
 Mymessage = success
 	
 test:
-	@echo 'This is the alpha Makefile message'
+	@echo 'This is the alpha version of our program'
 	make poker
 	./poker
 
@@ -18,7 +18,7 @@ help:
 # S^ is all the dependency
 
 poker: ./src/poker.c ./src/poker.h
-	gcc $(CFLAGS) -g $< -o $@
+	gcc $(CFLAGS) -g ./src/poker.c -o ./bin/poker
 
 #debug: poker.c poker.h
 #	gcc $(CFLAGS) -g -DDEBUG $< -o $@
