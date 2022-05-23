@@ -8,7 +8,7 @@ Mymessage = success
 test:
 	@echo 'This is the alpha version of our program'
 	make poker
-	./poker
+	./bin/poker
 
 help:
 	@echo 'This is how you use the Makefile!!!'
