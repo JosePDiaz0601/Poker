@@ -40,4 +40,4 @@ print:
 
 clean: 
 	rm ./bin/poker
-	rm ./bin/*.o
+	#rm ./bin/*.o
