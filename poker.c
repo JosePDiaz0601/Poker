@@ -15,9 +15,10 @@ int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 // Main function of the game
 void main()
 {
-    print("Welcome to poker, go fuck yourself");
+    printf("Welcome to poker, go fuck yourself");
     // Change this later so that player count isnt hardcoded
     startGame(players);
+    printDecks();
 }
 
 // Starts the game by creating all the cards and placing them in the appropriate deck
@@ -342,7 +343,7 @@ void printDecks()
                 printf("Player1's %d card is a %d of Spades\n", y+1, player1[y].type);
             }
         }
-        for(int y=0; y<2; y++)
+        for(int y = 0; y<2; y++)
         {
             if(player2[y].suit == 'C')
             {
@@ -364,7 +365,7 @@ void printDecks()
     }
     if(players >= 4);
     {
-        for(int y=0; y<2; y++)
+        for(int y = 0; y<2; y++)
         {
             if(player3[y].suit == 'C')
             {
@@ -386,7 +387,7 @@ void printDecks()
     }
     if(players >= 5);
     {
-        for(int y=0; y<2; y++)
+        for(int y = 0; y<2; y++)
         {
             if(player4[y].suit == 'C')
             {
@@ -408,7 +409,7 @@ void printDecks()
     }
     if(players >= 6);
     {
-        for(int y=0; y<2; y++)
+        for(int y = 0; y<2; y++)
         {
             if(player5[y].suit == 'C')
             {
@@ -430,7 +431,7 @@ void printDecks()
     }
     if(players >= 7);
     {
-        for(int y=0; y<2; y++)
+        for(int y = 0; y<2; y++)
         {
             if(player6[y].suit == 'C')
             {
