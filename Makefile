@@ -6,7 +6,7 @@ CFLAGS = -Wall -O2
 Mymessage = success
 	
 test:
-	@echo 'This is an example Makefile message'
+	@echo 'This is the alpha Makefile message'
 	make poker
 	./poker
 
