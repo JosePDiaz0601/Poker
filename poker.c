@@ -309,6 +309,26 @@ void printDecks()
     printf("\n");
     if (players >= 3)
     {
+        for (int y = 0; y < 52; y++)
+        {
+            if (dealer[y].suit == 'C')
+            {
+                printf("Deck's %d card is a %d of Clubs\n", y + 1, dealer[y].type);
+            }
+            if (dealer[y].suit == 'D')
+            {
+                printf("Deck's %d card is a %d of Diamonds\n", y + 1, dealer[y].type);
+            }
+            if (dealer[y].suit == 'H')
+            {
+                printf("Deck's %d card is a %d of Hearts\n", y + 1, dealer[y].type);
+            }
+            if (dealer[y].suit == 'S')
+            {
+                printf("Deck's %d card is a %d of Spades\n", y + 1, dealer[y].type);
+            }
+        }
+
         for (int y = 0; y < 5; y++)
         {
             if (river[y].suit == 'C')
