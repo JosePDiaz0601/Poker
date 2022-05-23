@@ -16,12 +16,13 @@ int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 void startGame(int players);
 void printDecks();
 
-void main()
+int main(void)
 {
-    printf("Welcome to poker, go fuck yourself");
+    printf("Welcome to poker");
     // Change this later so that player count isnt hardcoded
     startGame(players);
     printDecks();
+    return 0;
 }
 
 // Starts the game by creating all the cards and placing them in the appropriate deck
@@ -29,7 +30,9 @@ void startGame(int players)
 {
 
     srand(time(NULL));
-    int dealerPlayer = rand() % players;
+
+    //commented out for error
+    //int dealerPlayer = rand() % players;
 
     // Aces
     struct CARD C1 = {'C', 14, 'N'};
