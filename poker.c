@@ -28,7 +28,7 @@ void main()
 void startGame(int players)
 {
 
-    srand(time(0));
+    srand(time(NULL));
     int dealerPlayer = rand() % players;
 
     // Aces
