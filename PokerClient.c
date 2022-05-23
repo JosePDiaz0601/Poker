@@ -113,8 +113,21 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-/**Example string parsing provided by T.A. Yutong*/
+/* EOF ClockClient.c */
+
+/* Example string parsing provided by T.A. Yutong*/
+/*
+while(1){
+		//Waiting for client to send message
+		char string[50] = "@2;R;100";
+		char player[10];
+		char command[10];
+		char amount[10];
+		char * token = strtok(string";");
+		// loop through the string to extract all other tokens
 int i= 0;
+}
+
 //strcpy(command.token)
 while( token != NULL ) {
     if(i == 0)  {
@@ -126,10 +139,11 @@ while( token != NULL ) {
         printf("s\n", amount); //printing each token
     }
     //printf(" %s\n, command); //printing each toekn
-    token = strtok(NULL, "?");
+    token = strtok(NULL, ";");
     i++;
 }
-
+*/
+/*
 while(1){
     switch(command){
         case 'R':
