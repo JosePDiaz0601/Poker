@@ -13,6 +13,9 @@ struct CARD player6[2];
 int players = 7; // Change this later so that player count isnt hardcoded
 int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 // Main function of the game
+void startGame(int players);
+void printDecks();
+
 void main()
 {
     printf("Welcome to poker, go fuck yourself");
@@ -29,135 +32,135 @@ void startGame(int players)
     int dealerPlayer = rand() % players;
 
     // Aces
-    struct CARD *C1 = {'C', 14, 'N'};
-    struct CARD *D1 = {'D', 14, 'N'};
-    struct CARD *H1 = {'H', 14, 'N'};
-    struct CARD *S1 = {'S', 14, 'N'};
+    struct CARD C1 = {'C', 14, 'N'};
+    struct CARD D1 = {'D', 14, 'N'};
+    struct CARD H1 = {'H', 14, 'N'};
+    struct CARD S1 = {'S', 14, 'N'};
 
     // 2's
-    struct CARD *C2 = {'C', 2, 'N'};
-    struct CARD *D2 = {'D', 2, 'N'};
-    struct CARD *H2 = {'H', 2, 'N'};
-    struct CARD *S2 = {'S', 2, 'N'};
+    struct CARD C2 = {'C', 2, 'N'};
+    struct CARD D2 = {'D', 2, 'N'};
+    struct CARD H2 = {'H', 2, 'N'};
+    struct CARD S2 = {'S', 2, 'N'};
 
     // 3's
-    struct CARD *C3 = {'C', 3, 'N'};
-    struct CARD *D3 = {'D', 3, 'N'};
-    struct CARD *H3 = {'H', 3, 'N'};
-    struct CARD *S3 = {'S', 3, 'N'};
+    struct CARD C3 = {'C', 3, 'N'};
+    struct CARD D3 = {'D', 3, 'N'};
+    struct CARD H3 = {'H', 3, 'N'};
+    struct CARD S3 = {'S', 3, 'N'};
 
     // 4's
-    struct CARD *C4 = {'C', 4, 'N'};
-    struct CARD *D4 = {'D', 4, 'N'};
-    struct CARD *H4 = {'H', 4, 'N'};
-    struct CARD *S4 = {'S', 4, 'N'};
+    struct CARD C4 = {'C', 4, 'N'};
+    struct CARD D4 = {'D', 4, 'N'};
+    struct CARD H4 = {'H', 4, 'N'};
+    struct CARD S4 = {'S', 4, 'N'};
 
     // 5's
-    struct CARD *C5 = {'C', 5, 'N'};
-    struct CARD *D5 = {'D', 5, 'N'};
-    struct CARD *H5 = {'H', 5, 'N'};
-    struct CARD *S5 = {'S', 5, 'N'};
+    struct CARD C5 = {'C', 5, 'N'};
+    struct CARD D5 = {'D', 5, 'N'};
+    struct CARD H5 = {'H', 5, 'N'};
+    struct CARD S5 = {'S', 5, 'N'};
 
     // 6's
-    struct CARD *C6 = {'C', 6, 'N'};
-    struct CARD *D6 = {'D', 6, 'N'};
-    struct CARD *H6 = {'H', 6, 'N'};
-    struct CARD *S6 = {'S', 6, 'N'};
+    struct CARD C6 = {'C', 6, 'N'};
+    struct CARD D6 = {'D', 6, 'N'};
+    struct CARD H6 = {'H', 6, 'N'};
+    struct CARD S6 = {'S', 6, 'N'};
 
     // 7's
-    struct CARD *C7 = {'C', 7, 'N'};
-    struct CARD *D7 = {'D', 7, 'N'};
-    struct CARD *H7 = {'H', 7, 'N'};
-    struct CARD *S7 = {'S', 7, 'N'};
+    struct CARD C7 = {'C', 7, 'N'};
+    struct CARD D7 = {'D', 7, 'N'};
+    struct CARD H7 = {'H', 7, 'N'};
+    struct CARD S7 = {'S', 7, 'N'};
 
     // 8's
-    struct CARD *C8 = {'C', 8, 'N'};
-    struct CARD *D8 = {'D', 8, 'N'};
-    struct CARD *H8 = {'H', 8, 'N'};
-    struct CARD *S8 = {'S', 8, 'N'};
+    struct CARD C8 = {'C', 8, 'N'};
+    struct CARD D8 = {'D', 8, 'N'};
+    struct CARD H8 = {'H', 8, 'N'};
+    struct CARD S8 = {'S', 8, 'N'};
 
     // 9's
-    struct CARD *C9 = {'C', 9, 'N'};
-    struct CARD *D9 = {'D', 9, 'N'};
-    struct CARD *H9 = {'H', 9, 'N'};
-    struct CARD *S9 = {'S', 9, 'N'};
+    struct CARD C9 = {'C', 9, 'N'};
+    struct CARD D9 = {'D', 9, 'N'};
+    struct CARD H9 = {'H', 9, 'N'};
+    struct CARD S9 = {'S', 9, 'N'};
 
     // 10's
-    struct CARD *C10 = {'C', 10, 'N'};
-    struct CARD *D10 = {'D', 10, 'N'};
-    struct CARD *H10 = {'H', 10, 'N'};
-    struct CARD *S10 = {'S', 10, 'N'};
+    struct CARD C10 = {'C', 10, 'N'};
+    struct CARD D10 = {'D', 10, 'N'};
+    struct CARD H10 = {'H', 10, 'N'};
+    struct CARD S10 = {'S', 10, 'N'};
 
     // Jack's
-    struct CARD *C11 = {'C', 11, 'N'};
-    struct CARD *D11 = {'D', 11, 'N'};
-    struct CARD *H11 = {'H', 11, 'N'};
-    struct CARD *S11 = {'S', 11, 'N'};
+    struct CARD C11 = {'C', 11, 'N'};
+    struct CARD D11 = {'D', 11, 'N'};
+    struct CARD H11 = {'H', 11, 'N'};
+    struct CARD S11 = {'S', 11, 'N'};
 
     // Queen's
-    struct CARD *C12 = {'C', 12, 'N'};
-    struct CARD *D12 = {'D', 12, 'N'};
-    struct CARD *H12 = {'H', 12, 'N'};
-    struct CARD *S12 = {'S', 12, 'N'};
+    struct CARD C12 = {'C', 12, 'N'};
+    struct CARD D12 = {'D', 12, 'N'};
+    struct CARD H12 = {'H', 12, 'N'};
+    struct CARD S12 = {'S', 12, 'N'};
 
     // King's
-    struct CARD *C13 = {'C', 13, 'N'};
-    struct CARD *D13 = {'D', 13, 'N'};
-    struct CARD *H13 = {'H', 13, 'N'};
-    struct CARD *S13 = {'S', 13, 'N'};
+    struct CARD C13 = {'C', 13, 'N'};
+    struct CARD D13 = {'D', 13, 'N'};
+    struct CARD H13 = {'H', 13, 'N'};
+    struct CARD S13 = {'S', 13, 'N'};
 
-    dealer[0] = *C1;
-    dealer[1] = *D1;
-    dealer[2] = *H1;
-    dealer[3] = *S1;
-    dealer[4] = *C2;
-    dealer[5] = *D2;
-    dealer[6] = *H2;
-    dealer[7] = *S2;
-    dealer[8] = *C3;
-    dealer[9] = *D3;
-    dealer[10] = *H3;
-    dealer[11] = *S3;
-    dealer[12] = *C1;
-    dealer[13] = *D1;
-    dealer[14] = *H1;
-    dealer[15] = *S1;
-    dealer[16] = *C1;
-    dealer[17] = *D1;
-    dealer[18] = *H1;
-    dealer[19] = *S1;
-    dealer[20] = *C1;
-    dealer[21] = *D1;
-    dealer[22] = *H1;
-    dealer[23] = *S1;
-    dealer[24] = *C1;
-    dealer[25] = *D1;
-    dealer[26] = *H1;
-    dealer[27] = *S1;
-    dealer[28] = *C1;
-    dealer[29] = *D1;
-    dealer[30] = *H1;
-    dealer[31] = *S1;
-    dealer[32] = *C1;
-    dealer[33] = *D1;
-    dealer[34] = *H1;
-    dealer[35] = *S1;
-    dealer[36] = *C1;
-    dealer[37] = *D1;
-    dealer[38] = *H1;
-    dealer[39] = *S1;
-    dealer[40] = *C1;
-    dealer[41] = *D1;
-    dealer[42] = *H1;
-    dealer[43] = *S1;
-    dealer[44] = *C1;
-    dealer[45] = *D1;
-    dealer[46] = *H1;
-    dealer[47] = *S1;
-    dealer[48] = *C1;
-    dealer[49] = *D1;
-    dealer[50] = *H1;
-    dealer[51] = *S1;
+    dealer[0] = C1;
+    dealer[1] = D1;
+    dealer[2] = H1;
+    dealer[3] = S1;
+    dealer[4] = C2;
+    dealer[5] = D2;
+    dealer[6] = H2;
+    dealer[7] = S2;
+    dealer[8] = C3;
+    dealer[9] = D3;
+    dealer[10] = H3;
+    dealer[11] = S3;
+    dealer[12] = C1;
+    dealer[13] = D1;
+    dealer[14] = H1;
+    dealer[15] = S1;
+    dealer[16] = C1;
+    dealer[17] = D1;
+    dealer[18] = H1;
+    dealer[19] = S1;
+    dealer[20] = C1;
+    dealer[21] = D1;
+    dealer[22] = H1;
+    dealer[23] = S1;
+    dealer[24] = C1;
+    dealer[25] = D1;
+    dealer[26] = H1;
+    dealer[27] = S1;
+    dealer[28] = C1;
+    dealer[29] = D1;
+    dealer[30] = H1;
+    dealer[31] = S1;
+    dealer[32] = C1;
+    dealer[33] = D1;
+    dealer[34] = H1;
+    dealer[35] = S1;
+    dealer[36] = C1;
+    dealer[37] = D1;
+    dealer[38] = H1;
+    dealer[39] = S1;
+    dealer[40] = C1;
+    dealer[41] = D1;
+    dealer[42] = H1;
+    dealer[43] = S1;
+    dealer[44] = C1;
+    dealer[45] = D1;
+    dealer[46] = H1;
+    dealer[47] = S1;
+    dealer[48] = C1;
+    dealer[49] = D1;
+    dealer[50] = H1;
+    dealer[51] = S1;
 
     newRound();
 }
@@ -451,4 +454,5 @@ void printDecks()
             }
         }
     }
+    return;
 }
