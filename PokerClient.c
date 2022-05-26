@@ -19,6 +19,7 @@ const char *Program	/* program name for descriptive diagnostics */
 
 /*** global functions ****************************************************/
 
+// dont need to edit 
 void FatalError(		/* print error diagnostics and abort */
 	const char *ErrorMsg)
 {
@@ -30,6 +31,7 @@ void FatalError(		/* print error diagnostics and abort */
     exit(20);
 } /* end of FatalError */
 
+// i dont think we need to edit
 int main(int argc, char *argv[])
 {
     int l, n;

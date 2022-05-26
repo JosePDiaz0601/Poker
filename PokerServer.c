@@ -42,7 +42,8 @@ void FatalError(		/* print error diagnostics and abort */
     exit(20);
 } /* end of FatalError */
 
-int MakeServerSocket(		/* create a socket on this server */
+// dont edit this fucntion
+int MakeServerSocket(		/* create a socket on this server */ 
 	uint16_t PortNo)
 {
     int ServSocketFD;
@@ -68,6 +69,7 @@ int MakeServerSocket(		/* create a socket on this server */
     return ServSocketFD;
 } /* end of MakeServerSocket */
 
+// pretty sure you dont need this function (unless we want the time)
 void PrintCurrentTime(void)	/*  print/update the current real time */
 {
     time_t CurrentTime; /* seconds since 1970 (see 'man 2 time') */
@@ -87,6 +89,7 @@ void PrintCurrentTime(void)	/*  print/update the current real time */
     fflush(stdout);
 } /* end of PrintCurrentTime */
 
+// edit this for your own program
 void ProcessRequest(		/* process a time request by a client */
 	int DataSocketFD)
 {
@@ -187,6 +190,7 @@ void ProcessRequest(		/* process a time request by a client */
     }
 } /* end of ProcessRequest */
 
+// dont need to edit this function
 void ServerMainLoop(		/* simple server main loop */
 	int ServSocketFD,		/* server socket to wait on */
 	ClientHandler HandleClient,	/* client handler to call */
@@ -262,6 +266,8 @@ void ServerMainLoop(		/* simple server main loop */
 
 /*** main function *******************************************************/
 
+
+// dont know if we need to edit or not
 int main(int argc, char *argv[])
 {
     int ServSocketFD;	/* socket file descriptor for service */
