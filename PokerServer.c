@@ -96,8 +96,10 @@ void ProcessRequest(		/* process a time request by a client */
     int  l, n;
     char RecvBuf[256];	/* message buffer for receiving a message */
     char SendBuf[256];	/* message buffer for sending a response */
-    // const char s[2] = " "; // stuff for token (victor)
-    //char *token;
+    char *tokenname;
+    const char s[2] = " "; // stuff for token (victor)
+    char *token;
+    int i;
 
     n = read(DataSocketFD, RecvBuf, sizeof(RecvBuf)-1);
     if (n < 0) 
@@ -109,28 +111,29 @@ void ProcessRequest(		/* process a time request by a client */
 #endif
 // PARSE THE RECVBUF HERE FOR STRCMP 
 
-/*
 // This is for ENTERING the game (ENTER)
     token = strtok(RecvBuf, s);
 
     if (0 == strcmp(token, "ENTER"))
         {
-            token = strtok(NULL, s);    // name of the cilent 
+            tokenname = strtok(NULL, s);    // name of the cilent 
 
 
             token = strtok(NULL, s);    // seat
             if (0 == strcmp(token, "SEAT"))
                 {
                     token = strtok(NULL, s);
-                    switch(RecvBuf):
+                    token = (int)token;
+                    for (i=1; i<7; i++){
+                        if(token == i){
+                            strncpy(SendBuf, "OK SEAT", sizeof(SendBuf)-1);
+	                        SendBuf[sizeof(SendBuf)-1] = 0;
+                        	// strncat(SendBuf,, sizeof(SendBuf)-1-strlen(SendBuf));
+                        }
+                    }
+
+                    }
                 }
-
-
-        }
-
-
-
-
 
 // This is for getting information for each client (GET)
     if (0 == strcmp(RecvBuf, "GET SEAT 1"))
@@ -163,7 +166,6 @@ void ProcessRequest(		/* process a time request by a client */
 
         }
 
-*/
 
     if (0 == strcmp(RecvBuf, "TIME"))
     {   strncpy(SendBuf, "OK TIME: ", sizeof(SendBuf)-1);
