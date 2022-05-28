@@ -100,6 +100,7 @@ void ProcessRequest(		/* process a time request by a client */
     const char s[2] = " "; // stuff for token (victor)
     char *token;
     int i;
+    char equal[3] = " = ";
 
     n = read(DataSocketFD, RecvBuf, sizeof(RecvBuf)-1);
     if (n < 0) 
@@ -113,25 +114,26 @@ void ProcessRequest(		/* process a time request by a client */
 
 // This is for ENTERING the game (ENTER)
     token = strtok(RecvBuf, s);
-
-    if (0 == strcmp(token, "ENTER"))
-        {
+    if (0 == strcmp(token, "ENTER")){
             tokenname = strtok(NULL, s);    // name of the cilent 
-
-
             token = strtok(NULL, s);    // seat
-            if (0 == strcmp(token, "SEAT"))
-                {
+            if (0 == strcmp(token, "SEAT")){
                     token = strtok(NULL, s);
                     token = (int)token;
                     for (i=1; i<7; i++){
                         if(token == i){
                             strncpy(SendBuf, "OK SEAT", sizeof(SendBuf)-1);
 	                        SendBuf[sizeof(SendBuf)-1] = 0;
-                        	// strncat(SendBuf,, sizeof(SendBuf)-1-strlen(SendBuf));
+                            i = (char)i;
+                        	strncat(SendBuf, i, sizeof(SendBuf)-1-strlen(SendBuf));
+                            strncat(SendBuf, equal, sizeof(SendBuf)-1-strlen(SendBuf));
+                            strncat(SendBuf, tokenname, sizeof(SendBuf)-1-strlen(SendBuf));         
+                            // the end message would be OK SEAT (number) = (cilentname) 
+                        }
+                        else{
+                            continue;
                         }
                     }
-
                     }
                 }
 
