@@ -2,7 +2,12 @@
 #Make sure to include trick showed by T.A. for object files and simplifying dependencies
 #Example Makefile for EECS22L
 
-CFLAGS = -Wall -ansi -std=c99
+
+GTKINC	= `pkg-config --cflags gtk+-2.0` #GTK FLAGS
+GTKLIBS	= `pkg-config --libs gtk+-2.0`
+
+CFLAGS = -Wall -ansi -std=c99 #$(GTKINC) commented out until compilation with GUI is tested.
+
 Mymessage = success
 	
 test:

@@ -100,6 +100,8 @@ void ProcessRequest(		/* process a time request by a client */
     const char s[2] = " "; // stuff for token (victor)
     char *token;
     int i;
+    char equal[3] = " = ";
+    char clientname[20]; 
 
     n = read(DataSocketFD, RecvBuf, sizeof(RecvBuf)-1);
     if (n < 0) 
@@ -109,63 +111,59 @@ void ProcessRequest(		/* process a time request by a client */
 #ifdef DEBUG
     printf("%s: Received message: %s\n", Program, RecvBuf);
 #endif
-// PARSE THE RECVBUF HERE FOR STRCMP 
 
-// This is for ENTERING the game (ENTER)
-    token = strtok(RecvBuf, s);
+    // This is for getting information for each client (GET)
+    if (0 == strcmp(RecvBuf, "GET SEAT 1")){
+        strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /*ClockBuffer*/, sizeof(SendBuf)-1-strlen(SendBuf));   // need to add funtion call to get cilent name from seat 
+        }
 
-    if (0 == strcmp(token, "ENTER"))
-        {
-            tokenname = strtok(NULL, s);    // name of the cilent 
+    else if (0 == strcmp(RecvBuf, "GET SEAT 2")){
 
+        }
 
-            token = strtok(NULL, s);    // seat
-            if (0 == strcmp(token, "SEAT"))
-                {
-                    token = strtok(NULL, s);
-                    token = (int)token;
+    else if (0 == strcmp(RecvBuf, "GET SEAT 3")){
+
+        }
+
+    else if (0 == strcmp(RecvBuf, "GET SEAT 4")){
+
+        }
+
+    else if (0 == strcmp(RecvBuf, "GET SEAT 5")){
+
+        }
+
+    else if (0 == strcmp(RecvBuf, "GET SEAT 6")){
+
+        }
+
+    
+    
+    token = strtok(RecvBuf, s);   // parsing RecvBuf string
+    if (0 == strcmp(token, "ENTER")){
+        tokenname = strtok(NULL, s);    // name of the cilent 
+        token = strtok(NULL, s);    // seat
+            if (0 == strcmp(token, "SEAT")){
+                token = strtok(NULL, s);
+                token = (int)token;
                     for (i=1; i<7; i++){
                         if(token == i){
                             strncpy(SendBuf, "OK SEAT", sizeof(SendBuf)-1);
 	                        SendBuf[sizeof(SendBuf)-1] = 0;
-                        	// strncat(SendBuf,, sizeof(SendBuf)-1-strlen(SendBuf));
+                            i = (char)i;
+                        	strncat(SendBuf, i, sizeof(SendBuf)-1-strlen(SendBuf));
+                            strncat(SendBuf, equal, sizeof(SendBuf)-1-strlen(SendBuf));
+                            strncat(SendBuf, tokenname, sizeof(SendBuf)-1-strlen(SendBuf));         
+                            // the message send would be OK SEAT (number) = (cilentname) 
+                        }
+                        else{
+                            continue;
                         }
                     }
-
-                    }
-                }
-
-// This is for getting information for each client (GET)
-    if (0 == strcmp(RecvBuf, "GET SEAT 1"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 2"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 3"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 4"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 5"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 6"))
-        {
-
-        }
-
+            }
+    }
 
     if (0 == strcmp(RecvBuf, "TIME"))
     {   strncpy(SendBuf, "OK TIME: ", sizeof(SendBuf)-1);
