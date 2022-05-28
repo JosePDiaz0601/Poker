@@ -12,6 +12,8 @@
 #include <sys/select.h>
 #include <arpa/inet.h>
 #include <assert.h>
+#include "poker.h"
+// do we need to include graphics.h?
 
 /* #define DEBUG */	/* be verbose */
 
@@ -63,7 +65,7 @@ int MakeServerSocket(		/* create a socket on this server */
     {   FatalError("binding the server to a socket failed");
     }
     /* start listening to this socket */
-    if (listen(ServSocketFD, 5) < 0)	/* max 5 clients in backlog */
+    if (listen(ServSocketFD, 7) < 0)	/* max 5 clients in backlog */
     {   FatalError("listening on socket failed");
     }
     return ServSocketFD;
@@ -101,7 +103,7 @@ void ProcessRequest(		/* process a time request by a client */
     char *token;
     int i;
     char equal[3] = " = ";
-    char clientname[20]; 
+    char clientname[16]; 
 
     n = read(DataSocketFD, RecvBuf, sizeof(RecvBuf)-1);
     if (n < 0) 
@@ -116,42 +118,70 @@ void ProcessRequest(		/* process a time request by a client */
     if (0 == strcmp(RecvBuf, "GET SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /*ClockBuffer*/, sizeof(SendBuf)-1-strlen(SendBuf));   // need to add funtion call to get cilent name from seat 
+	    strncat(SendBuf, player1Name, sizeof(SendBuf)-1-strlen(SendBuf));   // NOW I NEED TO GET THE VALUE OF PLAYER CARDS 
         }
 
     else if (0 == strcmp(RecvBuf, "GET SEAT 2")){
-
+        strncpy(SendBuf, "OK SEAT 2 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player2Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
         }
 
     else if (0 == strcmp(RecvBuf, "GET SEAT 3")){
-
+        strncpy(SendBuf, "OK SEAT 3 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player3Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
         }
 
     else if (0 == strcmp(RecvBuf, "GET SEAT 4")){
-
+        strncpy(SendBuf, "OK SEAT 4 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player4Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
         }
 
     else if (0 == strcmp(RecvBuf, "GET SEAT 5")){
-
+        strncpy(SendBuf, "OK SEAT 5 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player5Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
         }
 
     else if (0 == strcmp(RecvBuf, "GET SEAT 6")){
-
+        strncpy(SendBuf, "OK SEAT 6 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player6Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
         }
 
-    
-    
-    token = strtok(RecvBuf, s);   // parsing RecvBuf string
+    // parsing RecvBuf string for non hardcodeable string inputs
+    token = strtok(RecvBuf, s); 
     if (0 == strcmp(token, "ENTER")){
         tokenname = strtok(NULL, s);    // name of the cilent 
         token = strtok(NULL, s);    // seat
             if (0 == strcmp(token, "SEAT")){
-                token = strtok(NULL, s);
-                token = (int)token;
+                token = strtok(NULL, s);    // seat number
+                token = (int)token;         // making token into a int
                     for (i=1; i<7; i++){
                         if(token == i){
                             strncpy(SendBuf, "OK SEAT", sizeof(SendBuf)-1);
 	                        SendBuf[sizeof(SendBuf)-1] = 0;
+                            if(i = 1){                      // assigning the player name to a global char varaible in poker.h
+                                *player1Name = tokenname;       // can we assign a pointer *tokenname to the global char player1Name[16]?
+                            }
+                            else if(i = 2){
+                                *player2Name = tokenname;
+                            }
+                            else if(i = 3){
+                                *player3Name = tokenname;
+                            }
+                            else if(i = 4){
+                                *player4Name = tokenname;
+                            }
+                            else if(i = 5){
+                                *player5Name = tokenname;
+                            }
+
+                            else if(i = 6){
+                                *player6Name = tokenname;
+                            }
                             i = (char)i;
                         	strncat(SendBuf, i, sizeof(SendBuf)-1-strlen(SendBuf));
                             strncat(SendBuf, equal, sizeof(SendBuf)-1-strlen(SendBuf));
