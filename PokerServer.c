@@ -101,8 +101,6 @@ void ProcessRequest(		/* process a time request by a client */
     char *tokenName;
     const char s[2] = " "; // stuff for token (victor)
     char *token;
-    int i;
-    char seatNum;
     char equal[3] = " = ";
     char clientname[16]; 
 
@@ -115,7 +113,12 @@ void ProcessRequest(		/* process a time request by a client */
     printf("%s: Received message: %s\n", Program, RecvBuf);
 #endif
 
-    // This is for getting information for each client (GET)
+    // do we need to have get value? since the points of each player would be displayed in GUI anyways
+    if (0 == strcmp(RecvBuf, "VALUE ")){
+
+    }
+
+    // This is for getting information for each client seat
     if (0 == strcmp(RecvBuf, "GET SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
@@ -162,7 +165,7 @@ void ProcessRequest(		/* process a time request by a client */
                 int tokenNum = 0;
                 tokenNum = (int)((char)(token[0])) - 48;         // making token into a int, store in new var tokenNum
                 //convert ASCII char whose value is a number to an int
-                    for (i=1; i<7; i++){
+                    for (int i=1; i<7; i++){
                         if(tokenNum == i){
                             strncpy(SendBuf, "OK SEAT", sizeof(SendBuf)-1);
 	                        SendBuf[sizeof(SendBuf)-1] = 0;
@@ -202,9 +205,8 @@ void ProcessRequest(		/* process a time request by a client */
                                 strncpy(player6Name, tokenName, token_destination_size);
                                 player6Name[token_destination_size - 1] = '\0';
  //                               *player6Name = tokenname;
-                            }
-                            char *seatNum = i + '0';
-                        	strncat(SendBuf, seatNum, sizeof(SendBuf)-1-strlen(SendBuf));
+                            };
+                        	strncat(SendBuf, token, sizeof(SendBuf)-1-strlen(SendBuf));
                             strncat(SendBuf, equal, sizeof(SendBuf)-1-strlen(SendBuf));
                             strncat(SendBuf, tokenName, sizeof(SendBuf)-1-strlen(SendBuf));
                             // the message send would be OK SEAT (number) = (cilentname) 
@@ -214,6 +216,7 @@ void ProcessRequest(		/* process a time request by a client */
                         }
                     }
             }
+    else if( 0 == strcmp(token,"GET"))
     }
 
     if (0 == strcmp(RecvBuf, "TIME"))
