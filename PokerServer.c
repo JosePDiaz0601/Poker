@@ -102,6 +102,7 @@ void ProcessRequest(		/* process a time request by a client */
     const char s[2] = " "; // stuff for token (victor)
     char *token;
     int i;
+    char seatNum;
     char equal[3] = " = ";
     char clientname[16]; 
 
@@ -202,8 +203,8 @@ void ProcessRequest(		/* process a time request by a client */
                                 player6Name[token_destination_size - 1] = '\0';
  //                               *player6Name = tokenname;
                             }
-                            i = (char)i;
-                        	strncat(SendBuf, i, sizeof(SendBuf)-1-strlen(SendBuf));
+                            char *seatNum = i + '0';
+                        	strncat(SendBuf, seatNum, sizeof(SendBuf)-1-strlen(SendBuf));
                             strncat(SendBuf, equal, sizeof(SendBuf)-1-strlen(SendBuf));
                             strncat(SendBuf, tokenName, sizeof(SendBuf)-1-strlen(SendBuf));
                             // the message send would be OK SEAT (number) = (cilentname) 
