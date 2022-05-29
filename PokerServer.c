@@ -102,6 +102,7 @@ void ProcessRequest(		/* process a time request by a client */
     const char s[2] = " "; // stuff for token (victor)
     char *token;
     char *tokenSeatNum;
+    int tokenSeatNumInt;
     char equal[3] = " = ";
     char clientname[16]; 
 
@@ -286,25 +287,24 @@ void ProcessRequest(		/* process a time request by a client */
                         }
                     }
             }
-
         while(1){
             switch(token[0]){
             case 'R':
                 token = strtok(NULL, s);
                 tokenSeatNum = strtok(NULL, s);
-                tokenSeatNum = (int)((char)(tokenSeatNum[0])) - 48
-                if 
+                tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
                 //  function_for_Raise()
                break;
             case 'F':
                 token = strtok(NULL, s);
                 tokenSeatNum = strtok(NULL, s);
+                tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
                 //  function_for_fold()
                 break;
             case 'C':
                 token = strtok(NULL, s);
                 tokenSeatNum = strtok(NULL, s);
-                tokenSeatNum[0] = 
+                tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
                 // fucntion_for_call()
                 break;
             }
