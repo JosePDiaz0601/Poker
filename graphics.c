@@ -68,50 +68,83 @@ GtkWidget *CreateWindow(	/* create the server window */
 	char **argv[])
 {
     GtkWidget *Window;
-    GtkWidget *DrawArea, *Frame, *Label; //*VBox
+
     GtkWidget *MYBOX;
-    GtkWidget *ShutdownButton;
-    GtkWidget *Card1, *Card2, *Card3;
+
+    GtkWidget *table;
+    GtkWidget *pCard1, *pCard2, *pCard3, *pCard4, *pCard5;
+    GtkWidget *tCard1, *tCard2, *tCard3, *tCard4, *tCard5;
+
+    GtkWidget *tLabel, *pLabel; //just player and table label
 
     /* initialize the GTK libraries */
     gtk_init(argc, argv);
 
-    /* create the main, top level window */
+
+
+
     Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(Window), Program);
-    gtk_window_set_default_size(GTK_WINDOW(Window), 800, 800);
+    gtk_window_set_default_size(GTK_WINDOW(Window), 1920, 1080);
     gtk_container_set_border_width (GTK_CONTAINER(Window), 10);
 
-    /* overall vertical arrangement in the window */
-    //VBox = gtk_vbox_new(FALSE, 10);
-   // gtk_container_add(GTK_CONTAINER(Window), VBox);
+    table = gtk_table_new (6, 6, TRUE); //creation of the table that will be the windows ONLY child widget. We should update one of the 6 to be N eventually.
+    gtk_container_add (GTK_CONTAINER (Window), table);
+    gtk_table_resize (table, 20,20);
 
-    MYBOX = gtk_hbox_new(FALSE, 3);
-    gtk_container_add(GTK_CONTAINER(Window), MYBOX);
+    tLabel = gtk_label_new("Table's Cards");
+    pLabel = gtk_label_new("Player's Cards");
 
-    Card1 = gtk_button_new_with_label("Card1");
-    gtk_container_add(GTK_CONTAINER(MYBOX), Card1);
+    pCard1 = gtk_image_new_from_file ("3_of_clubs.png");
+    pCard2 = gtk_image_new_from_file ("3_of_clubs.png");
+    pCard3 = gtk_image_new_from_file ("3_of_clubs.png");
+    pCard4 = gtk_image_new_from_file ("3_of_clubs.png");
+    pCard5 = gtk_image_new_from_file ("3_of_clubs.png");
+    
+    tCard1 = gtk_image_new_from_file ("3_of_clubs.png");
+    tCard2 = gtk_image_new_from_file ("3_of_clubs.png");
+    tCard3 = gtk_image_new_from_file ("3_of_clubs.png");
+    tCard4 = gtk_image_new_from_file ("3_of_clubs.png");
+    tCard5 = gtk_image_new_from_file ("3_of_clubs.png");    
 
-    Card2 = gtk_button_new_with_label("Card2");
-    gtk_container_add(GTK_CONTAINER(MYBOX), Card2);
+    gtk_table_attach(table,tCard1,0,1,1,3,2,2,10,10);
+    gtk_table_attach(table,tCard2,1,2,1,3,2,2,10,10);
+    gtk_table_attach(table,tCard3,2,3,1,3,2,2,10,10);
+    gtk_table_attach(table,tCard4,3,4,1,3,2,2,10,10);
+    gtk_table_attach(table,tCard5,4,5,1,3,2,2,10,10);
 
-    Card3 = gtk_button_new_with_label("Card3");
-    gtk_container_add(GTK_CONTAINER(MYBOX), Card3);
 
-    /* on the top, put a drawing area */
-    DrawArea = gtk_drawing_area_new();
-    gtk_widget_set_size_request(DrawArea, 150, 250);
-    gtk_container_add(GTK_CONTAINER(MYBOX), DrawArea);
+    gtk_table_attach(table,pCard1,0,1,4,6,2,2,10,10);
+    gtk_table_attach(table,pCard2,1,2,4,6,2,2,10,10);
+    gtk_table_attach(table,pCard3,2,3,4,6,2,2,10,10);
+    gtk_table_attach(table,pCard4,3,4,4,6,2,2,10,10);
+    gtk_table_attach(table,pCard5,4,5,4,6,2,2,10,10);
 
-    /* in the middle, a frame with the digital display of the time */
-    Frame = gtk_frame_new("Poker Time");
-    gtk_container_add(GTK_CONTAINER(MYBOX), Frame);
-    Label = gtk_label_new("n/a");
-    gtk_container_add(GTK_CONTAINER(Frame), Label);
+    gtk_table_attach(table,tLabel,2,3,0,1,2,2,0,0);
+    gtk_table_attach(table,pLabel,2,3,3,4,2,2,0,0);
 
-    /* on the bottom, a button to shutdown the server and quit */
-    ShutdownButton = gtk_button_new_with_label("QUIT POKER");
-    gtk_container_add(GTK_CONTAINER(MYBOX), ShutdownButton);
 
-    /* make sure that everything becomes visible */
+
     gtk_widget_show_all(Window);
+
+
+
+    /* connect window-close with function terminating this server */
+    g_signal_connect(Window, "destroy",
+			G_CALLBACK(ShutdownClicked), NULL);
+
+
+    return(Window);
+} /* end of CreateWindow */
+
+void UpdateWindow(void)		/* render the window on screen */
+{
+   /* this server has it's own main loop for handling client connections;
+    * as such, it can't have the usual GUI main loop (gtk_main);
+    * instead, we call this UpdateWindow function on regular basis
+    */
+    while(gtk_events_pending())
+    {
+	gtk_main_iteration();
+    }
+} /* end of UpdateWindow */
