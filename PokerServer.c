@@ -12,6 +12,8 @@
 #include <sys/select.h>
 #include <arpa/inet.h>
 #include <assert.h>
+#include "poker.h"
+// do we need to include graphics.h?
 
 /* #define DEBUG */	/* be verbose */
 
@@ -63,7 +65,7 @@ int MakeServerSocket(		/* create a socket on this server */
     {   FatalError("binding the server to a socket failed");
     }
     /* start listening to this socket */
-    if (listen(ServSocketFD, 5) < 0)	/* max 5 clients in backlog */
+    if (listen(ServSocketFD, 7) < 0)	/* max 5 clients in backlog */
     {   FatalError("listening on socket failed");
     }
     return ServSocketFD;
@@ -96,10 +98,13 @@ void ProcessRequest(		/* process a time request by a client */
     int  l, n;
     char RecvBuf[256];	/* message buffer for receiving a message */
     char SendBuf[256];	/* message buffer for sending a response */
-    char *tokenname;
+    char *tokenName;
     const char s[2] = " "; // stuff for token (victor)
     char *token;
     int i;
+    char seatNum;
+    char equal[3] = " = ";
+    char clientname[16]; 
 
     n = read(DataSocketFD, RecvBuf, sizeof(RecvBuf)-1);
     if (n < 0) 
@@ -109,63 +114,107 @@ void ProcessRequest(		/* process a time request by a client */
 #ifdef DEBUG
     printf("%s: Received message: %s\n", Program, RecvBuf);
 #endif
-// PARSE THE RECVBUF HERE FOR STRCMP 
 
-// This is for ENTERING the game (ENTER)
-    token = strtok(RecvBuf, s);
+    // This is for getting information for each client (GET)
+    if (0 == strcmp(RecvBuf, "GET SEAT 1")){
+        strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player1Name, sizeof(SendBuf)-1-strlen(SendBuf));   // NOW I NEED TO GET THE VALUE OF PLAYER CARDS 
+        }
 
-    if (0 == strcmp(token, "ENTER"))
-        {
-            tokenname = strtok(NULL, s);    // name of the cilent 
+    else if (0 == strcmp(RecvBuf, "GET SEAT 2")){
+        strncpy(SendBuf, "OK SEAT 2 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player2Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        }
 
+    else if (0 == strcmp(RecvBuf, "GET SEAT 3")){
+        strncpy(SendBuf, "OK SEAT 3 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player3Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        }
 
-            token = strtok(NULL, s);    // seat
-            if (0 == strcmp(token, "SEAT"))
-                {
-                    token = strtok(NULL, s);
-                    token = (int)token;
+    else if (0 == strcmp(RecvBuf, "GET SEAT 4")){
+        strncpy(SendBuf, "OK SEAT 4 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player4Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        }
+
+    else if (0 == strcmp(RecvBuf, "GET SEAT 5")){
+        strncpy(SendBuf, "OK SEAT 5 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player5Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        }
+
+    else if (0 == strcmp(RecvBuf, "GET SEAT 6")){
+        strncpy(SendBuf, "OK SEAT 6 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, player6Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        }
+
+    // parsing RecvBuf string for non hardcodeable string inputs
+    token = strtok(RecvBuf, s); 
+    if (0 == strcmp(token, "ENTER")){
+        tokenName = strtok(NULL, s);    // name of the cilent
+        token = strtok(NULL, s);    // seat
+            if (0 == strcmp(token, "SEAT")){
+                token = strtok(NULL, s);    // seat number
+                int tokenNum = 0;
+                tokenNum = (int)((char)(token[0])) - 48;         // making token into a int, store in new var tokenNum
+                //convert ASCII char whose value is a number to an int
                     for (i=1; i<7; i++){
-                        if(token == i){
+                        if(tokenNum == i){
                             strncpy(SendBuf, "OK SEAT", sizeof(SendBuf)-1);
 	                        SendBuf[sizeof(SendBuf)-1] = 0;
-                        	// strncat(SendBuf,, sizeof(SendBuf)-1-strlen(SendBuf));
+                            if(i == 1){                      // assigning the player name to a global char varaible in poker.h
+ //                               *player1Name = tokenname;       // can we assign a pointer *tokenname to the global char player1Name[16]?
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player1Name, tokenName, token_destination_size);
+                                player1Name[token_destination_size - 1] = '\0';
+                            }
+                            else if(i == 2){
+ //                               *player2Name = tokenname;
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player2Name, tokenName, token_destination_size);
+                                player2Name[token_destination_size - 1] = '\0';
+                            }
+                            else if(i == 3){
+//                                *player3Name = tokenname;
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player3Name, tokenName, token_destination_size);
+                                player3Name[token_destination_size - 1] = '\0';
+                            }
+                            else if(i == 4){
+//                                *player4Name = tokenname;
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player4Name, tokenName, token_destination_size);
+                                player4Name[token_destination_size - 1] = '\0';
+                            }
+                            else if(i == 5){
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player5Name, tokenName, token_destination_size);
+                                player5Name[token_destination_size - 1] = '\0';
+//                                *player5Name = tokenname;
+                            }
+
+                            else if(i == 6){
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player6Name, tokenName, token_destination_size);
+                                player6Name[token_destination_size - 1] = '\0';
+ //                               *player6Name = tokenname;
+                            }
+                            char *seatNum = i + '0';
+                        	strncat(SendBuf, seatNum, sizeof(SendBuf)-1-strlen(SendBuf));
+                            strncat(SendBuf, equal, sizeof(SendBuf)-1-strlen(SendBuf));
+                            strncat(SendBuf, tokenName, sizeof(SendBuf)-1-strlen(SendBuf));
+                            // the message send would be OK SEAT (number) = (cilentname) 
+                        }
+                        else{
+                            continue;
                         }
                     }
-
-                    }
-                }
-
-// This is for getting information for each client (GET)
-    if (0 == strcmp(RecvBuf, "GET SEAT 1"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 2"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 3"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 4"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 5"))
-        {
-
-        }
-
-    if (0 == strcmp(RecvBuf, "GET SEAT 6"))
-        {
-
-        }
-
+            }
+    }
 
     if (0 == strcmp(RecvBuf, "TIME"))
     {   strncpy(SendBuf, "OK TIME: ", sizeof(SendBuf)-1);

@@ -10,6 +10,7 @@ struct CARD player3[2];
 struct CARD player4[2];
 struct CARD player5[2];
 struct CARD player6[2];
+
 int players = 7; // Change this later so that player count isnt hardcoded
 int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 // Main function of the game
@@ -29,8 +30,8 @@ void startGame(int players)
 
     srand(time(NULL));
 
-    //commented out for error
-    //int dealerPlayer = rand() % players;
+    // commented out for error
+    // int dealerPlayer = rand() % players;
 
     // Aces
     struct CARD C1 = {'C', 14, 'N'};
@@ -165,7 +166,9 @@ void startGame(int players)
 
     newRound();
 }
-
+assignSeats(int seat)
+{
+}
 // This function gives the river its proper cards and all the players are given new cards
 void newRound()
 {
@@ -304,6 +307,38 @@ void newRound()
     }
 }
 
+void playerPoints(struct CARD player[2])
+{
+
+    // Create a temp that combines the river and the players card in order to make comparisons easier
+
+    struct CARD temp[7];
+    temp[0] = river[0];
+    temp[1] = river[1];
+    temp[2] = river[2];
+    temp[3] = river[3];
+    temp[4] = river[4];
+    temp[5] = player[0];
+    temp[6] = player[1];
+
+    // Bubble Sort
+    int sort = 0;
+    struct CARD hold;
+    while (sort == 0)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if (temp[i].type > temp[i + 1].type)
+                hold = temp[i];
+            temp[i] = temp[i + 1];
+            temp[i + 1] = hold;
+        }
+        if (temp[0].type <= temp[1].type <= temp[2].type <= temp[3].type <= temp[4].type <= temp[5].type <= temp[6].type)
+        {
+            sort = 1;
+        }
+    }
+}
 // Prints out all the decks
 void printDecks()
 {
