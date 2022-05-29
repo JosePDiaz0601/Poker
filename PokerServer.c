@@ -101,6 +101,7 @@ void ProcessRequest(		/* process a time request by a client */
     char *tokenName;
     const char s[2] = " "; // stuff for token (victor)
     char *token;
+    char *tokenSeatNum;
     char equal[3] = " = ";
     char clientname[16]; 
 
@@ -113,9 +114,78 @@ void ProcessRequest(		/* process a time request by a client */
     printf("%s: Received message: %s\n", Program, RecvBuf);
 #endif
 
-    // do we need to have get value? since the points of each player would be displayed in GUI anyways
-    if (0 == strcmp(RecvBuf, "VALUE ")){
+    // get cards each cilent has
+    if (0 == strcmp(RecvBuf, "GET CARDS SEAT 1")){
+        strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
 
+    else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 2")){
+        strncpy(SendBuf, "OK SEAT 2 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 3")){
+        strncpy(SendBuf, "OK SEAT 3 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 4")){
+        strncpy(SendBuf, "OK SEAT 4 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 5")){
+        strncpy(SendBuf, "OK SEAT 5 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 6")){
+        strncpy(SendBuf, "OK SEAT 6 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    // get value of points a cilent has
+    if (0 == strcmp(RecvBuf, "GET POINTS SEAT 1")){
+        strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 2")){
+        strncpy(SendBuf, "OK SEAT 2 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 3")){
+        strncpy(SendBuf, "OK SEAT 3 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 4")){
+        strncpy(SendBuf, "OK SEAT 4 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 5")){
+        strncpy(SendBuf, "OK SEAT 5 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+    }
+
+    else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 6")){
+        strncpy(SendBuf, "OK SEAT 6 =", sizeof(SendBuf)-1);
+    	SendBuf[sizeof(SendBuf)-1] = 0;
+	    strncat(SendBuf, /* need function to gezbuffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     // This is for getting information for each client seat
@@ -216,7 +286,29 @@ void ProcessRequest(		/* process a time request by a client */
                         }
                     }
             }
-    else if( 0 == strcmp(token,"GET"))
+
+        while(1){
+            switch(token[0]){
+            case 'R':
+                token = strtok(NULL, s);
+                tokenSeatNum = strtok(NULL, s);
+                tokenSeatNum = (int)((char)(tokenSeatNum[0])) - 48
+                if 
+                //  function_for_Raise()
+               break;
+            case 'F':
+                token = strtok(NULL, s);
+                tokenSeatNum = strtok(NULL, s);
+                //  function_for_fold()
+                break;
+            case 'C':
+                token = strtok(NULL, s);
+                tokenSeatNum = strtok(NULL, s);
+                tokenSeatNum[0] = 
+                // fucntion_for_call()
+                break;
+            }
+        }
     }
 
     if (0 == strcmp(RecvBuf, "TIME"))
