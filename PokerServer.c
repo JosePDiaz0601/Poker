@@ -1,5 +1,8 @@
-/* ClockServer.c: simple TCP/IP server example with timeout support
- * Author: Rainer Doemer, 2/17/15
+/* PokerServer.c: simple TCP/IP server example with timeout support
+ * This file has been adapted to fit the needs of the socket communication
+ * that is used between client and server for our poker game.
+ * Author: Loading ..
+ * Based on code from Rainer Doemer in ClockServer, 2/17/15
  */
 
 #include <stdio.h>
@@ -71,7 +74,7 @@ int MakeServerSocket(		/* create a socket on this server */
     return ServSocketFD;
 } /* end of MakeServerSocket */
 
-// pretty sure you dont need this function (unless we want the time)
+// this function may not be necessary (from Professor's ClockServer)
 void PrintCurrentTime(void)	/*  print/update the current real time */
 {
     time_t CurrentTime; /* seconds since 1970 (see 'man 2 time') */
@@ -445,4 +448,4 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-/* EOF ClockServer.c */
+/* EOF PokerServer.c */
