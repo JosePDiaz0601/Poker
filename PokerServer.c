@@ -98,7 +98,7 @@ void ProcessRequest(		/* process a time request by a client */
     int  l, n;
     char RecvBuf[256];	/* message buffer for receiving a message */
     char SendBuf[256];	/* message buffer for sending a response */
-    char *tokenname;
+    char *tokenName;
     const char s[2] = " "; // stuff for token (victor)
     char *token;
     int i;
@@ -154,38 +154,58 @@ void ProcessRequest(		/* process a time request by a client */
     // parsing RecvBuf string for non hardcodeable string inputs
     token = strtok(RecvBuf, s); 
     if (0 == strcmp(token, "ENTER")){
-        tokenname = strtok(NULL, s);    // name of the cilent 
+        tokenName = strtok(NULL, s);    // name of the cilent
         token = strtok(NULL, s);    // seat
             if (0 == strcmp(token, "SEAT")){
                 token = strtok(NULL, s);    // seat number
-                token = (int)token;         // making token into a int
+                int tokenNum = 0;
+                tokenNum = (int)((char)(token[0])) - 48;         // making token into a int, store in new var tokenNum
+                //convert ASCII char whose value is a number to an int
                     for (i=1; i<7; i++){
-                        if(token == i){
+                        if(tokenNum == i){
                             strncpy(SendBuf, "OK SEAT", sizeof(SendBuf)-1);
 	                        SendBuf[sizeof(SendBuf)-1] = 0;
-                            if(i = 1){                      // assigning the player name to a global char varaible in poker.h
-                                *player1Name = tokenname;       // can we assign a pointer *tokenname to the global char player1Name[16]?
+                            if(i == 1){                      // assigning the player name to a global char varaible in poker.h
+ //                               *player1Name = tokenname;       // can we assign a pointer *tokenname to the global char player1Name[16]?
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player1Name, tokenName, token_destination_size);
+                                player1Name[token_destination_size - 1] = '\0';
                             }
-                            else if(i = 2){
-                                *player2Name = tokenname;
+                            else if(i == 2){
+ //                               *player2Name = tokenname;
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player2Name, tokenName, token_destination_size);
+                                player2Name[token_destination_size - 1] = '\0';
                             }
-                            else if(i = 3){
-                                *player3Name = tokenname;
+                            else if(i == 3){
+//                                *player3Name = tokenname;
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player3Name, tokenName, token_destination_size);
+                                player3Name[token_destination_size - 1] = '\0';
                             }
-                            else if(i = 4){
-                                *player4Name = tokenname;
+                            else if(i == 4){
+//                                *player4Name = tokenname;
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player4Name, tokenName, token_destination_size);
+                                player4Name[token_destination_size - 1] = '\0';
                             }
-                            else if(i = 5){
-                                *player5Name = tokenname;
+                            else if(i == 5){
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player5Name, tokenName, token_destination_size);
+                                player5Name[token_destination_size - 1] = '\0';
+//                                *player5Name = tokenname;
                             }
 
-                            else if(i = 6){
-                                *player6Name = tokenname;
+                            else if(i == 6){
+                                size_t token_destination_size = sizeof(tokenName);
+                                strncpy(player6Name, tokenName, token_destination_size);
+                                player6Name[token_destination_size - 1] = '\0';
+ //                               *player6Name = tokenname;
                             }
                             i = (char)i;
                         	strncat(SendBuf, i, sizeof(SendBuf)-1-strlen(SendBuf));
                             strncat(SendBuf, equal, sizeof(SendBuf)-1-strlen(SendBuf));
-                            strncat(SendBuf, tokenname, sizeof(SendBuf)-1-strlen(SendBuf));         
+                            strncat(SendBuf, tokenName, sizeof(SendBuf)-1-strlen(SendBuf));
                             // the message send would be OK SEAT (number) = (cilentname) 
                         }
                         else{
