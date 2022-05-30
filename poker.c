@@ -11,6 +11,9 @@ struct CARD player4[2];
 struct CARD player5[2];
 struct CARD player6[2];
 
+int player1points,player2points,player3points,player4points,player5points,player6points = 1000;
+int pot = 0;
+int currentplayerturn = 1;
 int players = 7; // Change this later so that player count isnt hardcoded
 int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 // Main function of the game
@@ -21,7 +24,7 @@ int main(void)
     // Change this later so that player count isnt hardcoded
     startGame(players);
     printDecks();
-    return 0;
+    return 0;  
 }
 
 // Starts the game by creating all the cards and placing them in the appropriate deck
@@ -166,9 +169,7 @@ void startGame(int players)
 
     newRound();
 }
-assignSeats(int seat)
-{
-}
+
 // This function gives the river its proper cards and all the players are given new cards
 void newRound()
 {
@@ -305,14 +306,16 @@ void newRound()
         }
         i = 0;
     }
+  currentplayerturn = 1;
 }
 
-void playerPoints(struct CARD player[2])
+int playerPoints(struct CARD player[2])
 {
 
     // Create a temp that combines the river and the players card in order to make comparisons easier
 
     struct CARD temp[7];
+    struct CARD noPairs[7];
     temp[0] = river[0];
     temp[1] = river[1];
     temp[2] = river[2];
@@ -321,6 +324,15 @@ void playerPoints(struct CARD player[2])
     temp[5] = player[0];
     temp[6] = player[1];
 
+    noPairs[0] = temp[0];
+    noPairs[1] = temp[1];
+    noPairs[2] = temp[2];
+    noPairs[3] = temp[3];
+    noPairs[4] = temp[4];
+    noPairs[5] = temp[5];
+    noPairs[6] = temp[6];
+
+    int points = 0;
     // Bubble Sort
     int sort = 0;
     struct CARD hold;
@@ -338,184 +350,259 @@ void playerPoints(struct CARD player[2])
             sort = 1;
         }
     }
+
+    int size = 7;
+    int key, i, index = -1;
+
+    /*
+     * iterate the array elements using loop
+     * if any element matches the key, store the index
+     */
+
+    for (i = 0; i < size; i++)
+    {
+        if (noPairs[i].type == noPairs[i + 1].type)
+        {
+            index = i;
+            break;
+        }
+    }
+    if (index != -1)
+    {
+        // shift all the element from index+1 by one position to the left
+        for (i = index; i < size - 1; i++)
+            noPairs[i] = noPairs[i + 1];
+
+        // Combined 4 of a kind, 3 of a kind, 2 of a kind
+        int pairs = 0;
+        int fourOfAKind, threeOfAKind = 0;
+
+        // Four of a Kind
+        for (int i = 6; i >= 2; i--)
+        {
+            if (temp[i].type == temp[i - 1].type == temp[i - 2].type == temp[i - 3].type)
+            {
+              points = points + (50000 * temp[i].type);
+              fourOfAKind++;
+              break;
+            }
+        }
+
+        // Three of a kind
+        for (int i = 6; i >= 2; i--)
+        {
+            if ((temp[i].type == temp[i - 1].type == temp[i - 2].type) && (fourOfAKind == 0))
+            {
+                points = points + (2000 * temp[i].type);
+              threeOfAKind++;
+                break;
+            }
+        }
+        // Two of a kind
+        for (int i = 6; i >= 1; i--)
+        {
+            if ((temp[i].type == temp[i - 1].type) && (pairs < 2) && (threeOfAKind == 0) && (fourOfAKind == 0))
+            {
+                points = points + (100 * temp[i].type);
+                i--;
+                pairs++;
+            }
+        }
+    }
+    // Straight
+    int count = 0;
+    int check = 0;
+    for (int i = 0; i <= 2; i++)
+    {
+        for (int y = i + 1; y <= 6; y++)
+            if (temp[y - 1].type == temp[y].type - 1)
+            {
+                count++;
+              if(count == 4)
+              {
+                break;
+              }
+            }
+    }
+    if (count >= 4)
+    {
+        points = points + 30000;
+    }
+
+    // Straight but for ACE rule
+    for (int i = 0; i <= 6; i++)
+    {
+        if (temp[i].type == 14 && check == 0)
+        {
+            check = 1;
+        }
+        if (temp[i].type == 2 && check == 1)
+        {
+            check = 2;
+        }
+        if (temp[i].type == 3 && check == 2)
+        {
+            check = 3;
+        }
+        if (temp[i].type == 4 && check == 3)
+        {
+            check = 4;
+        }
+        if (temp[i].type == 5 && check == 4)
+        {
+            check = 5;
+        }
+    }
+    if (check == 5)
+    {
+        points = points + 30000;
+    }
+
+    // Flush
+    int heart, spade, club, diamond = 0;
+    for (int i = 0; i < 7; i++)
+    {
+
+        if (temp[i].suit == 'H')
+        {
+            heart = heart + 1;
+        }
+        if (temp[i].suit == 'S')
+        {
+            spade = spade + 1;
+        }
+        if (temp[i].suit == 'C')
+        {
+            club = club + 1;
+        }
+        if (temp[i].suit == 'D')
+        {
+            diamond = diamond + 1;
+        }
+    }
+    if ((heart >= 5) || (spade >= 5) || (club >= 5) || (diamond >= 5))
+    {
+        points = points + 35000;
+    }
+
+    
+    // adds value for the highest card
+    if (player[0].type > player[1].type)
+    {
+        points = points + player[0].type;
+    }
+    else
+    {
+        points = points + player[1].type;
+    }
+
+  //Straight Flush
+  char suitCheck;
+  int counter, typeCheck;
+  for(int r = 0; r >= 6; r++)
+  {
+    counter = 0;
+    
+      suitCheck = temp[r].suit;
+      typeCheck = temp[r].type;
+      for(int c = 0; r >= 6; r++)
+      {
+        if(temp[c].type == typeCheck+1 && temp[c].suit == suitCheck)
+        {
+          counter++;
+        }
+        if(temp[c].type == typeCheck+2 && temp[c].suit == suitCheck)
+        {
+          counter++;
+        }
+        if(temp[c].type == typeCheck+3 && temp[c].suit == suitCheck)
+        {
+          counter++;
+        }
+        if(temp[c].type == typeCheck+4 && temp[c].suit == suitCheck)
+        {
+          counter++;
+        }
+        
+      }
+    if(counter == 4)
+    {
+      points = points + 700000;
+      break;
+    }
+  }
+
+  //Royal Flush
+
+  for(int r = 0; r >= 6; r++)
+  {
+    counter = 0;
+    if(temp[r].type == 10)
+    {
+      suitCheck = temp[r].suit;
+
+      for(int c = 0; r >= 6; r++)
+      {
+        if(temp[c].type == 11 && temp[c].suit == suitCheck)
+        {
+          counter++;
+        }
+        if(temp[c].type == 12 && temp[c].suit == suitCheck)
+        {
+          counter++;
+        }
+        if(temp[c].type == 13 && temp[c].suit == suitCheck)
+        {
+          counter++;
+        }
+        if(temp[c].type == 14 && temp[c].suit == suitCheck)
+        {
+          counter++;
+        }
+        
+      }
+    }
+    if(counter == 4)
+    {
+      points = points + 800000;
+      break;
+    }
+  }
 }
+
 // Prints out all the decks
-void printDecks()
+void printDecks(struct CARD deck[])
 {
     printf("\n");
     if (players >= 3)
     {
-        for (int y = 0; y < 52; y++)
+        for (int y = 0; y < sizeof *deck; y++)
         {
-            if (dealer[y].suit == 'C')
+            if (deck[y].suit == 'C')
             {
-                printf("Deck's %d card is a %d of Clubs\n", y + 1, dealer[y].type);
+                printf("Deck's %d card is a %d of Clubs\n", y + 1, deck[y].type);
             }
-            if (dealer[y].suit == 'D')
+            if (deck[y].suit == 'D')
             {
-                printf("Deck's %d card is a %d of Diamonds\n", y + 1, dealer[y].type);
+                printf("Deck's %d card is a %d of Diamonds\n", y + 1, deck[y].type);
             }
-            if (dealer[y].suit == 'H')
+            if (deck[y].suit == 'H')
             {
-                printf("Deck's %d card is a %d of Hearts\n", y + 1, dealer[y].type);
+                printf("Deck's %d card is a %d of Hearts\n", y + 1, deck[y].type);
             }
-            if (dealer[y].suit == 'S')
+            if (deck[y].suit == 'S')
             {
-                printf("Deck's %d card is a %d of Spades\n", y + 1, dealer[y].type);
-            }
-        }
-        printf("\n");
-        for (int y = 0; y < 5; y++)
-        {
-            if (river[y].suit == 'C')
-            {
-                printf("River's %d card is a %d of Clubs\n", y + 1, river[y].type);
-            }
-            if (river[y].suit == 'D')
-            {
-                printf("River's %d card is a %d of Diamonds\n", y + 1, river[y].type);
-            }
-            if (river[y].suit == 'H')
-            {
-                printf("River's %d card is a %d of Hearts\n", y + 1, river[y].type);
-            }
-            if (river[y].suit == 'S')
-            {
-                printf("River's %d card is a %d of Spades\n", y + 1, river[y].type);
-            }
-        }
-        printf("\n");
-        for (int y = 0; y < 2; y++)
-        {
-            if (player1[y].suit == 'C')
-            {
-                printf("Player1's %d card is a %d of Clubs\n", y + 1, player1[y].type);
-            }
-            if (player1[y].suit == 'D')
-            {
-                printf("Player1's %d card is a %d of Diamonds\n", y + 1, player1[y].type);
-            }
-            if (player1[y].suit == 'H')
-            {
-                printf("Player1's %d card is a %d of Hearts\n", y + 1, player1[y].type);
-            }
-            if (player1[y].suit == 'S')
-            {
-                printf("Player1's %d card is a %d of Spades\n", y + 1, player1[y].type);
-            }
-        }
-        printf("\n");
-        for (int y = 0; y < 2; y++)
-        {
-            if (player2[y].suit == 'C')
-            {
-                printf("Player2's %d card is a %d of Clubs\n", y + 1, player2[y].type);
-            }
-            if (player2[y].suit == 'D')
-            {
-                printf("Player2's %d card is a %d of Diamonds\n", y + 1, player2[y].type);
-            }
-            if (player2[y].suit == 'H')
-            {
-                printf("Player2's %d card is a %d of Hearts\n", y + 1, player2[y].type);
-            }
-            if (player2[y].suit == 'S')
-            {
-                printf("Player2's %d card is a %d of Spades\n", y + 1, player2[y].type);
+                printf("Deck's %d card is a %d of Spades\n", y + 1, deck[y].type);
             }
         }
     }
-    if (players >= 4)
-    {
-        printf("\n");
-        for (int y = 0; y < 2; y++)
-        {
-            if (player3[y].suit == 'C')
-            {
-                printf("Player3's %d card is a %d of Clubs\n", y + 1, player3[y].type);
-            }
-            if (player3[y].suit == 'D')
-            {
-                printf("Player3's %d card is a %d of Diamonds\n", y + 1, player3[y].type);
-            }
-            if (player3[y].suit == 'H')
-            {
-                printf("Player3's %d card is a %d of Hearts\n", y + 1, player3[y].type);
-            }
-            if (player3[y].suit == 'S')
-            {
-                printf("Player3's %d card is a %d of Spades\n", y + 1, player3[y].type);
-            }
-        }
-    }
-    if (players >= 5)
-    {
-        printf("\n");
-        for (int y = 0; y < 2; y++)
-        {
-            if (player4[y].suit == 'C')
-            {
-                printf("Player4's %d card is a %d of Clubs\n", y + 1, player4[y].type);
-            }
-            if (player4[y].suit == 'D')
-            {
-                printf("Player4's %d card is a %d of Diamonds\n", y + 1, player4[y].type);
-            }
-            if (player4[y].suit == 'H')
-            {
-                printf("Player4's %d card is a %d of Hearts\n", y + 1, player4[y].type);
-            }
-            if (player4[y].suit == 'S')
-            {
-                printf("Player4's %d card is a %d of Spades\n", y + 1, player4[y].type);
-            }
-        }
-    }
-    if (players >= 6)
-    {
-        printf("\n");
-        for (int y = 0; y < 2; y++)
-        {
-            if (player5[y].suit == 'C')
-            {
-                printf("Player5's %d card is a %d of Clubs\n", y + 1, player5[y].type);
-            }
-            if (player5[y].suit == 'D')
-            {
-                printf("Player5's %d card is a %d of Diamonds\n", y + 1, player5[y].type);
-            }
-            if (player5[y].suit == 'H')
-            {
-                printf("Player5's %d card is a %d of Hearts\n", y + 1, player5[y].type);
-            }
-            if (player5[y].suit == 'S')
-            {
-                printf("Player5's %d card is a %d of Spades\n", y + 1, player5[y].type);
-            }
-        }
-    }
-    if (players >= 7)
-    {
-        printf("\n");
-        for (int y = 0; y < 2; y++)
-        {
-            if (player6[y].suit == 'C')
-            {
-                printf("Player6's %d card is a %d of Clubs\n", y + 1, player6[y].type);
-            }
-            if (player6[y].suit == 'D')
-            {
-                printf("Player6's %d card is a %d of Diamonds\n", y + 1, player6[y].type);
-            }
-            if (player6[y].suit == 'H')
-            {
-                printf("Player6's %d card is a %d of Hearts\n", y + 1, player6[y].type);
-            }
-            if (player6[y].suit == 'S')
-            {
-                printf("Player6's %d card is a %d of Spades\n", y + 1, player6[y].type);
-            }
-        }
-    }
-    return;
+}
+
+void call(int player)
+{
+  currentplayerturn++;
+  if (currentplayerturn == players)
+  {
+    currentplayerturn = 1;
+  }
 }
