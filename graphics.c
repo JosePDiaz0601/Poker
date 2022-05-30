@@ -670,7 +670,7 @@ random = ((rand()%13)+1);
        tCard4 = gtk_image_new_from_file ("./bin/king_of_spades.png");}
            }
  random = ((rand()%13)+1);
- 
+
    if (RecvBuf[8] == 'S'){
    if (random == 1){
        tCard5 = gtk_image_new_from_file ("./bin/ace_of_spades.png");}
@@ -1106,13 +1106,13 @@ if (receivedSuit == 'D' && receivedType == 13 && cardPosition == 5){tCard5 = gtk
 if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
 */
 
-
-  /*  pCard1 = gtk_image_new_from_file ("./bin/handsome.png");
+/*
+    pCard1 = gtk_image_new_from_file ("./bin/handsome.png");
     pCard2 = gtk_image_new_from_file ("./bin/handsome2.png");
     pCard3 = gtk_image_new_from_file ("./bin/3_of_clubs.png");
     pCard4 = gtk_image_new_from_file ("./bin/3_of_clubs.png");
     pCard5 = gtk_image_new_from_file ("./bin/3_of_clubs.png");
-    
+    *//*
     tCard1 = gtk_image_new_from_file ("./bin/3_of_clubs.png");
     tCard2 = gtk_image_new_from_file ("./bin/3_of_clubs.png");
     tCard3 = gtk_image_new_from_file ("./bin/3_of_clubs.png");
@@ -1120,7 +1120,7 @@ if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk
     tCard5 = gtk_image_new_from_file ("./bin/3_of_clubs.png");    */
 
 
-/*
+
     gtk_table_attach(table,tCard1,0,1,1,3,2,2,10,10);
     gtk_table_attach(table,tCard2,1,2,1,3,2,2,10,10);
     gtk_table_attach(table,tCard3,2,3,1,3,2,2,10,10);
@@ -1128,17 +1128,17 @@ if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk
     gtk_table_attach(table,tCard5,4,5,1,3,2,2,10,10);
 
     gtk_table_attach(table,NewLabel,0,1,0,1,2,2,10,10);
-
+/*
     gtk_table_attach(table,pCard1,0,1,4,6,2,2,10,10);
     gtk_table_attach(table,pCard2,1,2,4,6,2,2,10,10);
-
+*/
     gtk_table_attach(table,tLabel,2,3,0,1,2,2,0,0);
     gtk_table_attach(table,pLabel,2,3,3,4,2,2,0,0);
 
     gtk_table_attach(table,foldButton,5,6,2,3,2,2,10,10);
     gtk_table_attach(table,raiseButton,5,6,3,4,2,2,10,10);
     gtk_table_attach(table,callButton,5,6,4,5,2,2,10,10);
-*/
+
 
     gtk_widget_show_all(Window);
 
