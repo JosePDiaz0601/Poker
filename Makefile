@@ -75,10 +75,13 @@ test:
 	@echo "crystalcove% ./PokerClient crystalcove 10000"
 
 PokerClient.o: PokerClient.c
-	gcc ./src/poker.c ./src/PokerClient.c $(CFLAGS) -o ./bin/PokerClient.o
+	gcc ./src/PokerClient.c $(CFLAGS) -o ./bin/PokerClient.o
 
-PokerClient: PokerClient.o
-	gcc ./bin/PokerClient.o $(LFLAGS) -o ./bin/PokerClient
+Poker.o: Poker.c
+	gcc ./src/poker.c $(CFLAGS) -o ./bin/Poker.o
+
+PokerClient: PokerClient.o Poker.o
+	gcc ./bin/PokerClient.o ./bin/Poker.o $(LFLAGS) -o ./bin/PokerClient
 
 PokerServer.o: PokerServer.c
 	gcc ./src/PokerServer.c $(CFLAGS) -o ./bin/PokerServer.o
