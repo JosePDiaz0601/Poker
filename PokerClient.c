@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 
     Program = argv[0];	/* publish program name (for diagnostics) */
 
-    CreateWindow();
+    CreateWindow(&argc, &argv);
 
 #ifdef DEBUG
     printf("%s: Starting...\n", argv[0]);
