@@ -52,6 +52,7 @@ int MakeServerSocket(		/* create a socket on this server */
     int ServSocketFD;
     struct sockaddr_in ServSocketName;
 
+    startGame(players);                             // THIS STARTS THE GAME!! REMEMBER!! NOT DOEMER CODE
     /* create the socket */
     ServSocketFD = socket(PF_INET, SOCK_STREAM, 0);
     if (ServSocketFD < 0)
@@ -122,7 +123,7 @@ void ProcessRequest(		/* process a time request by a client */
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
 
-        cardNum = (int)river[1].type + '0';               // player card 2
+        cardNum = (int)river[1].type + '0';               // river card 2
         strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
