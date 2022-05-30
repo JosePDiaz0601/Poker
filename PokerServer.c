@@ -117,32 +117,6 @@ void ProcessRequest(		/* process a time request by a client */
 #ifdef DEBUG
     printf("%s: Received message: %s\n", Program, RecvBuf);
 #endif
-    // this is sending all the river cards
-        cardNum = (int)river[0].type + '0';               // river card 1
-	    strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
-        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
-        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
-
-        cardNum = (int)river[1].type + '0';               // river card 2
-        strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
-        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
-        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
-
-        cardNum = (int)river[2].type + '0';               // river card 3
-	    strncat(SendBuf, river[2].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
-        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
-        strncat(SendBuf, '3', sizeof(SendBuf)-1-strlen(SendBuf));
-
-        cardNum = (int)river[3].type + '0';               // player card 4
-        strncat(SendBuf, river[3].suit, sizeof(SendBuf)-1-strlen(SendBuf));
-        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
-        strncat(SendBuf, '4', sizeof(SendBuf)-1-strlen(SendBuf));
-
-        cardNum = (int)river[4].type + '0';               // player card 5
-        strncat(SendBuf, river[4].suit, sizeof(SendBuf)-1-strlen(SendBuf));
-        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
-        strncat(SendBuf, '5', sizeof(SendBuf)-1-strlen(SendBuf));
-
     // get cards each cilent has
     if (0 == strcmp(RecvBuf, "GET CARDS SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
