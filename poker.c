@@ -2,14 +2,7 @@
 #include "poker.h"
 #include <time.h>
 
-struct CARD dealer[52];
-struct CARD river[5];
-struct CARD player1[2];
-struct CARD player2[2];
-struct CARD player3[2];
-struct CARD player4[2];
-struct CARD player5[2];
-struct CARD player6[2];
+
 
 int player1points,player2points,player3points,player4points,player5points,player6points = 1000;
 int pot = 0;
@@ -30,7 +23,7 @@ int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 // Starts the game by creating all the cards and placing them in the appropriate deck
 void startGame(int players)
 {
-
+    printf("\nGAME STARTED \n");
     srand(time(NULL));
 
     // commented out for error
