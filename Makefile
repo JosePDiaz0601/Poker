@@ -48,42 +48,40 @@ clean:
 	#rm ./bin/*.o
 
 
-/*
-
-GTKINC	= `pkg-config --cflags gtk+-2.0`
-GTKLIBS	= `pkg-config --libs gtk+-2.0`
 
 
-DEBUG	= -g -DDEBUG
-DEBUG	= -O2
-CFLAGS	= -Wall -std=c11 $(DEBUG) $(GTKINC) -c
-LFLAGS	= -Wall -std=c11 $(DEBUG) $(GTKLIBS) -lm
+#GTKINC	= `pkg-config --cflags gtk+-2.0`
+#GTKLIBS	= `pkg-config --libs gtk+-2.0`
 
 
-all: GTK_ClockClient GTK_ClockServer
+#DEBUG	= -g -DDEBUG
+#DEBUG	= -O2
+#CFLAGS	= -Wall -std=c11 $(DEBUG) $(GTKINC) -c
+#LFLAGS	= -Wall -std=c11 $(DEBUG) $(GTKLIBS) -lm
 
-clean:
-	rm -f *.o
-	rm -f Poker_Client Poker_Server
 
-test:
-	@echo "To run the examples, first start the server in one terminal,"
-	@echo "then start one (or multiple) client(s) in another."
-	@echo
-	@echo "For example:"
-	@echo "crystalcove% ./GTK_ClockServer 10000"
-	@echo "crystalcove% ./GTK_ClockClient crystalcove 10000"
+#all: GTK_ClockClient GTK_ClockServer
 
-GTK_ClockClient.o: GTK_ClockClient.c
-	gcc GTK_ClockClient.c $(CFLAGS) -o GTK_ClockClient.o
+#clean:
+#	rm -f *.o
+#	rm -f Poker_Client Poker_Server
 
-GTK_ClockClient: GTK_ClockClient.o
-	gcc GTK_ClockClient.o $(LFLAGS) -o Poker_Client
+#test:
+#	@echo "To run the examples, first start the server in one terminal,"
+#	@echo "then start one (or multiple) client(s) in another."
+#	@echo
+#	@echo "For example:"
+#	@echo "crystalcove% ./GTK_ClockServer 10000"
+#	@echo "crystalcove% ./GTK_ClockClient crystalcove 10000"
 
-GTK_ClockServer.o: GTK_ClockServer.c
-	gcc GTK_ClockServer.c $(CFLAGS) -o GTK_ClockServer.o
+#GTK_ClockClient.o: GTK_ClockClient.c
+#	gcc GTK_ClockClient.c $(CFLAGS) -o GTK_ClockClient.o
 
-GTK_ClockServer: GTK_ClockServer.o
-	gcc GTK_ClockServer.o $(LFLAGS) -o Poker_Server
+#GTK_ClockClient: GTK_ClockClient.o
+#	gcc GTK_ClockClient.o $(LFLAGS) -o Poker_Client
 
-*/
+#GTK_ClockServer.o: GTK_ClockServer.c
+#	gcc GTK_ClockServer.c $(CFLAGS) -o GTK_ClockServer.o
+
+#GTK_ClockServer: GTK_ClockServer.o
+#	gcc GTK_ClockServer.o $(LFLAGS) -o Poker_Server
