@@ -1,8 +1,5 @@
-/* PokerServer.c: simple TCP/IP server example with timeout support
- * This file has been adapted to fit the needs of the socket communication
- * that is used between client and server for our poker game.
- * Author: Loading ..
- * Based on code from Rainer Doemer in ClockServer, 2/17/15
+/* ClockServer.c: simple TCP/IP server example with timeout support
+ * Author: Rainer Doemer, 2/17/15
  */
 
 #include <stdio.h>
@@ -16,6 +13,7 @@
 #include <arpa/inet.h>
 #include <assert.h>
 #include "poker.h"
+#include "poker.c"
 // do we need to include graphics.h?
 
 /* #define DEBUG */	/* be verbose */
@@ -74,7 +72,7 @@ int MakeServerSocket(		/* create a socket on this server */
     return ServSocketFD;
 } /* end of MakeServerSocket */
 
-// this function may not be necessary (from Professor's ClockServer)
+// pretty sure you dont need this function (unless we want the time)
 void PrintCurrentTime(void)	/*  print/update the current real time */
 {
     time_t CurrentTime; /* seconds since 1970 (see 'man 2 time') */
@@ -108,6 +106,7 @@ void ProcessRequest(		/* process a time request by a client */
     int tokenSeatNumInt;
     char equal[3] = " = ";
     char clientname[16]; 
+    char cardNum;
 
     n = read(DataSocketFD, RecvBuf, sizeof(RecvBuf)-1);
     if (n < 0) 
@@ -117,81 +116,148 @@ void ProcessRequest(		/* process a time request by a client */
 #ifdef DEBUG
     printf("%s: Received message: %s\n", Program, RecvBuf);
 #endif
+    // this is sending all the river cards
+        cardNum = (int)river[0].type + '0';               // river card 1
+	    strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+
+        cardNum = (int)river[1].type + '0';               // player card 2
+        strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
+
+        cardNum = (int)river[2].type + '0';               // river card 3
+	    strncat(SendBuf, river[2].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '3', sizeof(SendBuf)-1-strlen(SendBuf));
+
+        cardNum = (int)river[3].type + '0';               // player card 4
+        strncat(SendBuf, river[3].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '4', sizeof(SendBuf)-1-strlen(SendBuf));
+
+        cardNum = (int)river[4].type + '0';               // player card 5
+        strncat(SendBuf, river[4].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '5', sizeof(SendBuf)-1-strlen(SendBuf));
 
     // get cards each cilent has
     if (0 == strcmp(RecvBuf, "GET CARDS SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    cardNum = (int)player1[1].type + '0';               // player card 1
+	    strncat(SendBuf, player1[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)player1[2].type + '0';               // player card 2
+        strncat(SendBuf, player1[2].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
     }
 
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 2")){
         strncpy(SendBuf, "OK SEAT 2 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    cardNum = (int)player2[1].type + '0';               // player card 1
+	    strncat(SendBuf, player2[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)player2[2].type + '0';               // player card 2
+        strncat(SendBuf, player2[2].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 3")){
         strncpy(SendBuf, "OK SEAT 3 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    cardNum = (int)player3[1].type + '0';               // player card 1
+	    strncat(SendBuf, player3[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)player3[2].type + '0';               // player card 2
+        strncat(SendBuf, player3[2].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 4")){
         strncpy(SendBuf, "OK SEAT 4 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    cardNum = (int)player4[1].type + '0';               // player card 1
+	    strncat(SendBuf, player4[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)player4[2].type + '0';               // player card 2
+        strncat(SendBuf, player4[2].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 5")){
         strncpy(SendBuf, "OK SEAT 5 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    cardNum = (int)player5[1].type + '0';               // player card 1
+	    strncat(SendBuf, player5[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)player5[2].type + '0';               // player card 2
+        strncat(SendBuf, player5[2].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 6")){
         strncpy(SendBuf, "OK SEAT 6 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for cards */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        cardNum = (int)player6[1].type + '0';               // player card 1
+	    strncat(SendBuf, player6[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)player6[2].type + '0';               // player card 2
+        strncat(SendBuf, player6[2].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
     }
-
+/*
     // get value of points a cilent has
     if (0 == strcmp(RecvBuf, "GET POINTS SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 2")){
         strncpy(SendBuf, "OK SEAT 2 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 3")){
         strncpy(SendBuf, "OK SEAT 3 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 4")){
         strncpy(SendBuf, "OK SEAT 4 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 5")){
         strncpy(SendBuf, "OK SEAT 5 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 6")){
         strncpy(SendBuf, "OK SEAT 6 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to gezbuffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    strncat(SendBuf, /* need function to gezbuffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
-
+*/
     // This is for getting information for each client seat
     if (0 == strcmp(RecvBuf, "GET SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
@@ -273,7 +339,6 @@ void ProcessRequest(		/* process a time request by a client */
                                 player5Name[token_destination_size - 1] = '\0';
 //                                *player5Name = tokenname;
                             }
-
                             else if(i == 6){
                                 size_t token_destination_size = sizeof(tokenName);
                                 strncpy(player6Name, tokenName, token_destination_size);
@@ -292,6 +357,7 @@ void ProcessRequest(		/* process a time request by a client */
             }
         while(1){
             switch(token[0]){
+            /*
             case 'R':
                 token = strtok(NULL, s);
                 tokenSeatNum = strtok(NULL, s);
@@ -304,11 +370,12 @@ void ProcessRequest(		/* process a time request by a client */
                 tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
                 //  function_for_fold()
                 break;
+                */
             case 'C':
                 token = strtok(NULL, s);
                 tokenSeatNum = strtok(NULL, s);
                 tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
-                // fucntion_for_call()
+                call(tokenSeatNumInt);
                 break;
             }
         }
@@ -448,4 +515,4 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-/* EOF PokerServer.c */
+/* EOF ClockServer.c */
