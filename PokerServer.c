@@ -123,7 +123,7 @@ void ProcessRequest(		/* process a time request by a client */
         
         //strncpy(SendBuf, "Success", sizeof(SendBuf)-1);
         
-        strncpy(SendBuf, "OK SEAT 1 = ", sizeof(SendBuf)-1);
+        strncpy(SendBuf, "", sizeof(SendBuf)-1);
         //cardNum = ((int)river[0].type + '0');               // river card 1
         printf("\n RIVER FIRST CARD IS %c\n", river[0].suit);
         if(river[0].suit == 'H')
@@ -143,7 +143,117 @@ void ProcessRequest(		/* process a time request by a client */
             strcat(SendBuf, "C"); 
         }
         //strcat(SendBuf, cardNum);
-        //strcat(SendBuf, "concat works");
+        strcat(SendBuf, "1");
+        if(river[1].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[1].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[1].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[1].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+        strcat(SendBuf, "2");
+        
+        if(river[2].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[2].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[2].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[2].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+        strcat(SendBuf, "3");
+        if(river[3].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[3].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[3].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[3].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+        strcat(SendBuf, "4");
+        if(river[4].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[4].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[4].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[4].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+        strcat(SendBuf, "5");
+        if(player1[0].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(player1[0].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(player1[0].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(player1[0].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+        strcat(SendBuf, "6");
+        if(player1[1].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(player1[1].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(player1[1].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(player1[1].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+        strcat(SendBuf, "7");
+        
         SendBuf[sizeof(SendBuf)-1] = 0;
 
         /*cardNum = (int)river[1].type + '0';               // river card 2

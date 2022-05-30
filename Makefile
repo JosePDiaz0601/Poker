@@ -56,8 +56,8 @@ GTKLIBS	= `pkg-config --libs gtk+-2.0`
 
 DEBUG	= -g -DDEBUG
 DEBUG	= -O2
-CFLAGS	= -Wall -std=c11 $(DEBUG) $(GTKINC) -c
-LFLAGS	= -Wall -std=c11 $(DEBUG) $(GTKLIBS) -lm
+CFLAGS	= -w -std=c11 $(DEBUG) $(GTKINC) -c
+LFLAGS	= -w -std=c11 $(DEBUG) $(GTKLIBS) -lm
 
 
 all: PokerClient PokerServer
@@ -86,10 +86,10 @@ Poker.o: poker.c poker.h
 PokerClient: PokerClient.o graphics.o
 	gcc ./bin/PokerClient.o ./bin/graphics.o $(LFLAGS) -o ./bin/PokerClient
 
-PokerServer.o: PokerServer.c Poker.o
-	gcc ./src/PokerServer.c ./bin/Poker.o $(CFLAGS) -o ./bin/PokerServer.o
+PokerServer.o: PokerServer.c poker.h
+	gcc ./src/PokerServer.c $(CFLAGS) -o ./bin/PokerServer.o
 
-PokerServer: PokerServer.o poker.h
-	gcc ./bin/PokerServer.o $(LFLAGS) -o ./bin/PokerServer
+PokerServer: PokerServer.o Poker.o
+	gcc ./bin/PokerServer.o ./bin/Poker.o $(LFLAGS) -o ./bin/PokerServer
 
 

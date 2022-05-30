@@ -119,6 +119,8 @@ int main(int argc, char *argv[])
 	    }
 	    RecvBuf[n] = 0;
 	    printf("%s: Received response: %s\n", Program, RecvBuf);
+        makeCards(RecvBuf);
+
 #ifdef DEBUG
 	    printf("%s: Closing the connection...\n", Program);
 #endif
