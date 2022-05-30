@@ -147,7 +147,29 @@ void ProcessRequest(		/* process a time request by a client */
     if (0 == strcmp(RecvBuf, "GET CARDS SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    cardNum = (int)player1[1].type + '0';               // player card 1
+
+        cardNum = (int)river[0].type + '0';               // river card 1
+	    strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[1].type + '0';               // river card 2
+        strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[2].type + '0';               // river card 3
+	    strncat(SendBuf, river[2].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '3', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[3].type + '0';               // player card 4
+        strncat(SendBuf, river[3].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '4', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[4].type + '0';               // player card 5
+        strncat(SendBuf, river[4].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '5', sizeof(SendBuf)-1-strlen(SendBuf));
+	    
+        cardNum = (int)player1[1].type + '0';               // player card 1
 	    strncat(SendBuf, player1[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
@@ -155,12 +177,35 @@ void ProcessRequest(		/* process a time request by a client */
         strncat(SendBuf, player1[2].suit, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
+
     }
 
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 2")){
         strncpy(SendBuf, "OK SEAT 2 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    cardNum = (int)player2[1].type + '0';               // player card 1
+
+        cardNum = (int)river[0].type + '0';               // river card 1
+	    strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[1].type + '0';               // river card 2
+        strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[2].type + '0';               // river card 3
+	    strncat(SendBuf, river[2].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '3', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[3].type + '0';               // player card 4
+        strncat(SendBuf, river[3].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '4', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[4].type + '0';               // player card 5
+        strncat(SendBuf, river[4].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '5', sizeof(SendBuf)-1-strlen(SendBuf));
+	    
+        cardNum = (int)player2[1].type + '0';               // player card 1
 	    strncat(SendBuf, player2[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
@@ -173,7 +218,29 @@ void ProcessRequest(		/* process a time request by a client */
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 3")){
         strncpy(SendBuf, "OK SEAT 3 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    cardNum = (int)player3[1].type + '0';               // player card 1
+        
+        cardNum = (int)river[0].type + '0';               // river card 1
+	    strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[1].type + '0';               // river card 2
+        strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[2].type + '0';               // river card 3
+	    strncat(SendBuf, river[2].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '3', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[3].type + '0';               // player card 4
+        strncat(SendBuf, river[3].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '4', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[4].type + '0';               // player card 5
+        strncat(SendBuf, river[4].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '5', sizeof(SendBuf)-1-strlen(SendBuf));
+	    
+        cardNum = (int)player3[1].type + '0';               // player card 1
 	    strncat(SendBuf, player3[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
@@ -186,7 +253,29 @@ void ProcessRequest(		/* process a time request by a client */
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 4")){
         strncpy(SendBuf, "OK SEAT 4 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    cardNum = (int)player4[1].type + '0';               // player card 1
+        
+        cardNum = (int)river[0].type + '0';               // river card 1
+	    strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[1].type + '0';               // river card 2
+        strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[2].type + '0';               // river card 3
+	    strncat(SendBuf, river[2].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '3', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[3].type + '0';               // player card 4
+        strncat(SendBuf, river[3].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '4', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[4].type + '0';               // player card 5
+        strncat(SendBuf, river[4].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '5', sizeof(SendBuf)-1-strlen(SendBuf));
+	    
+        cardNum = (int)player4[1].type + '0';               // player card 1
 	    strncat(SendBuf, player4[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
@@ -199,7 +288,29 @@ void ProcessRequest(		/* process a time request by a client */
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 5")){
         strncpy(SendBuf, "OK SEAT 5 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    cardNum = (int)player5[1].type + '0';               // player card 1
+        
+        cardNum = (int)river[0].type + '0';               // river card 1
+	    strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[1].type + '0';               // river card 2
+        strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[2].type + '0';               // river card 3
+	    strncat(SendBuf, river[2].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '3', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[3].type + '0';               // player card 4
+        strncat(SendBuf, river[3].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '4', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[4].type + '0';               // player card 5
+        strncat(SendBuf, river[4].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '5', sizeof(SendBuf)-1-strlen(SendBuf));
+	    
+        cardNum = (int)player5[1].type + '0';               // player card 1
 	    strncat(SendBuf, player5[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
@@ -212,6 +323,28 @@ void ProcessRequest(		/* process a time request by a client */
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 6")){
         strncpy(SendBuf, "OK SEAT 6 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
+        
+        cardNum = (int)river[0].type + '0';               // river card 1
+	    strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[1].type + '0';               // river card 2
+        strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[2].type + '0';               // river card 3
+	    strncat(SendBuf, river[2].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '3', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[3].type + '0';               // player card 4
+        strncat(SendBuf, river[3].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '4', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[4].type + '0';               // player card 5
+        strncat(SendBuf, river[4].suit, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
+        strncat(SendBuf, '5', sizeof(SendBuf)-1-strlen(SendBuf));
+        
         cardNum = (int)player6[1].type + '0';               // player card 1
 	    strncat(SendBuf, player6[1].suit, sizeof(SendBuf)-1-strlen(SendBuf)); 
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
