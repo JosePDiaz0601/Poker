@@ -119,7 +119,8 @@ void ProcessRequest(		/* process a time request by a client */
 #endif
     // get cards each cilent has
     if (0 == strcmp(RecvBuf, "GET CARDS SEAT 1")){
-        strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
+        strncpy(SendBuf, 'Success', sizeof(SendBuf)-1);
+        /*strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
 
         cardNum = (int)river[0].type + '0';               // river card 1
@@ -151,7 +152,7 @@ void ProcessRequest(		/* process a time request by a client */
         strncat(SendBuf, player1[2].suit, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
-
+    */
     }
 
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 2")){
