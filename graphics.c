@@ -2,6 +2,10 @@ GUI Functions
 Worked on by: Jose Diaz | Cameron Bagheri
 
 #include "graphics.h"
+
+
+time_t seconds;
+
 /*
 
 
@@ -72,6 +76,9 @@ GtkWidget *CreateWindow(	/* create the server window */
     GtkWidget *MYBOX;
 
     GtkWidget *table;
+
+    GtkWidget *TimeButton;
+
     GtkWidget *pCard1, *pCard2, *pCard3, *pCard4, *pCard5;
     GtkWidget *tCard1, *tCard2, *tCard3, *tCard4, *tCard5;
 
@@ -88,6 +95,8 @@ GtkWidget *CreateWindow(	/* create the server window */
     gtk_window_set_default_size(GTK_WINDOW(Window), 1920, 1080);
     gtk_container_set_border_width (GTK_CONTAINER(Window), 10);
 
+    TimeButton = button_new_with_label(Time(NULL))
+
     table = gtk_table_new (6, 6, TRUE); //creation of the table that will be the windows ONLY child widget. We should update one of the 6 to be N eventually.
     gtk_container_add (GTK_CONTAINER (Window), table);
     gtk_table_resize (table, 20,20);
@@ -100,6 +109,8 @@ GtkWidget *CreateWindow(	/* create the server window */
     pCard3 = gtk_image_new_from_file ("3_of_clubs.png");
     pCard4 = gtk_image_new_from_file ("3_of_clubs.png");
     pCard5 = gtk_image_new_from_file ("3_of_clubs.png");
+
+
     
     tCard1 = gtk_image_new_from_file ("3_of_clubs.png");
     tCard2 = gtk_image_new_from_file ("3_of_clubs.png");
@@ -113,6 +124,8 @@ GtkWidget *CreateWindow(	/* create the server window */
     gtk_table_attach(table,tCard4,3,4,1,3,2,2,10,10);
     gtk_table_attach(table,tCard5,4,5,1,3,2,2,10,10);
 
+
+    gtk_table_attach(table,TimeButton,0,1,0,1,10,10);
 
     gtk_table_attach(table,pCard1,0,1,4,6,2,2,10,10);
     gtk_table_attach(table,pCard2,1,2,4,6,2,2,10,10);
