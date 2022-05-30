@@ -108,61 +108,61 @@ GtkWidget *CreateWindow(	/* create the server window */
     pLabel = gtk_label_new("Player's Cards");
     NewLabel = gtk_label_new("Poker");
 
-if (receivedSuit == 'C' && receivedType == 2){pCard1 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 3){pCard1 = gtk_image_new_from_file ("./bin/3_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 4){pCard1 = gtk_image_new_from_file ("./bin/4_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 5){pCard1 = gtk_image_new_from_file ("./bin/5_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 6){pCard1 = gtk_image_new_from_file ("./bin/6_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 7){pCard1 = gtk_image_new_from_file ("./bin/7_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 8){pCard1 = gtk_image_new_from_file ("./bin/8_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 9){pCard1 = gtk_image_new_from_file ("./bin/9_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 10){pCard1 = gtk_image_new_from_file ("./bin/10_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 11){pCard1 = gtk_image_new_from_file ("./bin/jack_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 12){pCard1 = gtk_image_new_from_file ("./bin/queen_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 13){pCard1 = gtk_image_new_from_file ("./bin/king_of_clubs.png");}
-if (receivedSuit == 'C' && receivedType == 14){pCard1 = gtk_image_new_from_file ("./bin/ace_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 2 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 3 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/3_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 4 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/4_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 5 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/5_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 6 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/6_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 7 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/7_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 8 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/8_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 9 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/9_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 10 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/10_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 11 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/jack_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 12 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/queen_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 13 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/king_of_clubs.png");}
+if (receivedSuit == 'C' && receivedType == 14 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/ace_of_clubs.png");}
 
-if (receivedSuit == 'S' && receivedType == 2){pCard1 = gtk_image_new_from_file ("./bin/2_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 3){pCard1 = gtk_image_new_from_file ("./bin/3_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 4){pCard1 = gtk_image_new_from_file ("./bin/4_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 5){pCard1 = gtk_image_new_from_file ("./bin/5_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 6){pCard1 = gtk_image_new_from_file ("./bin/6_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 7){pCard1 = gtk_image_new_from_file ("./bin/7_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 8){pCard1 = gtk_image_new_from_file ("./bin/8_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 9){pCard1 = gtk_image_new_from_file ("./bin/9_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 10){pCard1 = gtk_image_new_from_file ("./bin/10_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 11){pCard1 = gtk_image_new_from_file ("./bin/jack_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 12){pCard1 = gtk_image_new_from_file ("./bin/queen_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 13){pCard1 = gtk_image_new_from_file ("./bin/king_of_spades.png");}
-if (receivedSuit == 'S' && receivedType == 14){pCard1 = gtk_image_new_from_file ("./bin/ace_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 2 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/2_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 3 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/3_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 4 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/4_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 5 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/5_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 6 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/6_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 7 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/7_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 8 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/8_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 9 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/9_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 10 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/10_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 11 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/jack_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 12 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/queen_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 13 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/king_of_spades.png");}
+if (receivedSuit == 'S' && receivedType == 14 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/ace_of_spades.png");}
 
-if (receivedSuit == 'H' && receivedType == 2){pCard1 = gtk_image_new_from_file ("./bin/2_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 3){pCard1 = gtk_image_new_from_file ("./bin/3_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 4){pCard1 = gtk_image_new_from_file ("./bin/4_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 5){pCard1 = gtk_image_new_from_file ("./bin/5_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 6){pCard1 = gtk_image_new_from_file ("./bin/6_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 7){pCard1 = gtk_image_new_from_file ("./bin/7_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 8){pCard1 = gtk_image_new_from_file ("./bin/8_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 9){pCard1 = gtk_image_new_from_file ("./bin/9_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 10){pCard1 = gtk_image_new_from_file ("./bin/10_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 11){pCard1 = gtk_image_new_from_file ("./bin/jack_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 12){pCard1 = gtk_image_new_from_file ("./bin/queen_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 13){pCard1 = gtk_image_new_from_file ("./bin/king_of_hearts.png");}
-if (receivedSuit == 'H' && receivedType == 14){pCard1 = gtk_image_new_from_file ("./bin/ace_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 2 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/2_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 3 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/3_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 4 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/4_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 5 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/5_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 6 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/6_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 7 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/7_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 8 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/8_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 9 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/9_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 10 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/10_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 11 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/jack_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 12 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/queen_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 13 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/king_of_hearts.png");}
+if (receivedSuit == 'H' && receivedType == 14 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/ace_of_hearts.png");}
 
-if (receivedSuit == 'D' && receivedType == 2) {pCard1 = gtk_image_new_from_file ("./bin/2_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 3){pCard1 = gtk_image_new_from_file ("./bin/3_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 4){pCard1 = gtk_image_new_from_file ("./bin/4_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 5){pCard1 = gtk_image_new_from_file ("./bin/5_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 6){pCard1 = gtk_image_new_from_file ("./bin/6_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 7){pCard1 = gtk_image_new_from_file ("./bin/7_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 8){pCard1 = gtk_image_new_from_file ("./bin/8_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 9){pCard1 = gtk_image_new_from_file ("./bin/9_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 10){pCard1 = gtk_image_new_from_file ("./bin/10_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 11){pCard1 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 12){pCard1 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 13){pCard1 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 14){pCard1 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png")}
+if (receivedSuit == 'D' && receivedType == 2 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/2_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 3 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/3_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 4 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/4_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 5 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/5_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 6 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/6_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 7 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/7_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 8 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/8_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 9 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/9_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 10 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/10_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 11 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 12 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 13 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
+if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 1){pCard1 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png")}
 
     
   /*  pCard1 = gtk_image_new_from_file ("./bin/handsome.png");
