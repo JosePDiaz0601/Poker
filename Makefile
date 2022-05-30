@@ -77,7 +77,7 @@ test:
 PokerClient.o: PokerClient.c
 	gcc ./src/PokerClient.c $(CFLAGS) -o ./bin/PokerClient.o
 
-Poker.o: Poker.c
+Poker.o: poker.c
 	gcc ./src/poker.c $(CFLAGS) -o ./bin/Poker.o
 
 PokerClient: PokerClient.o Poker.o

@@ -18,14 +18,14 @@ int players = 7; // Change this later so that player count isnt hardcoded
 int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 // Main function of the game
 
-int main(void)
+/*int main(void)
 {
     printf("Welcome to poker");
     // Change this later so that player count isnt hardcoded
     startGame(players);
     printDecks();
     return 0;  
-}
+}*/
 
 // Starts the game by creating all the cards and placing them in the appropriate deck
 void startGame(int players)

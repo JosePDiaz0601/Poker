@@ -10,7 +10,6 @@
 
 void printDecks();
 void startGame(int players);
-int main(void);
 int main(int argc, char *argv[]);
 void newRound();
 char player1Name[16] = "empty";
