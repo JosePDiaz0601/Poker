@@ -13,6 +13,9 @@
 #include <assert.h>
 #include <math.h>
 
+const char *Program;
+
+
 //Certain constants we want to define (window size etc.) should go here.
 GtkWidget *CreateWindow(int *argc, char **argv[]);
 

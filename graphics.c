@@ -1,8 +1,9 @@
-GUI Functions 
-Worked on by: Jose Diaz | Cameron Bagheri
+//GUI Functions 
+//Worked on by: Jose Diaz | Cameron Bagheri
 
 #include "graphics.h"
 
+//const char *Program = NULL;
 
 time_t seconds;
 
@@ -78,7 +79,7 @@ GtkWidget *CreateWindow(	/* create the server window */
     GtkWidget *NewLabel;
     GtkWidget *foldButton, *callButton, *raiseButton;
     GtkWidget *table;
-    GtkWidget *pCard1, *pCard2, *pCard3, *pCard4, *pCard5;
+    GtkWidget *pCard1, *pCard2;
     GtkWidget *tCard1, *tCard2, *tCard3, *tCard4, *tCard5;
 
     GtkWidget *tLabel, *pLabel; //just player and table label
@@ -91,7 +92,7 @@ GtkWidget *CreateWindow(	/* create the server window */
 
 
     Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(Window), Program);
+    //gtk_window_set_title(GTK_WINDOW(Window), Program);
     gtk_window_set_default_size(GTK_WINDOW(Window),1000, 1000);
     gtk_container_set_border_width (GTK_CONTAINER(Window), 0);
 
@@ -109,6 +110,9 @@ GtkWidget *CreateWindow(	/* create the server window */
     NewLabel = gtk_label_new("Poker");
 
 //player card 1
+/*
+char receivedSuit;
+int receivedType, cardPosition;
 if (receivedSuit == 'C' && receivedType == 2 && cardPosition == 6){pCard1 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
 if (receivedSuit == 'C' && receivedType == 3 && cardPosition == 6){pCard1 = gtk_image_new_from_file ("./bin/3_of_clubs.png");}
 if (receivedSuit == 'C' && receivedType == 4 && cardPosition == 6){pCard1 = gtk_image_new_from_file ("./bin/4_of_clubs.png");}
@@ -163,7 +167,7 @@ if (receivedSuit == 'D' && receivedType == 10 && cardPosition == 6){pCard1 = gtk
 if (receivedSuit == 'D' && receivedType == 11 && cardPosition == 6){pCard1 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 12 && cardPosition == 6){pCard1 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 13 && cardPosition == 6){pCard1 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 6){pCard1 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png")}
+if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 6){pCard1 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
 
 //player card 2
 if (receivedSuit == 'C' && receivedType == 2 && cardPosition == 7){pCard2 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
@@ -220,7 +224,7 @@ if (receivedSuit == 'D' && receivedType == 10 && cardPosition == 7){pCard2 = gtk
 if (receivedSuit == 'D' && receivedType == 11 && cardPosition == 7){pCard2 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 12 && cardPosition == 7){pCard2 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 13 && cardPosition == 7){pCard2 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 7){pCard2 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png")}
+if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 7){pCard2 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
 
 //river card 1
 if (receivedSuit == 'C' && receivedType == 2 && cardPosition == 1){tCard1 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
@@ -277,7 +281,7 @@ if (receivedSuit == 'D' && receivedType == 10 && cardPosition == 1){tCard1 = gtk
 if (receivedSuit == 'D' && receivedType == 11 && cardPosition == 1){tCard1 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 12 && cardPosition == 1){tCard1 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 13 && cardPosition == 1){tCard1 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 1){tCard1 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png")}
+if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 1){tCard1 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
 
 //river card 2
 if (receivedSuit == 'C' && receivedType == 2 && cardPosition == 2){tCard2 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
@@ -334,7 +338,7 @@ if (receivedSuit == 'D' && receivedType == 10 && cardPosition == 2){tCard2 = gtk
 if (receivedSuit == 'D' && receivedType == 11 && cardPosition == 2){tCard2 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 12 && cardPosition == 2){tCard2 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 13 && cardPosition == 2){tCard2 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 2){tCard2 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png")}
+if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 2){tCard2 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
 
 //river card 3
 if (receivedSuit == 'C' && receivedType == 2 && cardPosition == 3){tCard3 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
@@ -391,7 +395,7 @@ if (receivedSuit == 'D' && receivedType == 10 && cardPosition == 3){tCard3 = gtk
 if (receivedSuit == 'D' && receivedType == 11 && cardPosition == 3){tCard3 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 12 && cardPosition == 3){tCard3 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 13 && cardPosition == 3){tCard3 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 3){tCard3 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png")}
+if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 3){tCard3 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
 
 //river card 4
 if (receivedSuit == 'C' && receivedType == 2 && cardPosition == 4){tCard4 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
@@ -448,7 +452,7 @@ if (receivedSuit == 'D' && receivedType == 10 && cardPosition == 4){tCard4 = gtk
 if (receivedSuit == 'D' && receivedType == 11 && cardPosition == 4){tCard4 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 12 && cardPosition == 4){tCard4 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 13 && cardPosition == 4){tCard4 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 4){tCard4 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png")}
+if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 4){tCard4 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
 
 //river card 5
 if (receivedSuit == 'C' && receivedType == 2 && cardPosition == 5){tCard5 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
@@ -505,8 +509,8 @@ if (receivedSuit == 'D' && receivedType == 10 && cardPosition == 5){tCard5 = gtk
 if (receivedSuit == 'D' && receivedType == 11 && cardPosition == 5){tCard5 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 12 && cardPosition == 5){tCard5 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
 if (receivedSuit == 'D' && receivedType == 13 && cardPosition == 5){tCard5 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
-if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png")}
-
+if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
+*/
 
 
   /*  pCard1 = gtk_image_new_from_file ("./bin/handsome.png");
@@ -521,6 +525,8 @@ if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk
     tCard4 = gtk_image_new_from_file ("./bin/3_of_clubs.png");
     tCard5 = gtk_image_new_from_file ("./bin/3_of_clubs.png");    */
 
+
+/*
     gtk_table_attach(table,tCard1,0,1,1,3,2,2,10,10);
     gtk_table_attach(table,tCard2,1,2,1,3,2,2,10,10);
     gtk_table_attach(table,tCard3,2,3,1,3,2,2,10,10);
@@ -531,9 +537,6 @@ if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk
 
     gtk_table_attach(table,pCard1,0,1,4,6,2,2,10,10);
     gtk_table_attach(table,pCard2,1,2,4,6,2,2,10,10);
-    gtk_table_attach(table,pCard3,2,3,4,6,2,2,10,10);
-    gtk_table_attach(table,pCard4,3,4,4,6,2,2,10,10);
-    gtk_table_attach(table,pCard5,4,5,4,6,2,2,10,10);
 
     gtk_table_attach(table,tLabel,2,3,0,1,2,2,0,0);
     gtk_table_attach(table,pLabel,2,3,3,4,2,2,0,0);
@@ -541,15 +544,14 @@ if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk
     gtk_table_attach(table,foldButton,5,6,2,3,2,2,10,10);
     gtk_table_attach(table,raiseButton,5,6,3,4,2,2,10,10);
     gtk_table_attach(table,callButton,5,6,4,5,2,2,10,10);
-
+*/
 
     gtk_widget_show_all(Window);
 
 
 
-    /* connect window-close with function terminating this server */
-    g_signal_connect(Window, "destroy",
-			G_CALLBACK(ShutdownClicked), NULL);
+
+
 
 
     return(Window);

@@ -19,8 +19,7 @@
 
 /*** global variables ****************************************************/
 
-const char *Program	/* program name for descriptive diagnostics */
-	= NULL;
+const char *Program = NULL;
 
 /*** global functions ****************************************************/
 
