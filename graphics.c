@@ -6,7 +6,8 @@
 //const char *Program = NULL;
 
 time_t seconds;
-
+srand = (time(NULL));
+int random;
 /*
 
 
@@ -109,6 +110,599 @@ GtkWidget *CreateWindow(	/* create the server window */
     pLabel = gtk_label_new("Player's Cards");
     NewLabel = gtk_label_new("Poker");
 
+random = ((rand()%13)+1);
+
+if (RecvBuf[0] == 'C'){
+
+    if (random == 1){
+        tCard1 = gtk_image_new_from_file ("./bin/ace_of_clubs.png");}
+    if (random == 2){
+        tCard1 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
+    if (random == 3){
+        tCard1 = gtk_image_new_from_file ("./bin/3_of_clubs.png");}
+    if (random == 4){
+        tCard1 = gtk_image_new_from_file ("./bin/4_of_clubs.png");}
+    if (random == 5){
+        tCard1 = gtk_image_new_from_file ("./bin/5_of_clubs.png");}
+    if (random == 6){
+        tCard1 = gtk_image_new_from_file ("./bin/6_of_clubs.png");}
+    if (random == 7){
+        tCard1 = gtk_image_new_from_file ("./bin/7_of_clubs.png");}
+    if (random == 8){
+        tCard1 = gtk_image_new_from_file ("./bin/8_of_clubs.png");}
+    if (random == 9){
+        tCard1 = gtk_image_new_from_file ("./bin/9_of_clubs.png");}
+    if (random == 10){
+        tCard1 = gtk_image_new_from_file ("./bin/10_of_clubs.png");}
+    if (random == 11){
+        tCard1 = gtk_image_new_from_file ("./bin/jack_of_clubs.png");}
+    if (random == 12){
+        tCard1 = gtk_image_new_from_file ("./bin/queen_of_clubs.png");}
+    if (random == 13){
+        tCard1 = gtk_image_new_from_file ("./bin/king_of_clubs.png");}
+            }
+random = ((rand()%13)+1);
+    if (RecvBuf[2] == 'C'){
+    if (random == 1){
+        tCard2 = gtk_image_new_from_file ("./bin/ace_of_clubs.png");}
+    if (random == 2){
+        tCard2 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
+    if (random == 3){
+        tCard2 = gtk_image_new_from_file ("./bin/3_of_clubs.png");}
+    if (random == 4){
+        tCard2 = gtk_image_new_from_file ("./bin/4_of_clubs.png");}
+    if (random == 5){
+        tCard2 = gtk_image_new_from_file ("./bin/5_of_clubs.png");}
+    if (random == 6){
+        tCard2 = gtk_image_new_from_file ("./bin/6_of_clubs.png");}
+    if (random == 7){
+        tCard2 = gtk_image_new_from_file ("./bin/7_of_clubs.png");}
+    if (random == 8){
+        tCard2 = gtk_image_new_from_file ("./bin/8_of_clubs.png");}
+    if (random == 9){
+        tCard2 = gtk_image_new_from_file ("./bin/9_of_clubs.png");}
+    if (random == 10){
+        tCard2 = gtk_image_new_from_file ("./bin/10_of_clubs.png");}
+    if (random == 11){
+        tCard2 = gtk_image_new_from_file ("./bin/jack_of_clubs.png");}
+    if (random == 12){
+        tCard2 = gtk_image_new_from_file ("./bin/queen_of_clubs.png");}
+    if (random == 13){
+        tCard2 = gtk_image_new_from_file ("./bin/king_of_clubs.png");}
+            }
+    if (RecvBuf[4] == 'C'){
+random = ((rand()%13)+1);
+    if (random == 1){
+        tCard3 = gtk_image_new_from_file ("./bin/ace_of_clubs.png");}
+    if (random == 2){
+        tCard3 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
+    if (random == 3){
+        tCard3 = gtk_image_new_from_file ("./bin/3_of_clubs.png");}
+    if (random == 4){
+        tCard3 = gtk_image_new_from_file ("./bin/4_of_clubs.png");}
+    if (random == 5){
+        tCard3 = gtk_image_new_from_file ("./bin/5_of_clubs.png");}
+    if (random == 6){
+        tCard3 = gtk_image_new_from_file ("./bin/6_of_clubs.png");}
+    if (random == 7){
+        tCard3 = gtk_image_new_from_file ("./bin/7_of_clubs.png");}
+    if (random == 8){
+        tCard3 = gtk_image_new_from_file ("./bin/8_of_clubs.png");}
+    if (random == 9){
+        tCard3 = gtk_image_new_from_file ("./bin/9_of_clubs.png");}
+    if (random == 10){
+        tCard3 = gtk_image_new_from_file ("./bin/10_of_clubs.png");}
+    if (random == 11){
+        tCard3 = gtk_image_new_from_file ("./bin/jack_of_clubs.png");}
+    if (random == 12){
+        tCard3 = gtk_image_new_from_file ("./bin/queen_of_clubs.png");}
+    if (random == 13){
+        tCard3 = gtk_image_new_from_file ("./bin/king_of_clubs.png");}
+            }
+random = ((rand()%13)+1);
+    if (RecvBuf[6] == 'C'){
+    if (random == 1){
+        tCard4 = gtk_image_new_from_file ("./bin/ace_of_clubs.png");}
+    if (random == 2){
+        tCard4 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
+    if (random == 3){
+        tCard4 = gtk_image_new_from_file ("./bin/3_of_clubs.png");}
+    if (random == 4){
+        tCard4 = gtk_image_new_from_file ("./bin/4_of_clubs.png");}
+    if (random == 5){
+        tCard4 = gtk_image_new_from_file ("./bin/5_of_clubs.png");}
+    if (random == 6){
+        tCard4 = gtk_image_new_from_file ("./bin/6_of_clubs.png");}
+    if (random == 7){
+        tCard4 = gtk_image_new_from_file ("./bin/7_of_clubs.png");}
+    if (random == 8){
+        tCard4 = gtk_image_new_from_file ("./bin/8_of_clubs.png");}
+    if (random == 9){
+        tCard4 = gtk_image_new_from_file ("./bin/9_of_clubs.png");}
+    if (random == 10){
+        tCard4 = gtk_image_new_from_file ("./bin/10_of_clubs.png");}
+    if (random == 11){
+        tCard4 = gtk_image_new_from_file ("./bin/jack_of_clubs.png");}
+    if (random == 12){
+        tCard4 = gtk_image_new_from_file ("./bin/queen_of_clubs.png");}
+    if (random == 13){
+        tCard4 = gtk_image_new_from_file ("./bin/king_of_clubs.png");}
+            }
+random = ((rand()%13)+1);
+    if (RecvBuf[8] == 'C'){
+    if (random == 1){
+        tCard5 = gtk_image_new_from_file ("./bin/ace_of_clubs.png");}
+    if (random == 2){
+        tCard5 = gtk_image_new_from_file ("./bin/2_of_clubs.png");}
+    if (random == 3){
+        tCard5 = gtk_image_new_from_file ("./bin/3_of_clubs.png");}
+    if (random == 4){
+        tCard5 = gtk_image_new_from_file ("./bin/4_of_clubs.png");}
+    if (random == 5){
+        tCard5 = gtk_image_new_from_file ("./bin/5_of_clubs.png");}
+    if (random == 6){
+        tCard5 = gtk_image_new_from_file ("./bin/6_of_clubs.png");}
+    if (random == 7){
+        tCard5 = gtk_image_new_from_file ("./bin/7_of_clubs.png");}
+    if (random == 8){
+        tCard5 = gtk_image_new_from_file ("./bin/8_of_clubs.png");}
+    if (random == 9){
+        tCard5 = gtk_image_new_from_file ("./bin/9_of_clubs.png");}
+    if (random == 10){
+        tCard5 = gtk_image_new_from_file ("./bin/10_of_clubs.png");}
+    if (random == 11){
+        tCard5 = gtk_image_new_from_file ("./bin/jack_of_clubs.png");}
+    if (random == 12){
+        tCard5 = gtk_image_new_from_file ("./bin/queen_of_clubs.png");}
+    if (random == 13){
+        tCard5 = gtk_image_new_from_file ("./bin/king_of_clubs.png");}
+            }
+random = ((rand()%13)+1);
+    if (RecvBuf[0] == 'D'){
+
+    if (random == 1){
+        tCard1 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
+    if (random == 2){
+        tCard1 = gtk_image_new_from_file ("./bin/2_of_diamonds.png");}
+    if (random == 3){
+        tCard1 = gtk_image_new_from_file ("./bin/3_of_diamonds.png");}
+    if (random == 4){
+        tCard1 = gtk_image_new_from_file ("./bin/4_of_diamonds.png");}
+    if (random == 5){
+        tCard1 = gtk_image_new_from_file ("./bin/5_of_diamonds.png");}
+    if (random == 6){
+        tCard1 = gtk_image_new_from_file ("./bin/6_of_diamonds.png");}
+    if (random == 7){
+        tCard1 = gtk_image_new_from_file ("./bin/7_of_diamonds.png");}
+    if (random == 8){
+        tCard1 = gtk_image_new_from_file ("./bin/8_of_diamonds.png");}
+    if (random == 9){
+        tCard1 = gtk_image_new_from_file ("./bin/9_of_diamonds.png");}
+    if (random == 10){
+        tCard1 = gtk_image_new_from_file ("./bin/10_of_diamonds.png");}
+    if (random == 11){
+        tCard1 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
+    if (random == 12){
+        tCard1 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
+    if (random == 13){
+        tCard1 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
+            }
+random = ((rand()%13)+1);
+    if (RecvBuf[2] == 'D'){
+    if (random == 1){
+        tCard2 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
+    if (random == 2){
+        tCard2 = gtk_image_new_from_file ("./bin/2_of_cdiamonds.png");}
+    if (random == 3){
+        tCard2 = gtk_image_new_from_file ("./bin/3_of_diamonds.png");}
+    if (random == 4){
+        tCard2 = gtk_image_new_from_file ("./bin/4_of_diamonds.png");}
+    if (random == 5){
+        tCard2 = gtk_image_new_from_file ("./bin/5_of_diamonds.png");}
+    if (random == 6){
+        tCard2 = gtk_image_new_from_file ("./bin/6_of_diamonds.png");}
+    if (random == 7){
+        tCard2 = gtk_image_new_from_file ("./bin/7_of_diamonds.png");}
+    if (random == 8){
+        tCard2 = gtk_image_new_from_file ("./bin/8_of_diamonds.png");}
+    if (random == 9){
+        tCard2 = gtk_image_new_from_file ("./bin/9_of_diamonds.png");}
+    if (random == 10){
+        tCard2 = gtk_image_new_from_file ("./bin/10_of_diamonds.png");}
+    if (random == 11){
+        tCard2 = gtk_image_new_from_file ("./bin/jack_of_diamondspng");}
+    if (random == 12){
+        tCard2 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
+    if (random == 13){
+        tCard2 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
+            }
+            random = ((rand()%13)+1);
+    if (RecvBuf[4] == 'D'){
+
+    if (random == 1){
+        tCard3 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
+    if (random == 2){
+        tCard3 = gtk_image_new_from_file ("./bin/2_of_diamonds.png");}
+    if (random == 3){
+        tCard3 = gtk_image_new_from_file ("./bin/3_of_diamonds.png");}
+    if (random == 4){
+        tCard3 = gtk_image_new_from_file ("./bin/4_of_diamonds.png");}
+    if (random == 5){
+        tCard3 = gtk_image_new_from_file ("./bin/5_of_diamonds.png");}
+    if (random == 6){
+        tCard3 = gtk_image_new_from_file ("./bin/6_of_diamonds.png");}
+    if (random == 7){
+        tCard3 = gtk_image_new_from_file ("./bin/7_of_diamonds.png");}
+    if (random == 8){
+        tCard3 = gtk_image_new_from_file ("./bin/8_of_diamonds.png");}
+    if (random == 9){
+        tCard3 = gtk_image_new_from_file ("./bin/9_of_diamonds.png");}
+    if (random == 10){
+        tCard3 = gtk_image_new_from_file ("./bin/10_of_diamonds.png");}
+    if (random == 11){
+        tCard3 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
+    if (random == 12){
+        tCard3 = gtk_image_new_from_file ("./bin/queen_of_diamondspng");}
+    if (random == 13){
+        tCard3 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
+            }
+random = ((rand()%13)+1);
+    if (RecvBuf[6] == 'D'){
+    if (random == 1){
+        tCard4 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
+    if (random == 2){
+        tCard4 = gtk_image_new_from_file ("./bin/2_of_diamonds.png");}
+    if (random == 3){
+        tCard4 = gtk_image_new_from_file ("./bin/3_of_diamonds.png");}
+    if (random == 4){
+        tCard4 = gtk_image_new_from_file ("./bin/4_of_diamonds.png");}
+    if (random == 5){
+        tCard4 = gtk_image_new_from_file ("./bin/5_of_diamonds.png");}
+    if (random == 6){
+        tCard4 = gtk_image_new_from_file ("./bin/6_of_diamonds.png");}
+    if (random == 7){
+        tCard4 = gtk_image_new_from_file ("./bin/7_of_diamonds.png");}
+    if (random == 8){
+        tCard4 = gtk_image_new_from_file ("./bin/8_of_diamonds.png");}
+    if (random == 9){
+        tCard4 = gtk_image_new_from_file ("./bin/9_of_diamonds.png");}
+    if (random == 10){
+        tCard4 = gtk_image_new_from_file ("./bin/10_of_diamonds.png");}
+    if (random == 11){
+        tCard4 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
+    if (random == 12){
+        tCard4 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
+    if (random == 13){
+        tCard4 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
+            }
+random = ((rand()%13)+1);
+    if (RecvBuf[8] == 'D'){
+    if (random == 1){
+        tCard5 = gtk_image_new_from_file ("./bin/ace_of_diamonds.png");}
+    if (random == 2){
+        tCard5 = gtk_image_new_from_file ("./bin/2_of_diamonds.png");}
+    if (random == 3){
+        tCard5 = gtk_image_new_from_file ("./bin/3_of_diamonds.png");}
+    if (random == 4){
+        tCard5 = gtk_image_new_from_file ("./bin/4_of_diamonds.png");}
+    if (random == 5){
+        tCard5 = gtk_image_new_from_file ("./bin/5_of_diamonds.png");}
+    if (random == 6){
+        tCard5 = gtk_image_new_from_file ("./bin/6_of_diamonds.png");}
+    if (random == 7){
+        tCard5 = gtk_image_new_from_file ("./bin/7_of_diamonds.png");}
+    if (random == 8){
+        tCard5 = gtk_image_new_from_file ("./bin/8_of_diamonds.png");}
+    if (random == 9){
+        tCard5 = gtk_image_new_from_file ("./bin/9_of_diamonds.png");}
+    if (random == 10){
+        tCard5 = gtk_image_new_from_file ("./bin/10_of_diamonds.png");}
+    if (random == 11){
+        tCard5 = gtk_image_new_from_file ("./bin/jack_of_diamonds.png");}
+    if (random == 12){
+        tCard5 = gtk_image_new_from_file ("./bin/queen_of_diamonds.png");}
+    if (random == 13){
+        tCard5 = gtk_image_new_from_file ("./bin/king_of_diamonds.png");}
+            }
+            random = ((rand()%13)+1);
+     if (RecvBuf[0] == 'H'){
+ 
+   if (random == 1){
+       tCard1 = gtk_image_new_from_file ("./bin/ace_of_hearts.png");}
+   if (random == 2){
+       tCard1 = gtk_image_new_from_file ("./bin/2_of_hearts.png");}
+   if (random == 3){
+       tCard1 = gtk_image_new_from_file ("./bin/3_of_hearts.png");}
+   if (random == 4){
+       tCard1 = gtk_image_new_from_file ("./bin/4_of_hearts.png");}
+   if (random == 5){
+       tCard1 = gtk_image_new_from_file ("./bin/5_of_hearts.png");}
+   if (random == 6){
+       tCard1 = gtk_image_new_from_file ("./bin/6_of_hearts.png");}
+   if (random == 7){
+       tCard1 = gtk_image_new_from_file ("./bin/7_of_hearts.png");}
+   if (random == 8){
+       tCard1 = gtk_image_new_from_file ("./bin/8_of_hearts.png");}
+   if (random == 9){
+       tCard1 = gtk_image_new_from_file ("./bin/9_of_hearts.png");}
+   if (random == 10){
+       tCard1 = gtk_image_new_from_file ("./bin/10_of_hearts.png");}
+   if (random == 11){
+       tCard1 = gtk_image_new_from_file ("./bin/jack_of_hearts.png");}
+   if (random == 12){
+       tCard1 = gtk_image_new_from_file ("./bin/queen_of_hearts.png");}
+   if (random == 13){
+       tCard1 = gtk_image_new_from_file ("./bin/king_of_hearts.png");}
+           }
+ random = ((rand()%13)+1);
+   if (RecvBuf[2] == 'H'){
+   if (random == 1){
+       tCard2 = gtk_image_new_from_file ("./bin/ace_of_hearts.png");}
+   if (random == 2){
+       tCard2 = gtk_image_new_from_file ("./bin/2_of_chearts.png");}
+   if (random == 3){
+       tCard2 = gtk_image_new_from_file ("./bin/3_of_hearts.png");}
+   if (random == 4){
+       tCard2 = gtk_image_new_from_file ("./bin/4_of_hearts.png");}
+   if (random == 5){
+       tCard2 = gtk_image_new_from_file ("./bin/5_of_hearts.png");}
+   if (random == 6){
+       tCard2 = gtk_image_new_from_file ("./bin/6_of_hearts.png");}
+   if (random == 7){
+       tCard2 = gtk_image_new_from_file ("./bin/7_of_hearts.png");}
+   if (random == 8){
+       tCard2 = gtk_image_new_from_file ("./bin/8_of_hearts.png");}
+   if (random == 9){
+       tCard2 = gtk_image_new_from_file ("./bin/9_of_hearts.png");}
+   if (random == 10){
+       tCard2 = gtk_image_new_from_file ("./bin/10_of_hearts.png");}
+   if (random == 11){
+       tCard2 = gtk_image_new_from_file ("./bin/jack_of_heartspng");}
+   if (random == 12){
+       tCard2 = gtk_image_new_from_file ("./bin/queen_of_hearts.png");}
+   if (random == 13){
+       tCard2 = gtk_image_new_from_file ("./bin/king_of_hearts.png");}
+           }
+           random = ((rand()%13)+1);
+   if (RecvBuf[4] == 'H'){
+ 
+   if (random == 1){
+       tCard3 = gtk_image_new_from_file ("./bin/ace_of_hearts.png");}
+   if (random == 2){
+       tCard3 = gtk_image_new_from_file ("./bin/2_of_hearts.png");}
+   if (random == 3){
+       tCard3 = gtk_image_new_from_file ("./bin/3_of_hearts.png");}
+   if (random == 4){
+       tCard3 = gtk_image_new_from_file ("./bin/4_of_hearts.png");}
+   if (random == 5){
+       tCard3 = gtk_image_new_from_file ("./bin/5_of_hearts.png");}
+   if (random == 6){
+       tCard3 = gtk_image_new_from_file ("./bin/6_of_hearts.png");}
+   if (random == 7){
+       tCard3 = gtk_image_new_from_file ("./bin/7_of_hearts.png");}
+   if (random == 8){
+       tCard3 = gtk_image_new_from_file ("./bin/8_of_hearts.png");}
+   if (random == 9){
+       tCard3 = gtk_image_new_from_file ("./bin/9_of_hearts.png");}
+   if (random == 10){
+       tCard3 = gtk_image_new_from_file ("./bin/10_of_hearts.png");}
+   if (random == 11){
+       tCard3 = gtk_image_new_from_file ("./bin/jack_of_hearts.png");}
+   if (random == 12){
+       tCard3 = gtk_image_new_from_file ("./bin/queen_of_heartspng");}
+   if (random == 13){
+       tCard3 = gtk_image_new_from_file ("./bin/king_of_hearts.png");}
+           }
+ random = ((rand()%13)+1);
+   if (RecvBuf[6] == 'H'){
+   if (random == 1){
+       tCard4 = gtk_image_new_from_file ("./bin/ace_of_hearts.png");}
+   if (random == 2){
+       tCard4 = gtk_image_new_from_file ("./bin/2_of_hearts.png");}
+   if (random == 3){
+       tCard4 = gtk_image_new_from_file ("./bin/3_of_hearts.png");}
+   if (random == 4){
+       tCard4 = gtk_image_new_from_file ("./bin/4_of_hearts.png");}
+   if (random == 5){
+       tCard4 = gtk_image_new_from_file ("./bin/5_of_hearts.png");}
+   if (random == 6){
+       tCard4 = gtk_image_new_from_file ("./bin/6_of_hearts.png");}
+   if (random == 7){
+       tCard4 = gtk_image_new_from_file ("./bin/7_of_hearts.png");}
+   if (random == 8){
+       tCard4 = gtk_image_new_from_file ("./bin/8_of_hearts.png");}
+   if (random == 9){
+       tCard4 = gtk_image_new_from_file ("./bin/9_of_hearts.png");}
+   if (random == 10){
+       tCard4 = gtk_image_new_from_file ("./bin/10_of_hearts.png");}
+   if (random == 11){
+       tCard4 = gtk_image_new_from_file ("./bin/jack_of_hearts.png");}
+   if (random == 12){
+       tCard4 = gtk_image_new_from_file ("./bin/queen_of_hearts.png");}
+   if (random == 13){
+       tCard4 = gtk_image_new_from_file ("./bin/king_of_hearts.png");}
+           }
+ random = ((rand()%13)+1);
+   if (RecvBuf[8] == 'H'){
+   if (random == 1){
+       tCard5 = gtk_image_new_from_file ("./bin/ace_of_hearts.png");}
+   if (random == 2){
+       tCard5 = gtk_image_new_from_file ("./bin/2_of_hearts.png");}
+   if (random == 3){
+       tCard5 = gtk_image_new_from_file ("./bin/3_of_hearts.png");}
+   if (random == 4){
+       tCard5 = gtk_image_new_from_file ("./bin/4_of_hearts.png");}
+   if (random == 5){
+       tCard5 = gtk_image_new_from_file ("./bin/5_of_hearts.png");}
+   if (random == 6){
+       tCard5 = gtk_image_new_from_file ("./bin/6_of_hearts.png");}
+   if (random == 7){
+       tCard5 = gtk_image_new_from_file ("./bin/7_of_hearts.png");}
+   if (random == 8){
+       tCard5 = gtk_image_new_from_file ("./bin/8_of_hearts.png");}
+   if (random == 9){
+       tCard5 = gtk_image_new_from_file ("./bin/9_of_hearts.png");}
+   if (random == 10){
+       tCard5 = gtk_image_new_from_file ("./bin/10_of_hearts.png");}
+   if (random == 11){
+       tCard5 = gtk_image_new_from_file ("./bin/jack_of_hearts.png");}
+   if (random == 12){
+       tCard5 = gtk_image_new_from_file ("./bin/queen_of_hearts.png");}
+   if (random == 13){
+       tCard5 = gtk_image_new_from_file ("./bin/king_of_hearts.png");}
+           }
+           random = ((rand()%13)+1);
+ if (RecvBuf[0] == 'S'){
+ 
+   if (random == 1){
+       tCard1 = gtk_image_new_from_file ("./bin/ace_of_spades.png");}
+   if (random == 2){
+       tCard1 = gtk_image_new_from_file ("./bin/2_of_spades.png");}
+   if (random == 3){
+       tCard1 = gtk_image_new_from_file ("./bin/3_of_spades.png");}
+   if (random == 4){
+       tCard1 = gtk_image_new_from_file ("./bin/4_of_spades.png");}
+   if (random == 5){
+       tCard1 = gtk_image_new_from_file ("./bin/5_of_spades.png");}
+   if (random == 6){
+       tCard1 = gtk_image_new_from_file ("./bin/6_of_spades.png");}
+   if (random == 7){
+       tCard1 = gtk_image_new_from_file ("./bin/7_of_spades.png");}
+   if (random == 8){
+       tCard1 = gtk_image_new_from_file ("./bin/8_of_spades.png");}
+   if (random == 9){
+       tCard1 = gtk_image_new_from_file ("./bin/9_of_spades.png");}
+   if (random == 10){
+       tCard1 = gtk_image_new_from_file ("./bin/10_of_spades.png");}
+   if (random == 11){
+       tCard1 = gtk_image_new_from_file ("./bin/jack_of_spades.png");}
+   if (random == 12){
+       tCard1 = gtk_image_new_from_file ("./bin/queen_of_spades.png");}
+   if (random == 13){
+       tCard1 = gtk_image_new_from_file ("./bin/king_of_spades.png");}
+           }
+ random = ((rand()%13)+1);
+   if (RecvBuf[2] == 'S'){
+   if (random == 1){
+       tCard2 = gtk_image_new_from_file ("./bin/ace_of_spades.png");}
+   if (random == 2){
+       tCard2 = gtk_image_new_from_file ("./bin/2_of_cspades.png");}
+   if (random == 3){
+       tCard2 = gtk_image_new_from_file ("./bin/3_of_spades.png");}
+   if (random == 4){
+       tCard2 = gtk_image_new_from_file ("./bin/4_of_spades.png");}
+   if (random == 5){
+       tCard2 = gtk_image_new_from_file ("./bin/5_of_spades.png");}
+   if (random == 6){
+       tCard2 = gtk_image_new_from_file ("./bin/6_of_spades.png");}
+   if (random == 7){
+       tCard2 = gtk_image_new_from_file ("./bin/7_of_spades.png");}
+   if (random == 8){
+       tCard2 = gtk_image_new_from_file ("./bin/8_of_spades.png");}
+   if (random == 9){
+       tCard2 = gtk_image_new_from_file ("./bin/9_of_spades.png");}
+   if (random == 10){
+       tCard2 = gtk_image_new_from_file ("./bin/10_of_spades.png");}
+   if (random == 11){
+       tCard2 = gtk_image_new_from_file ("./bin/jack_of_spadespng");}
+   if (random == 12){
+       tCard2 = gtk_image_new_from_file ("./bin/queen_of_spades.png");}
+   if (random == 13){
+       tCard2 = gtk_image_new_from_file ("./bin/king_of_spades.png");}
+           }
+           random = ((rand()%13)+1);
+   if (RecvBuf[4] == 'S'){
+ 
+   if (random == 1){
+       tCard3 = gtk_image_new_from_file ("./bin/ace_of_spades.png");}
+   if (random == 2){
+       tCard3 = gtk_image_new_from_file ("./bin/2_of_spades.png");}
+   if (random == 3){
+       tCard3 = gtk_image_new_from_file ("./bin/3_of_spades.png");}
+   if (random == 4){
+       tCard3 = gtk_image_new_from_file ("./bin/4_of_spades.png");}
+   if (random == 5){
+       tCard3 = gtk_image_new_from_file ("./bin/5_of_spades.png");}
+   if (random == 6){
+       tCard3 = gtk_image_new_from_file ("./bin/6_of_spades.png");}
+   if (random == 7){
+       tCard3 = gtk_image_new_from_file ("./bin/7_of_spades.png");}
+   if (random == 8){
+       tCard3 = gtk_image_new_from_file ("./bin/8_of_spades.png");}
+   if (random == 9){
+       tCard3 = gtk_image_new_from_file ("./bin/9_of_spades.png");}
+   if (random == 10){
+       tCard3 = gtk_image_new_from_file ("./bin/10_of_spades.png");}
+   if (random == 11){
+       tCard3 = gtk_image_new_from_file ("./bin/jack_of_spades.png");}
+   if (random == 12){
+       tCard3 = gtk_image_new_from_file ("./bin/queen_of_spadespng");}
+   if (random == 13){
+       tCard3 = gtk_image_new_from_file ("./bin/king_of_spades.png");}
+           }
+ random = ((rand()%13)+1);
+   if (RecvBuf[6] == 'S'){
+   if (random == 1){
+       tCard4 = gtk_image_new_from_file ("./bin/ace_of_spades.png");}
+   if (random == 2){
+       tCard4 = gtk_image_new_from_file ("./bin/2_of_spades.png");}
+   if (random == 3){
+       tCard4 = gtk_image_new_from_file ("./bin/3_of_spades.png");}
+   if (random == 4){
+       tCard4 = gtk_image_new_from_file ("./bin/4_of_spades.png");}
+   if (random == 5){
+       tCard4 = gtk_image_new_from_file ("./bin/5_of_spades.png");}
+   if (random == 6){
+       tCard4 = gtk_image_new_from_file ("./bin/6_of_spades.png");}
+   if (random == 7){
+       tCard4 = gtk_image_new_from_file ("./bin/7_of_spades.png");}
+   if (random == 8){
+       tCard4 = gtk_image_new_from_file ("./bin/8_of_spades.png");}
+   if (random == 9){
+       tCard4 = gtk_image_new_from_file ("./bin/9_of_spades.png");}
+   if (random == 10){
+       tCard4 = gtk_image_new_from_file ("./bin/10_of_spades.png");}
+   if (random == 11){
+       tCard4 = gtk_image_new_from_file ("./bin/jack_of_spades.png");}
+   if (random == 12){
+       tCard4 = gtk_image_new_from_file ("./bin/queen_of_spades.png");}
+   if (random == 13){
+       tCard4 = gtk_image_new_from_file ("./bin/king_of_spades.png");}
+           }
+ random = ((rand()%13)+1);
+ 
+   if (RecvBuf[8] == 'S'){
+   if (random == 1){
+       tCard5 = gtk_image_new_from_file ("./bin/ace_of_spades.png");}
+   if (random == 2){
+       tCard5 = gtk_image_new_from_file ("./bin/2_of_spades.png");}
+   if (random == 3){
+       tCard5 = gtk_image_new_from_file ("./bin/3_of_spades.png");}
+   if (random == 4){
+       tCard5 = gtk_image_new_from_file ("./bin/4_of_spades.png");}
+   if (random == 5){
+       tCard5 = gtk_image_new_from_file ("./bin/5_of_spades.png");}
+   if (random == 6){
+       tCard5 = gtk_image_new_from_file ("./bin/6_of_spades.png");}
+   if (random == 7){
+       tCard5 = gtk_image_new_from_file ("./bin/7_of_spades.png");}
+   if (random == 8){
+       tCard5 = gtk_image_new_from_file ("./bin/8_of_spades.png");}
+   if (random == 9){
+       tCard5 = gtk_image_new_from_file ("./bin/9_of_spades.png");}
+   if (random == 10){
+       tCard5 = gtk_image_new_from_file ("./bin/10_of_spades.png");}
+   if (random == 11){
+       tCard5 = gtk_image_new_from_file ("./bin/jack_of_spades.png");}
+   if (random == 12){
+       tCard5 = gtk_image_new_from_file ("./bin/queen_of_spades.png");}
+   if (random == 13){
+       tCard5 = gtk_image_new_from_file ("./bin/king_of_spades.png");}
+           }
+
+
+
+//player card 1
 //player card 1
 /*
 char receivedSuit;
