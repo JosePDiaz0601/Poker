@@ -1,8 +1,11 @@
-/* ClockClient.c: simple interactive TCP/IP client for ClockServer
- * Author: Team Loading... based on file from
- * Rainer Doemer, but adapted for poker application  
+/* PokerClient.c: TCP/IP client with timeout support for poker game
+ * This file has been adapted to fit the needs of the socket communication
+ * that is used between client and server for our poker game.
+ * Author: Loading ..
+ * Based on code from Rainer Doemer in ClockClient.c, 2/17/15
  */
 
+//do we need graphics.h for PokerClient.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -68,7 +71,13 @@ int main(int argc, char *argv[])
     ServerAddress.sin_addr = *(struct in_addr*)Server->h_addr_list[0];
     do
     {	printf("%s: Enter a command to send to the clock server:\n"
-		"         'TIME' to obtain the current time,\n"
+		"         'ENTER (NAME) SEAT (NUMBER)' to get assigned to a seat (without parenthesis),\n"
+        "         'GET SEAT (NUMBER)' to get client name on specific seat (without parenthesis),\n"
+        "         'GET POINTS SEAT (NUMBER)' to get the specific client's points (without parenthesis),\n"
+        "         'GET CARDS SEAT (NUMBER)' to get the specific client's cards (without parenthesis),\n"
+        "         'F SEAT (NUMBER)' to Fold,\n"
+        "         'R SEAT (NUMBER)' to Raise,\n"
+        "         'C SEAT (NUMBER)' to Call,\n"
 		"         'SHUTDOWN' to terminate the server,\n"
 		"         or 'bye' to quit this client\n"
 		"command: ", argv[0]);
@@ -115,7 +124,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-/* EOF ClockClient.c */
+/* EOF PokerClient.c */
 
 /* Example string parsing provided by T.A. Yutong*/
 /*
@@ -160,8 +169,4 @@ while(1){
     }
 }
 
-
-
-
-
-/* EOF ClockClient.c */
+/* EOF PokerClient.c */
