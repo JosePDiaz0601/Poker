@@ -12,6 +12,8 @@
 #include <string.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include "graphics.h"
+
 
 /* #define DEBUG */	/* be verbose */
 
@@ -48,6 +50,9 @@ int main(int argc, char *argv[])
     char RecvBuf[256];	/* message buffer for receiving a response */
 
     Program = argv[0];	/* publish program name (for diagnostics) */
+
+    CreateWindow();
+
 #ifdef DEBUG
     printf("%s: Starting...\n", argv[0]);
 #endif
@@ -70,7 +75,8 @@ int main(int argc, char *argv[])
     ServerAddress.sin_port = htons(PortNo);
     ServerAddress.sin_addr = *(struct in_addr*)Server->h_addr_list[0];
     do
-    {	printf("%s: Enter a command to send to the clock server:\n"
+    {	UpdateWindow();
+        printf("%s: Enter a command to send to the clock server:\n"
 		"         'ENTER (NAME) SEAT (NUMBER)' to get assigned to a seat (without parenthesis),\n"
         "         'GET SEAT (NUMBER)' to get client name on specific seat (without parenthesis),\n"
         "         'GET POINTS SEAT (NUMBER)' to get the specific client's points (without parenthesis),\n"

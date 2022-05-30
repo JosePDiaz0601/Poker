@@ -14,6 +14,8 @@
 #include <math.h>
 
 //Certain constants we want to define (window size etc.) should go here.
+GtkWidget *CreateWindow(int *argc, char **argv[]);
 
+void UpdateWindow(void);
 
 #endif
