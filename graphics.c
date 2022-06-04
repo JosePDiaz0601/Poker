@@ -10,13 +10,16 @@ time_t t;
 
 int random;
 
-    GtkWidget *Window;
+    GtkWidget *Window, *layout; //
+    
+    GtkWidget *background; //poker table background image
 
     GtkWidget *NewLabel;
 
 GtkWidget *foldButton, *callButton, *raiseButton;
     GtkWidget *table;
     GtkWidget *pCard1, *pCard2;
+    GtkWidget *o1Card1, *o1Card2, *o2Card1, *o2Card2, *o3Card1, *o3Card2, *o4Card1, *o4Card2, *o5Card1, *o5Card2; //opponents cards
     GtkWidget *tCard1, *tCard2, *tCard3, *tCard4, *tCard5;
 
     GtkWidget *tLabel, *pLabel; //just player and table label
@@ -94,28 +97,110 @@ GtkWidget *CreateWindow(	/* create the server window */
 
     /* initialize the GTK libraries */
 
-
+/*
     gtk_init(argc, argv);
 
-
     Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    background = gtk_image_new_from_file("./images/background_poker.png");
+    //Window = background;
     //gtk_window_set_title(GTK_WINDOW(Window), Program);
     gtk_window_set_default_size(GTK_WINDOW(Window),1000, 1000);
     gtk_container_set_border_width (GTK_CONTAINER(Window), 0);
 
+    //SET BACKGROUND IMAGE **
+
+
+
     foldButton = gtk_button_new_with_label("fold");
     raiseButton = gtk_button_new_with_label("raise");
     callButton = gtk_button_new_with_label("call");
-
+    
 
     table = gtk_table_new (6, 6, FALSE); //creation of the table that will be the windows ONLY child widget. We should update one of the 6 to be N eventually.
     gtk_container_add (GTK_CONTAINER (Window), table);
-    gtk_table_resize (table, 20,20);
+    
+    gtk_table_attach(table,background,0,6,0,6,2,2,10,10);
+
+    gtk_table_resize(table, 20,20);
 
     tLabel = gtk_label_new("Table's Cards");
     pLabel = gtk_label_new("Player's Cards");
     NewLabel = gtk_label_new("Poker");
         return(Window);
+    
+*/
+    gtk_init(&argc, &argv);
+
+    Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_default_size(GTK_WINDOW(Window), 1920, 1080);
+    gtk_window_set_position(GTK_WINDOW(Window), GTK_WIN_POS_CENTER);
+
+    layout = gtk_layout_new(NULL, NULL);
+    gtk_container_add(GTK_CONTAINER (Window), layout);
+    gtk_widget_show(layout);
+
+    background = gtk_image_new_from_file("./images/background_poker.png");
+    gtk_layout_put(GTK_LAYOUT(layout), background, 0, 0);
+
+    foldButton = gtk_button_new_with_label("Fold");
+    gtk_layout_put(GTK_LAYOUT(layout), foldButton, 1150, 550);
+    gtk_widget_set_size_request(foldButton, 80, 35);
+
+    raiseButton = gtk_button_new_with_label("raise");
+    gtk_layout_put(GTK_LAYOUT(layout), raiseButton, 1150, 600);
+    gtk_widget_set_size_request(raiseButton, 80, 35);
+
+    callButton = gtk_button_new_with_label("call");
+    gtk_layout_put(GTK_LAYOUT(layout), callButton, 1150, 650);
+    gtk_widget_set_size_request(callButton, 80, 35);
+
+    //CARD DISPLAYS
+    // *TEMPORARY* ASSIGNING ALL OPPONENTS TO BLANK CARDS
+    o1Card1 = gtk_image_new_from_file ("./images/poker_card.png");
+    o1Card2 = gtk_image_new_from_file ("./images/poker_card.png");
+    o2Card1 = gtk_image_new_from_file ("./images/poker_card.png");
+    o2Card2 = gtk_image_new_from_file ("./images/poker_card.png");
+    o3Card1 = gtk_image_new_from_file ("./images/poker_card.png");
+    o3Card2 = gtk_image_new_from_file ("./images/poker_card.png");
+    o4Card1 = gtk_image_new_from_file ("./images/poker_card.png");
+    o4Card2 = gtk_image_new_from_file ("./images/poker_card.png");
+    o5Card1 = gtk_image_new_from_file ("./images/poker_card.png");
+    o5Card2 = gtk_image_new_from_file ("./images/poker_card.png");
+
+    gtk_layout_put(GTK_LAYOUT(layout), o1Card1, 100, 50);
+    gtk_widget_set_size_request(o1Card1, 100, 145);
+    gtk_layout_put(GTK_LAYOUT(layout), o1Card2, 150, 50);
+    gtk_widget_set_size_request(o2Card2, 100, 145);
+
+    gtk_layout_put(GTK_LAYOUT(layout), o2Card1, 300, 50);
+    gtk_widget_set_size_request(o1Card1, 100, 145);
+    gtk_layout_put(GTK_LAYOUT(layout), o2Card2, 350, 50);
+    gtk_widget_set_size_request(o2Card2, 100, 145);
+
+    gtk_layout_put(GTK_LAYOUT(layout), o3Card1, 500, 50);
+    gtk_widget_set_size_request(o1Card1, 100, 145);
+    gtk_layout_put(GTK_LAYOUT(layout), o3Card2, 550, 50);
+    gtk_widget_set_size_request(o2Card2, 100, 145);
+
+    gtk_layout_put(GTK_LAYOUT(layout), o4Card1, 700, 50);
+    gtk_widget_set_size_request(o1Card1, 100, 145);
+    gtk_layout_put(GTK_LAYOUT(layout), o4Card2, 750, 50);
+    gtk_widget_set_size_request(o2Card2, 100, 145);
+
+    gtk_layout_put(GTK_LAYOUT(layout), o5Card1, 900, 50);
+    gtk_widget_set_size_request(o1Card1, 100, 145);
+    gtk_layout_put(GTK_LAYOUT(layout), o5Card2, 950, 50);
+    gtk_widget_set_size_request(o2Card2, 100, 145);
+
+    g_signal_connect_swapped(G_OBJECT(Window), "destroy",
+    G_CALLBACK(gtk_main_quit), NULL);
+
+    gtk_widget_show_all(Window);
+
+    gtk_main();
+
+    return 0;
+
 } /* end of CreateWindow */
 
 void makeCards(char* RecvBuf){
@@ -123,7 +208,6 @@ srand(time(NULL));
 
 random = rand() % 13 + 1;
 printf("\n%s %d %c %c\n", RecvBuf, random, RecvBuf[0], RecvBuf[2]);
-
 
 if (RecvBuf[0] == 'C'){
 
@@ -1382,6 +1466,7 @@ if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk
 
     //tCard1 = gtk_image_new_from_file ("./images/3_of_clubs.png");
 
+/*
     gtk_table_attach(table,tCard1,0,1,1,3,2,2,10,10);
     gtk_table_attach(table,tCard2,1,2,1,3,2,2,10,10);
     gtk_table_attach(table,tCard3,2,3,1,3,2,2,10,10);
@@ -1392,6 +1477,12 @@ if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk
 
     gtk_table_attach(table,pCard1,0,1,4,6,2,2,10,10);
     gtk_table_attach(table,pCard2,1,2,4,6,2,2,10,10);
+    
+    //ADDING OPPONENTS CARDS TO TABLE
+    gtk_table_attach(table,o1Card1,2,3,4,6,2,2,10,10);
+    gtk_table_attach(table,o1Card2,3,4,4,6,2,2,10,10);
+    gtk_table_attach(table,o2Card1,4,5,4,6,2,2,10,10);
+    gtk_table_attach(table,o2Card2,5,6,4,6,2,2,10,10);
 
     gtk_table_attach(table,tLabel,2,3,0,1,2,2,0,0);
     gtk_table_attach(table,pLabel,2,3,3,4,2,2,0,0);
@@ -1402,6 +1493,8 @@ if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk
 
 
     gtk_widget_show_all(Window);
+
+*/
 
 }
 
@@ -1417,9 +1510,9 @@ void UpdateWindow(void)		/* render the window on screen */
     * as such, it can't have the usual GUI main loop (gtk_main);
     * instead, we call this UpdateWindow function on regular basis
     */
+    
     while(gtk_events_pending())
     {
-    
 
 	gtk_main_iteration();
 
