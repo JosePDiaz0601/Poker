@@ -1,9 +1,11 @@
 /* PokerClient.c: TCP/IP client with timeout support for poker game
  * This file has been adapted to fit the needs of the socket communication
  * that is used between client and server for our poker game.
- * Author: Victor Dam, Arhant Katare
- * Based on code from Rainer Doemer in ClockClient.c
+ * Author: Loading ..
+ * Based on code from Rainer Doemer in ClockClient.c, 2/17/15
  */
+
+//do we need graphics.h for PokerClient.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -12,13 +14,16 @@
 #include <netdb.h>
 #include "graphics.h"
 
+
 /* #define DEBUG */	/* be verbose */
+
 /*** global variables ****************************************************/
+
 const char *Program = NULL;
 
 /*** global functions ****************************************************/
 
-// FatalError does not need to be modified
+// dont need to edit 
 void FatalError(		/* print error diagnostics and abort */
 	const char *ErrorMsg)
 {
@@ -30,7 +35,7 @@ void FatalError(		/* print error diagnostics and abort */
     exit(20);
 } /* end of FatalError */
 
-// this may not be necessary to edit
+// i dont think we need to edit
 int main(int argc, char *argv[])
 {
     int l, n;
@@ -42,10 +47,10 @@ int main(int argc, char *argv[])
 	*Server;	/* server host */
     char SendBuf[256];	/* message buffer for sending a message */
     char RecvBuf[256];	/* message buffer for receiving a response */
-    char PlayerBuf[256];
+
     Program = argv[0];	/* publish program name (for diagnostics) */
 
-    CreateWindow(&argc, &argv);
+
 
 #ifdef DEBUG
     printf("%s: Starting...\n", argv[0]);
@@ -70,12 +75,14 @@ int main(int argc, char *argv[])
     ServerAddress.sin_addr = *(struct in_addr*)Server->h_addr_list[0];
     do
     {	UpdateWindow();
-        printf("%s: Enter a command to send to the poker server:\n"
+        printf("%s: Enter a command to send to the clock server:\n"
 		"         'ENTER (NAME) SEAT (NUMBER)' to get assigned to a seat (without parenthesis),\n"
+        "         'GET SEAT (NUMBER)' to get client name on specific seat (without parenthesis),\n"
+        "         'GET POINTS SEAT (NUMBER)' to get the specific client's points (without parenthesis),\n"
+        "         'GET CARDS SEAT (NUMBER)' to get the specific client's cards (without parenthesis),\n"
         "         'F SEAT (NUMBER)' to Fold,\n"
         "         'R SEAT (NUMBER)' to Raise,\n"
         "         'C SEAT (NUMBER)' to Call,\n"
-        "         'READY' to start game,\n"
 		"         'SHUTDOWN' to terminate the server,\n"
 		"         or 'bye' to quit this client\n"
 		"command: ", argv[0]);
@@ -112,7 +119,7 @@ int main(int argc, char *argv[])
 	    }
 	    RecvBuf[n] = 0;
 	    printf("%s: Received response: %s\n", Program, RecvBuf);
-        makeCards(RecvBuf); // GTK
+        makeCards(RecvBuf);
 
 #ifdef DEBUG
 	    printf("%s: Closing the connection...\n", Program);
@@ -168,4 +175,5 @@ while(1){
             break;
     }
 }
+
 /* EOF PokerClient.c */
