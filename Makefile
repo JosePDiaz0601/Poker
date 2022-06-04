@@ -92,4 +92,10 @@ PokerServer.o:
 PokerServer: 
 	gcc ./bin/PokerServer.o ./bin/Poker.o $(LFLAGS) -o ./bin/PokerServer
 
-
+All:
+	gcc ./src/PokerClient.c  $(CFLAGS) -o ./bin/PokerClient.o
+	gcc ./src/graphics.c $(CFLAGS) -o ./bin/graphics.o
+	gcc ./src/poker.c $(CFLAGS) -o ./bin/Poker.o
+	gcc ./src/PokerServer.c $(CFLAGS) -o ./bin/PokerServer.o
+	gcc ./bin/PokerClient.o ./bin/graphics.o $(LFLAGS) -o ./bin/PokerClient
+	gcc ./bin/PokerServer.o ./bin/Poker.o $(LFLAGS) -o ./bin/PokerServer
