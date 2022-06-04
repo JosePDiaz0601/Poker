@@ -1,11 +1,9 @@
 /* PokerClient.c: TCP/IP client with timeout support for poker game
  * This file has been adapted to fit the needs of the socket communication
  * that is used between client and server for our poker game.
- * Author: Loading ..
- * Based on code from Rainer Doemer in ClockClient.c, 2/17/15
+ * Author: Victor Dam, Arhant Katare
+ * Based on code from Rainer Doemer in ClockClient.c
  */
-
-//do we need graphics.h for PokerClient.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -14,16 +12,13 @@
 #include <netdb.h>
 #include "graphics.h"
 
-
 /* #define DEBUG */	/* be verbose */
-
 /*** global variables ****************************************************/
-
 const char *Program = NULL;
 
 /*** global functions ****************************************************/
 
-// dont need to edit 
+// FatalError does not need to be modified
 void FatalError(		/* print error diagnostics and abort */
 	const char *ErrorMsg)
 {
@@ -35,7 +30,7 @@ void FatalError(		/* print error diagnostics and abort */
     exit(20);
 } /* end of FatalError */
 
-// i dont think we need to edit
+// this may not be necessary to edit
 int main(int argc, char *argv[])
 {
     int l, n;
@@ -173,5 +168,4 @@ while(1){
             break;
     }
 }
-
 /* EOF PokerClient.c */

@@ -1,5 +1,8 @@
-/* ClockServer.c: simple TCP/IP server example with timeout support
- * Author: Rainer Doemer, 2/17/15
+/* PokerServer.c: simple TCP/IP server example with timeout support
+ * This file has been adapted to fit the needs of the socket communication
+ * that is used between client and server for our poker game.
+ * Author: Victor Dam, Arhant Katare
+ * Based on code from Rainer Doemer in ClockClient.c
  */
 
 #include <stdio.h>
@@ -53,7 +56,8 @@ int MakeServerSocket(		/* create a socket on this server */
     int ServSocketFD;
     struct sockaddr_in ServSocketName;
 
-    startGame(7);                             // THIS STARTS THE GAME!! REMEMBER!! NOT DOEMER CODE
+    //Updated from Doemer's outline, Delimiter for changes from skeleton code
+    startGame(7);                             // THIS STARTS THE GAME!! REMEMBER!!
     /* create the socket */
     ServSocketFD = socket(PF_INET, SOCK_STREAM, 0);
     if (ServSocketFD < 0)
@@ -123,9 +127,6 @@ void ProcessRequest(		/* process a time request by a client */
     if (0 == strcmp(RecvBuf, "GET CARDS SEAT 1")){
         
         //strncpy(SendBuf, "Success", sizeof(SendBuf)-1);
-        
-        
-        
         
         strncpy(SendBuf, "", sizeof(SendBuf)-1);
         //cardNum = ((int)river[0].type + '0');               // river card 1
@@ -255,7 +256,7 @@ void ProcessRequest(		/* process a time request by a client */
         {
             strcat(SendBuf, "C"); 
         }
-        //strcat(SendBuf, cardNum);
+        //strcat(SendBuf, cardNum); this was commented out for hardcoding for beta release
         strcat(SendBuf, "7");
         
         SendBuf[sizeof(SendBuf)-1] = 0;
@@ -472,7 +473,9 @@ void ProcessRequest(		/* process a time request by a client */
         strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
     }
 /*
-    // get value of points a cilent has
+    // get value of points a cilent has, do not delete in case we can edit this to work for other
+     * files
+     */
     if (0 == strcmp(RecvBuf, "GET POINTS SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
@@ -645,35 +648,18 @@ void ProcessRequest(		/* process a time request by a client */
         strcat(SendBuf, PlayerBuf);
     }
 
-/*
-    if (0 == strcmp(RecvBuf, "TIME"))
-    {   strncpy(SendBuf, "OK TIME: ", sizeof(SendBuf)-1);
-	SendBuf[sizeof(SendBuf)-1] = 0;
-	strncat(SendBuf, ClockBuffer, sizeof(SendBuf)-1-strlen(SendBuf));
-    }
-    else if (0 == strcmp(RecvBuf, "SHUTDOWN"))
-    {   Shutdown = 1;
-	strncpy(SendBuf, "OK SHUTDOWN", sizeof(SendBuf)-1);
-	SendBuf[sizeof(SendBuf)-1] = 0;
-    }
-    else
-    {   strncpy(SendBuf, "ERROR unknown command ", sizeof(SendBuf)-1);
-	SendBuf[sizeof(SendBuf)-1] = 0;
-	strncat(SendBuf, RecvBuf, sizeof(SendBuf)-1-strlen(SendBuf));
-    }
-    l = strlen(SendBuf);
-    */
+//Debug messages for Server response, in case it fails
 #ifdef DEBUG
-    printf("%s: Sending response: %s.\n", Program, SendBuf);
+    printf("%s: Responding with reply: %s.\n", Program, SendBuf);
 #endif
     l = strlen(SendBuf);
     n = write(DataSocketFD, SendBuf, l);
     if (n < 0)
-    {   FatalError("writing to data socket failed");
+    {   FatalError("Writing to data socket did not execute");
     }
 } /* end of ProcessRequest */
 
-// dont need to edit this function
+// this function does not need to be modified
 void ServerMainLoop(		/* simple server main loop */
 	int ServSocketFD,		/* server socket to wait on */
 	ClientHandler HandleClient,	/* client handler to call */
@@ -748,9 +734,7 @@ void ServerMainLoop(		/* simple server main loop */
 } /* end of ServerMainLoop */
 
 /*** main function *******************************************************/
-
-
-// dont know if we need to edit or not
+// this function may not need to be edited
 int main(int argc, char *argv[])
 {
     int ServSocketFD;	/* socket file descriptor for service */
@@ -782,4 +766,26 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-/* EOF ClockServer.c */
+
+//rearrange following lines after
+//line that checks if 0 is returned from strcmp(RecvBuf, "READY")
+/*
+    if (0 == strcmp(RecvBuf, "TIME"))
+    {   strncpy(SendBuf, "OK TIME: ", sizeof(SendBuf)-1);
+	SendBuf[sizeof(SendBuf)-1] = 0;
+	strncat(SendBuf, ClockBuffer, sizeof(SendBuf)-1-strlen(SendBuf));
+    }
+    else if (0 == strcmp(RecvBuf, "SHUTDOWN"))
+    {   Shutdown = 1;
+	strncpy(SendBuf, "OK SHUTDOWN", sizeof(SendBuf)-1);
+	SendBuf[sizeof(SendBuf)-1] = 0;
+    }
+    else
+    {   strncpy(SendBuf, "ERROR unknown command ", sizeof(SendBuf)-1);
+	SendBuf[sizeof(SendBuf)-1] = 0;
+	strncat(SendBuf, RecvBuf, sizeof(SendBuf)-1-strlen(SendBuf));
+    }
+    l = strlen(SendBuf);
+    */
+
+/* EOF PokerServer.c */
