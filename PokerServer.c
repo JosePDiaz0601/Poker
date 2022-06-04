@@ -569,44 +569,44 @@ void ProcessRequest(		/* process a time request by a client */
                             if(i == 1){                      // assigning the player name to a global char varaible in poker.h
 //                                *player1Name = tokenName;       // can we assign a pointer *tokenname to the global char player1Name[16]?
                                 size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player1Name, tokenName, token_destination_size);
-                                player1Name[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player1Name); 
+                                strncpy(player1data.playerName, tokenName, token_destination_size);
+                                player1data.playerName[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player1data.playerName); 
                             }
                             else if(i == 2){
 //                                *player2Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player2Name, tokenName, token_destination_size);
-                                player2Name[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player1Name);
+                                strncpy(player2data.playerName, tokenName, token_destination_size);
+                                player2data.playerName[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player2data.playerName);
                             }
                             else if(i == 3){
 //                                *player3Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player3Name, tokenName, token_destination_size);
-                                player3Name[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player1Name);
+                                strncpy(player3data.playerName, tokenName, token_destination_size);
+                                player3data.playerName[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player3data.playerName);
                             }
                             else if(i == 4){
 //                                *player4Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player4Name, tokenName, token_destination_size);
-                                player4Name[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player1Name);
+                                strncpy(player4data.playerName, tokenName, token_destination_size);
+                                player4data.playerName[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player4data.playerName);
                             }
                             else if(i == 5){
 //                                *player5Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player5Name, tokenName, token_destination_size);
-                                player5Name[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player1Name);
+                                strncpy(playerplayer5data.playerName5Name, tokenName, token_destination_size);
+                                player5data.playerName[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player5data.playerName);
                             }
                             else if(i == 6){
 //                                *player6Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player6Name, tokenName, token_destination_size);
-                                player6Name[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player1Name);
+                                strncpy(player6data.playerName, tokenName, token_destination_size);
+                                player6data.playerName[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player6data.playerName);
                             };
 
                             // WE DONT NEED TO DO THIS CAT
