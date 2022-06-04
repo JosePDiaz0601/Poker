@@ -1,25 +1,24 @@
 // This file shall contain the main function for our poker game
-//test
+// test
 #include "poker.h"
 #include <time.h>
 
-
-
-int player1points,player2points,player3points,player4points,player5points,player6points = 1000;
+int player1points, player2points, player3points, player4points, player5points, player6points = 1000;
 int pot = 0;
 int currentplayerturn = 1;
-int players = 7; // Change this later so that player count isnt hardcoded
+int players = 0; // Change this later so that player count isnt hardcoded
 int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
-// Main function of the game
 
-/*int main(void)
+// Main function of the game
+int pokerMain(void)
 {
     printf("Welcome to poker");
     // Change this later so that player count isnt hardcoded
+    printf("How many players do we have in this game?: ");
+    scanf("%d", &players);
     startGame(players);
-    printDecks();
-    return 0;  
-}*/
+    return 0;
+}
 
 // Starts the game by creating all the cards and placing them in the appropriate deck
 void startGame(int players)
@@ -300,7 +299,7 @@ void newRound()
         }
         i = 0;
     }
-  currentplayerturn = 1;
+    currentplayerturn = 1;
 }
 
 int playerPoints(struct CARD player[2])
@@ -376,9 +375,9 @@ int playerPoints(struct CARD player[2])
         {
             if (temp[i].type == temp[i - 1].type == temp[i - 2].type == temp[i - 3].type)
             {
-              points = points + (50000 * temp[i].type);
-              fourOfAKind++;
-              break;
+                points = points + (50000 * temp[i].type);
+                fourOfAKind++;
+                break;
             }
         }
 
@@ -388,7 +387,7 @@ int playerPoints(struct CARD player[2])
             if ((temp[i].type == temp[i - 1].type == temp[i - 2].type) && (fourOfAKind == 0))
             {
                 points = points + (2000 * temp[i].type);
-              threeOfAKind++;
+                threeOfAKind++;
                 break;
             }
         }
@@ -412,10 +411,10 @@ int playerPoints(struct CARD player[2])
             if (temp[y - 1].type == temp[y].type - 1)
             {
                 count++;
-              if(count == 4)
-              {
-                break;
-              }
+                if (count == 4)
+                {
+                    break;
+                }
             }
     }
     if (count >= 4)
@@ -479,7 +478,6 @@ int playerPoints(struct CARD player[2])
         points = points + 35000;
     }
 
-    
     // adds value for the highest card
     if (player[0].type > player[1].type)
     {
@@ -490,78 +488,76 @@ int playerPoints(struct CARD player[2])
         points = points + player[1].type;
     }
 
-  //Straight Flush
-  char suitCheck;
-  int counter, typeCheck;
-  for(int r = 0; r >= 6; r++)
-  {
-    counter = 0;
-    
-      suitCheck = temp[r].suit;
-      typeCheck = temp[r].type;
-      for(int c = 0; r >= 6; r++)
-      {
-        if(temp[c].type == typeCheck+1 && temp[c].suit == suitCheck)
-        {
-          counter++;
-        }
-        if(temp[c].type == typeCheck+2 && temp[c].suit == suitCheck)
-        {
-          counter++;
-        }
-        if(temp[c].type == typeCheck+3 && temp[c].suit == suitCheck)
-        {
-          counter++;
-        }
-        if(temp[c].type == typeCheck+4 && temp[c].suit == suitCheck)
-        {
-          counter++;
-        }
-        
-      }
-    if(counter == 4)
+    // Straight Flush
+    char suitCheck;
+    int counter, typeCheck;
+    for (int r = 0; r >= 6; r++)
     {
-      points = points + 700000;
-      break;
+        counter = 0;
+
+        suitCheck = temp[r].suit;
+        typeCheck = temp[r].type;
+        for (int c = 0; r >= 6; r++)
+        {
+            if (temp[c].type == typeCheck + 1 && temp[c].suit == suitCheck)
+            {
+                counter++;
+            }
+            if (temp[c].type == typeCheck + 2 && temp[c].suit == suitCheck)
+            {
+                counter++;
+            }
+            if (temp[c].type == typeCheck + 3 && temp[c].suit == suitCheck)
+            {
+                counter++;
+            }
+            if (temp[c].type == typeCheck + 4 && temp[c].suit == suitCheck)
+            {
+                counter++;
+            }
+        }
+        if (counter == 4)
+        {
+            points = points + 700000;
+            break;
+        }
     }
-  }
 
-  //Royal Flush
+    // Royal Flush
 
-  for(int r = 0; r >= 6; r++)
-  {
-    counter = 0;
-    if(temp[r].type == 10)
+    for (int r = 0; r >= 6; r++)
     {
-      suitCheck = temp[r].suit;
+        counter = 0;
+        if (temp[r].type == 10)
+        {
+            suitCheck = temp[r].suit;
 
-      for(int c = 0; r >= 6; r++)
-      {
-        if(temp[c].type == 11 && temp[c].suit == suitCheck)
-        {
-          counter++;
+            for (int c = 0; r >= 6; r++)
+            {
+                if (temp[c].type == 11 && temp[c].suit == suitCheck)
+                {
+                    counter++;
+                }
+                if (temp[c].type == 12 && temp[c].suit == suitCheck)
+                {
+                    counter++;
+                }
+                if (temp[c].type == 13 && temp[c].suit == suitCheck)
+                {
+                    counter++;
+                }
+                if (temp[c].type == 14 && temp[c].suit == suitCheck)
+                {
+                    counter++;
+                }
+            }
         }
-        if(temp[c].type == 12 && temp[c].suit == suitCheck)
+        if (counter == 4)
         {
-          counter++;
+            points = points + 800000;
+            break;
         }
-        if(temp[c].type == 13 && temp[c].suit == suitCheck)
-        {
-          counter++;
-        }
-        if(temp[c].type == 14 && temp[c].suit == suitCheck)
-        {
-          counter++;
-        }
-        
-      }
     }
-    if(counter == 4)
-    {
-      points = points + 800000;
-      break;
-    }
-  }
 }
 
 // Prints out all the decks
@@ -594,9 +590,138 @@ void printDecks(struct CARD deck[])
 
 void call(int player)
 {
-  currentplayerturn++;
-  if (currentplayerturn == players)
-  {
-    currentplayerturn = 1;
-  }
+    currentplayerturn++;
+    if (currentplayerturn > players)
+    {
+        currentplayerturn = 1;
+    }
+}
+
+// This function finds who is the winner after a round and returns an int with the 2 winners or 1 winner
+int roundOver()
+{
+    int player1Score = 0;
+    int player2Score = 0;
+    int player3Score = 0;
+    int player4Score = 0;
+    int player5Score = 0;
+    int player6Score = 0;
+    int topScore = 0;
+    int highScore = 0;
+    if (players >= 2)
+    {
+        player1Score = playerPoints(player1);
+        player2Score = playerPoints(player2);
+        if (player1Score >= player2Score)
+        {
+            topScore = 1;
+            highScore = player1Score;
+        }
+        else
+        {
+            topScore = 2;
+            highScore = player2Score;
+        }
+    }
+    if (players >= 3)
+    {
+        player3Score = playerPoints(player3);
+        if (player3Score >= highScore)
+        {
+            topScore = 3;
+            highScore = player3Score;
+        }
+    }
+    if (players >= 4)
+    {
+        player4Score = playerPoints(player4);
+        if (player4Score >= highScore)
+        {
+            topScore = 4;
+            highScore = player4Score;
+        }
+    }
+    if (players >= 5)
+    {
+        player5Score = playerPoints(player5);
+        if (player5Score >= highScore)
+        {
+            topScore = 5;
+            highScore = player5Score;
+        }
+    }
+    if (players >= 6)
+    {
+        player6Score = playerPoints(player6);
+        if (player6Score >= highScore)
+        {
+            topScore = 6;
+            highScore = player6Score;
+        }
+    }
+
+    // Find out if we have a tie
+    int tiePerson;
+    for (int i = 1; i < players; i++)
+    {
+        if (i == topScore)
+        {
+            continue;
+        }
+        else
+        {
+            if (i == 1)
+            {
+                if (highScore == player1Score)
+                {
+                    tiePerson = 1;
+                }
+            }
+            if (i == 2)
+            {
+                if (highScore == player2Score)
+                {
+                    tiePerson = 2;
+                }
+            }
+            if (i == 3)
+            {
+                if (highScore == player3Score)
+                {
+                    tiePerson = 3;
+                }
+            }
+            if (i == 4)
+            {
+                if (highScore == player4Score)
+                {
+                    tiePerson = 4;
+                }
+            }
+            if (i == 5)
+            {
+                if (highScore == player5Score)
+                {
+                    tiePerson = 5;
+                }
+            }
+            if (i == 6)
+            {
+                if (highScore == player6Score)
+                {
+                    tiePerson = 6;
+                }
+            }
+        }
+    }
+
+    // Returns the tie numbers or the winning player
+    if (tiePerson != 0)
+    {
+        return ((tiePerson * 10) + topScore);
+    }
+    else
+    {
+        return topScore;
+    }
 }

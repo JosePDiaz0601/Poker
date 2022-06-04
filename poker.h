@@ -26,6 +26,14 @@ struct CARD
     char taken;
 };
 
+struct PLAYERDATA
+{
+    char playerName[16] = "";
+    int points = 1000;
+    bool hasFolded = 0;
+    bool connected = 0;
+};
+
 struct CARD dealer[52];
 struct CARD river[5];
 struct CARD player1[2];
@@ -34,5 +42,8 @@ struct CARD player3[2];
 struct CARD player4[2];
 struct CARD player5[2];
 struct CARD player6[2];
+struct PLAYERDATA player1data;
+struct PLAYERDATA player2data;
 
+player1data.playerName = "Test";
 #endif
