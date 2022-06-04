@@ -130,22 +130,582 @@ void ProcessRequest(		/* process a time request by a client */
         
         strncpy(SendBuf, "", sizeof(SendBuf)-1);
         //cardNum = ((int)river[0].type + '0');               // river card 1
-        printf("\n RIVER FIRST CARD IS %c\n", river[0].suit);
-        const char* river1 = riverStringCat(0, SendBuf);
-        strcat(SendBuf, river1);
-        const char* river2 = riverStringCat(1, SendBuf);
-        strcat(SendBuf, river2);
-        const char* river3 = riverStringCat(2, SendBuf);
-        strcat(SendBuf, river3);
-        const char* river4 = riverStringCat(3, SendBuf);
-        strcat(SendBuf, river4);
-        const char* river5 = riverStringCat(4, SendBuf);
-        strcat(SendBuf, river5);
+        printf("\n FIRST CARD IS %c%d\n", player3[0].suit, player3[0].type);
+        strcat(SendBuf, "0");
+        for(int i = 0; i <= 4; i++){
         
+        if(river[i].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[i].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[i].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[i].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        if(river[i].type == 2)
+        {
+            strcat(SendBuf, "2"); 
+        }
+        if(river[i].type == 3)
+        {
+            strcat(SendBuf, "3"); 
+        }
+        if(river[i].type == 4)
+        {
+            strcat(SendBuf, "4"); 
+        }
+        if(river[i].type == 5)
+        {
+            strcat(SendBuf, "5"); 
+        }
+        if(river[i].type == 6)
+        {
+            strcat(SendBuf, "6"); 
+        }
+        if(river[i].type == 7)
+        {
+            strcat(SendBuf, "7"); 
+        }
+        if(river[i].type == 8)
+        {
+            strcat(SendBuf, "8"); 
+        }
+        if(river[i].type == 9)
+        {
+            strcat(SendBuf, "9"); 
+        }
+        if(river[i].type == 10)
+        {
+            strcat(SendBuf, "T"); 
+        }
+        if(river[i].type == 11)
+        {
+            strcat(SendBuf, "J"); 
+        }
+        if(river[i].type == 12)
+        {
+            strcat(SendBuf, "Q"); 
+        }
+        if(river[i].type == 13)
+        {
+            strcat(SendBuf, "K"); 
+        }
+        if(river[i].type == 14)
+        {
+            strcat(SendBuf, "A"); 
+        }
+        }
+        //strcat(SendBuf, cardNum);
+ /*       
+        if(river[1].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[1].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[1].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[1].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+        
+        
+        if(river[2].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[2].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[2].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[2].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+        
+        if(river[3].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[3].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[3].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[3].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+        
+        if(river[4].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[4].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[4].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[4].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        //strcat(SendBuf, cardNum);
+*/
+        for(int i = 0; i <= 1; i++){
+        if(player1[i].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(player1[i].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(player1[i].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(player1[i].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        if(player1[i].type == 2)
+        {
+            strcat(SendBuf, "2"); 
+        }
+        if(player1[i].type == 3)
+        {
+            strcat(SendBuf, "3"); 
+        }
+        if(player1[i].type == 4)
+        {
+            strcat(SendBuf, "4"); 
+        }
+        if(player1[i].type == 5)
+        {
+            strcat(SendBuf, "5"); 
+        }
+        if(player1[i].type == 6)
+        {
+            strcat(SendBuf, "6"); 
+        }
+        if(player1[i].type == 7)
+        {
+            strcat(SendBuf, "7"); 
+        }
+        if(player1[i].type == 8)
+        {
+            strcat(SendBuf, "8"); 
+        }
+        if(player1[i].type == 9)
+        {
+            strcat(SendBuf, "9"); 
+        }
+        if(player1[i].type == 10)
+        {
+            strcat(SendBuf, "T"); 
+        }
+        if(player1[i].type == 11)
+        {
+            strcat(SendBuf, "J"); 
+        }
+        if(player1[i].type == 12)
+        {
+            strcat(SendBuf, "Q"); 
+        }
+        if(player1[i].type == 13)
+        {
+            strcat(SendBuf, "K"); 
+        }
+        if(player1[i].type == 14)
+        {
+            strcat(SendBuf, "A"); 
+        }
+        }
+        for(int i = 0; i <= 1; i++){
+        if(player2[i].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(player2[i].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(player2[i].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(player2[i].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        if(player2[i].type == 2)
+        {
+            strcat(SendBuf, "2"); 
+        }
+        if(player2[i].type == 3)
+        {
+            strcat(SendBuf, "3"); 
+        }
+        if(player2[i].type == 4)
+        {
+            strcat(SendBuf, "4"); 
+        }
+        if(player2[i].type == 5)
+        {
+            strcat(SendBuf, "5"); 
+        }
+        if(player2[i].type == 6)
+        {
+            strcat(SendBuf, "6"); 
+        }
+        if(player2[i].type == 7)
+        {
+            strcat(SendBuf, "7"); 
+        }
+        if(player2[i].type == 8)
+        {
+            strcat(SendBuf, "8"); 
+        }
+        if(player2[i].type == 9)
+        {
+            strcat(SendBuf, "9"); 
+        }
+        if(player2[i].type == 10)
+        {
+            strcat(SendBuf, "T"); 
+        }
+        if(player2[i].type == 11)
+        {
+            strcat(SendBuf, "J"); 
+        }
+        if(player2[i].type == 12)
+        {
+            strcat(SendBuf, "Q"); 
+        }
+        if(player2[i].type == 13)
+        {
+            strcat(SendBuf, "K"); 
+        }
+        if(player2[i].type == 14)
+        {
+            strcat(SendBuf, "A"); 
+        }
+        }
+
+        for(int i = 0; i <= 1; i++){
+        if(player3[i].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(player3[i].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(player3[i].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(player3[i].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        if(player3[i].type == 2)
+        {
+            strcat(SendBuf, "2"); 
+        }
+        if(player3[i].type == 3)
+        {
+            strcat(SendBuf, "3"); 
+        }
+        if(player3[i].type == 4)
+        {
+            strcat(SendBuf, "4"); 
+        }
+        if(player3[i].type == 5)
+        {
+            strcat(SendBuf, "5"); 
+        }
+        if(player3[i].type == 6)
+        {
+            strcat(SendBuf, "6"); 
+        }
+        if(player3[i].type == 7)
+        {
+            strcat(SendBuf, "7"); 
+        }
+        if(player3[i].type == 8)
+        {
+            strcat(SendBuf, "8"); 
+        }
+        if(player3[i].type == 9)
+        {
+            strcat(SendBuf, "9"); 
+        }
+        if(player3[i].type == 10)
+        {
+            strcat(SendBuf, "T"); 
+        }
+        if(player3[i].type == 11)
+        {
+            strcat(SendBuf, "J"); 
+        }
+        if(player3[i].type == 12)
+        {
+            strcat(SendBuf, "Q"); 
+        }
+        if(player3[i].type == 13)
+        {
+            strcat(SendBuf, "K"); 
+        }
+        if(player3[i].type == 14)
+        {
+            strcat(SendBuf, "A"); 
+        }
+        }
+
+                for(int i = 0; i <= 1; i++){
+        if(player4[i].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(player4[i].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(player4[i].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(player4[i].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        if(player4[i].type == 2)
+        {
+            strcat(SendBuf, "2"); 
+        }
+        if(player4[i].type == 3)
+        {
+            strcat(SendBuf, "3"); 
+        }
+        if(player4[i].type == 4)
+        {
+            strcat(SendBuf, "4"); 
+        }
+        if(player4[i].type == 5)
+        {
+            strcat(SendBuf, "5"); 
+        }
+        if(player4[i].type == 6)
+        {
+            strcat(SendBuf, "6"); 
+        }
+        if(player4[i].type == 7)
+        {
+            strcat(SendBuf, "7"); 
+        }
+        if(player4[i].type == 8)
+        {
+            strcat(SendBuf, "8"); 
+        }
+        if(player4[i].type == 9)
+        {
+            strcat(SendBuf, "9"); 
+        }
+        if(player4[i].type == 10)
+        {
+            strcat(SendBuf, "T"); 
+        }
+        if(player4[i].type == 11)
+        {
+            strcat(SendBuf, "J"); 
+        }
+        if(player4[i].type == 12)
+        {
+            strcat(SendBuf, "Q"); 
+        }
+        if(player4[i].type == 13)
+        {
+            strcat(SendBuf, "K"); 
+        }
+        if(player4[i].type == 14)
+        {
+            strcat(SendBuf, "A"); 
+        }
+        }
+
+                for(int i = 0; i <= 1; i++){
+        if(player5[i].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(player5[i].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(player5[i].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(player5[i].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        if(player5[i].type == 2)
+        {
+            strcat(SendBuf, "2"); 
+        }
+        if(player5[i].type == 3)
+        {
+            strcat(SendBuf, "3"); 
+        }
+        if(player5[i].type == 4)
+        {
+            strcat(SendBuf, "4"); 
+        }
+        if(player5[i].type == 5)
+        {
+            strcat(SendBuf, "5"); 
+        }
+        if(player5[i].type == 6)
+        {
+            strcat(SendBuf, "6"); 
+        }
+        if(player5[i].type == 7)
+        {
+            strcat(SendBuf, "7"); 
+        }
+        if(player5[i].type == 8)
+        {
+            strcat(SendBuf, "8"); 
+        }
+        if(player5[i].type == 9)
+        {
+            strcat(SendBuf, "9"); 
+        }
+        if(player5[i].type == 10)
+        {
+            strcat(SendBuf, "T"); 
+        }
+        if(player5[i].type == 11)
+        {
+            strcat(SendBuf, "J"); 
+        }
+        if(player5[i].type == 12)
+        {
+            strcat(SendBuf, "Q"); 
+        }
+        if(player5[i].type == 13)
+        {
+            strcat(SendBuf, "K"); 
+        }
+        if(player5[i].type == 14)
+        {
+            strcat(SendBuf, "A"); 
+        }
+        }
+
+                for(int i = 0; i <= 1; i++){
+        if(player6[i].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(player6[i].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(player6[i].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(player6[i].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+        if(player6[i].type == 2)
+        {
+            strcat(SendBuf, "2"); 
+        }
+        if(player6[i].type == 3)
+        {
+            strcat(SendBuf, "3"); 
+        }
+        if(player6[i].type == 4)
+        {
+            strcat(SendBuf, "4"); 
+        }
+        if(player6[i].type == 5)
+        {
+            strcat(SendBuf, "5"); 
+        }
+        if(player6[i].type == 6)
+        {
+            strcat(SendBuf, "6"); 
+        }
+        if(player6[i].type == 7)
+        {
+            strcat(SendBuf, "7"); 
+        }
+        if(player6[i].type == 8)
+        {
+            strcat(SendBuf, "8"); 
+        }
+        if(player6[i].type == 9)
+        {
+            strcat(SendBuf, "9"); 
+        }
+        if(player6[i].type == 10)
+        {
+            strcat(SendBuf, "T"); 
+        }
+        if(player6[i].type == 11)
+        {
+            strcat(SendBuf, "J"); 
+        }
+        if(player6[i].type == 12)
+        {
+            strcat(SendBuf, "Q"); 
+        }
+        if(player6[i].type == 13)
+        {
+            strcat(SendBuf, "K"); 
+        }
+        if(player6[i].type == 14)
+        {
+            strcat(SendBuf, "A"); 
+        }
+        }
         SendBuf[sizeof(SendBuf)-1] = 0;
 
         
-        
+     /*   
         //fixed code for river 
         cardNum = (int)river[0].type + '0';               // river card 1
         strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf));  // card suit
@@ -179,6 +739,7 @@ void ProcessRequest(		/* process a time request by a client */
 
 
         //SendBuf[sizeof(SendBuf)-1] = 0;
+        */
     }
 
     else if (0 == strcmp(RecvBuf, "GET CARDS SEAT 2")){
@@ -620,76 +1181,7 @@ void ServerMainLoop(		/* simple server main loop */
 // this function may not need to be edited
 
 const char* riverStringCat(int i, char* SendBuf){
-        if(river[i].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[i].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[i].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[i].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
 
-        if(river[i].type == 2)
-        {
-            strcat(SendBuf, "2"); 
-        }
-        if(river[i].type == 3)
-        {
-            strcat(SendBuf, "3"); 
-        }
-        if(river[i].type == 4)
-        {
-            strcat(SendBuf, "4"); 
-        }
-        if(river[i].type == 5)
-        {
-            strcat(SendBuf, "5"); 
-        }
-        if(river[i].type == 6)
-        {
-            strcat(SendBuf, "6"); 
-        }
-        if(river[i].type == 7)
-        {
-            strcat(SendBuf, "7"); 
-        }
-        if(river[i].type == 8)
-        {
-            strcat(SendBuf, "8"); 
-        }
-        if(river[i].type == 9)
-        {
-            strcat(SendBuf, "9"); 
-        }
-
-        if(river[i].type == 10)
-        {
-            strcat(SendBuf, "10"); 
-        }
-        if(river[i].type == 11)
-        {
-            strcat(SendBuf, "11"); 
-        }
-        if(river[i].type == 12)
-        {
-            strcat(SendBuf, "12"); 
-        }
-        if(river[i].type == 13)
-        {
-            strcat(SendBuf, "13"); 
-        }
-        if(river[i].type == 14)
-        {
-            strcat(SendBuf, "14"); 
-        }
     return SendBuf;
 }
 

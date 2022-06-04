@@ -6,7 +6,7 @@
 int player1points, player2points, player3points, player4points, player5points, player6points = 1000;
 int pot = 0;
 int currentplayerturn = 1;
-int players = 0; // Change this later so that player count isnt hardcoded
+int players = 6; // Change this later so that player count isnt hardcoded
 int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 
 // Main function of the game
@@ -229,7 +229,7 @@ void newRound()
     }
     i = 0;
 
-    if (players >= 4)
+    if (players >= 3)
     {
         while (i < 2)
         {
@@ -248,7 +248,7 @@ void newRound()
         i = 0;
     }
 
-    if (players >= 5)
+    if (players >= 4)
     {
         while (i < 2)
         {
@@ -267,7 +267,7 @@ void newRound()
         i = 0;
     }
 
-    if (players >= 6)
+    if (players >= 5)
     {
         while (i < 2)
         {
@@ -286,7 +286,7 @@ void newRound()
         i = 0;
     }
 
-    if (players >= 7)
+    if (players >= 6)
     {
         while (i < 2)
         {
