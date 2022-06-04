@@ -30,7 +30,7 @@ struct CARD
 
 struct PLAYERDATA
 {
-    char *playerName;
+    char playerName[16];
     int points;
     bool hasFolded;
     bool connected;
@@ -44,14 +44,14 @@ struct CARD player3[2];
 struct CARD player4[2];
 struct CARD player5[2];
 struct CARD player6[2];
-struct PLAYERDATA player1data;
-struct PLAYERDATA player2data;
-struct PLAYERDATA player3data;
-struct PLAYERDATA player4data;
-struct PLAYERDATA player5data;
-struct PLAYERDATA player6data;
+struct PLAYERDATA player1data = {NULL, 1000, '0', '0'};
+struct PLAYERDATA player2data = {NULL, 1000, '0', '0'};
+struct PLAYERDATA player3data = {NULL, 1000, '0', '0'};
+struct PLAYERDATA player4data = {NULL, 1000, '0', '0'};
+struct PLAYERDATA player5data = {NULL, 1000, '0', '0'};
+struct PLAYERDATA player6data = {NULL, 1000, '0', '0'};
 
-//player1data.playerName = "Test";
+// player1data.playerName = "Test";
 
-const char* riverStringCat(int i, char* SendBuf);
+const char *riverStringCat(int i, char *SendBuf);
 #endif
