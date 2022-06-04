@@ -130,10 +130,11 @@ GtkWidget *CreateWindow(	/* create the server window */
     
 */
     gtk_init(&argc, &argv);
-
+    printf("test");
     Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_default_size(GTK_WINDOW(Window), 1920, 1080);
     gtk_window_set_position(GTK_WINDOW(Window), GTK_WIN_POS_CENTER);
+    gtk_window_maximize(GTK_WINDOW(Window));
 
     layout = gtk_layout_new(NULL, NULL);
     gtk_container_add(GTK_CONTAINER (Window), layout);
@@ -167,30 +168,48 @@ GtkWidget *CreateWindow(	/* create the server window */
     o5Card1 = gtk_image_new_from_file ("./images/poker_card.png");
     o5Card2 = gtk_image_new_from_file ("./images/poker_card.png");
 
+    tCard1 = gtk_image_new_from_file ("./images/poker_card.png");
+    tCard2 = gtk_image_new_from_file ("./images/poker_card.png");
+    tCard3 = gtk_image_new_from_file ("./images/poker_card.png");
+    tCard4 = gtk_image_new_from_file ("./images/poker_card.png");
+    tCard5 = gtk_image_new_from_file ("./images/poker_card.png");
+
     gtk_layout_put(GTK_LAYOUT(layout), o1Card1, 100, 50);
     gtk_widget_set_size_request(o1Card1, 100, 145);
     gtk_layout_put(GTK_LAYOUT(layout), o1Card2, 150, 50);
     gtk_widget_set_size_request(o2Card2, 100, 145);
 
     gtk_layout_put(GTK_LAYOUT(layout), o2Card1, 300, 50);
-    gtk_widget_set_size_request(o1Card1, 100, 145);
+    gtk_widget_set_size_request(o2Card1, 100, 145);
     gtk_layout_put(GTK_LAYOUT(layout), o2Card2, 350, 50);
     gtk_widget_set_size_request(o2Card2, 100, 145);
 
     gtk_layout_put(GTK_LAYOUT(layout), o3Card1, 500, 50);
-    gtk_widget_set_size_request(o1Card1, 100, 145);
+    gtk_widget_set_size_request(o3Card1, 100, 145);
     gtk_layout_put(GTK_LAYOUT(layout), o3Card2, 550, 50);
-    gtk_widget_set_size_request(o2Card2, 100, 145);
+    gtk_widget_set_size_request(o3Card2, 100, 145);
 
     gtk_layout_put(GTK_LAYOUT(layout), o4Card1, 700, 50);
-    gtk_widget_set_size_request(o1Card1, 100, 145);
+    gtk_widget_set_size_request(o4Card1, 100, 145);
     gtk_layout_put(GTK_LAYOUT(layout), o4Card2, 750, 50);
-    gtk_widget_set_size_request(o2Card2, 100, 145);
+    gtk_widget_set_size_request(o4Card2, 100, 145);
 
     gtk_layout_put(GTK_LAYOUT(layout), o5Card1, 900, 50);
-    gtk_widget_set_size_request(o1Card1, 100, 145);
+    gtk_widget_set_size_request(o5Card1, 100, 145);
     gtk_layout_put(GTK_LAYOUT(layout), o5Card2, 950, 50);
-    gtk_widget_set_size_request(o2Card2, 100, 145);
+    gtk_widget_set_size_request(o5Card2, 100, 145);
+
+    gtk_layout_put(GTK_LAYOUT(layout), tCard1, 150, 300);
+    gtk_widget_set_size_request(tCard1, 100, 145);
+    gtk_layout_put(GTK_LAYOUT(layout), tCard2, 350, 300);
+    gtk_widget_set_size_request(tCard2, 100, 145);
+    gtk_layout_put(GTK_LAYOUT(layout), tCard3, 550, 300);
+    gtk_widget_set_size_request(tCard3, 100, 145);
+    gtk_layout_put(GTK_LAYOUT(layout), tCard4, 750, 300);
+    gtk_widget_set_size_request(tCard4, 100, 145);
+    gtk_layout_put(GTK_LAYOUT(layout), tCard5, 950, 300);
+    gtk_widget_set_size_request(tCard5, 100, 145);
+    
 
     g_signal_connect_swapped(G_OBJECT(Window), "destroy",
     G_CALLBACK(gtk_main_quit), NULL);
@@ -206,7 +225,7 @@ GtkWidget *CreateWindow(	/* create the server window */
 void makeCards(char* RecvBuf){
 srand(time(NULL));
 
-random = rand() % 13 + 1;
+random = RecvBuf[1];
 printf("\n%s %d %c %c\n", RecvBuf, random, RecvBuf[0], RecvBuf[2]);
 
 if (RecvBuf[0] == 'C'){
@@ -238,7 +257,7 @@ if (RecvBuf[0] == 'C'){
     if (random == 13){
         tCard1 = gtk_image_new_from_file ("./images/king_of_clubs.png");}
             }
-random = rand() % 13 + 1;
+random = RecvBuf[3];
     if (RecvBuf[2] == 'C'){
     if (random == 1){
         tCard2 = gtk_image_new_from_file ("./images/ace_of_clubs.png");}
@@ -267,8 +286,8 @@ random = rand() % 13 + 1;
     if (random == 13){
         tCard2 = gtk_image_new_from_file ("./images/king_of_clubs.png");}
             }
+random = RecvBuf[5];
     if (RecvBuf[4] == 'C'){
-random = rand() % 13 + 1;
     if (random == 1){
         tCard3 = gtk_image_new_from_file ("./images/ace_of_clubs.png");}
     if (random == 2){
@@ -296,7 +315,7 @@ random = rand() % 13 + 1;
     if (random == 13){
         tCard3 = gtk_image_new_from_file ("./images/king_of_clubs.png");}
             }
-random = rand() % 13 + 1;
+random = RecvBuf[7];
     if (RecvBuf[6] == 'C'){
     if (random == 1){
         tCard4 = gtk_image_new_from_file ("./images/ace_of_clubs.png");}
@@ -325,7 +344,7 @@ random = rand() % 13 + 1;
     if (random == 13){
         tCard4 = gtk_image_new_from_file ("./images/king_of_clubs.png");}
             }
-random = rand() % 13 + 1;
+random = RecvBuf[9];
     if (RecvBuf[8] == 'C'){
     if (random == 1){
         tCard5 = gtk_image_new_from_file ("./images/ace_of_clubs.png");}
@@ -354,9 +373,8 @@ random = rand() % 13 + 1;
     if (random == 13){
         tCard5 = gtk_image_new_from_file ("./images/king_of_clubs.png");}
             }
-random = rand() % 13 + 1;
+random = RecvBuf[1];
     if (RecvBuf[0] == 'D'){
-
     if (random == 1){
         tCard1 = gtk_image_new_from_file ("./images/ace_of_diamonds.png");}
     if (random == 2){
@@ -384,7 +402,7 @@ random = rand() % 13 + 1;
     if (random == 13){
         tCard1 = gtk_image_new_from_file ("./images/king_of_diamonds.png");}
             }
-random = rand() % 13 + 1;
+random = RecvBuf[3];
     if (RecvBuf[2] == 'D'){
     if (random == 1){
         tCard2 = gtk_image_new_from_file ("./images/ace_of_diamonds.png");}
@@ -413,7 +431,7 @@ random = rand() % 13 + 1;
     if (random == 13){
         tCard2 = gtk_image_new_from_file ("./images/king_of_diamonds.png");}
             }
-            random = rand() % 13 + 1;
+random = RecvBuf[5];
     if (RecvBuf[4] == 'D'){
 
     if (random == 1){
@@ -443,7 +461,7 @@ random = rand() % 13 + 1;
     if (random == 13){
         tCard3 = gtk_image_new_from_file ("./images/king_of_diamonds.png");}
             }
-random = rand() % 13 + 1;
+random = RecvBuf[7];
     if (RecvBuf[6] == 'D'){
     if (random == 1){
         tCard4 = gtk_image_new_from_file ("./images/ace_of_diamonds.png");}
@@ -472,7 +490,7 @@ random = rand() % 13 + 1;
     if (random == 13){
         tCard4 = gtk_image_new_from_file ("./images/king_of_diamonds.png");}
             }
-random = rand() % 13 + 1;
+random = RecvBuf[9];
     if (RecvBuf[8] == 'D'){
     if (random == 1){
         tCard5 = gtk_image_new_from_file ("./images/ace_of_diamonds.png");}
@@ -501,7 +519,7 @@ random = rand() % 13 + 1;
     if (random == 13){
         tCard5 = gtk_image_new_from_file ("./images/king_of_diamonds.png");}
             }
-            random = rand() % 13 + 1;
+ random = RecvBuf[1];
      if (RecvBuf[0] == 'H'){
  
    if (random == 1){
@@ -531,7 +549,7 @@ random = rand() % 13 + 1;
    if (random == 13){
        tCard1 = gtk_image_new_from_file ("./images/king_of_hearts.png");}
            }
- random = rand() % 13 + 1;
+random = RecvBuf[3];
    if (RecvBuf[2] == 'H'){
    if (random == 1){
        tCard2 = gtk_image_new_from_file ("./images/ace_of_hearts.png");}
@@ -560,7 +578,7 @@ random = rand() % 13 + 1;
    if (random == 13){
        tCard2 = gtk_image_new_from_file ("./images/king_of_hearts.png");}
            }
-           random = rand() % 13 + 1;
+ random = RecvBuf[5];
    if (RecvBuf[4] == 'H'){
  
    if (random == 1){
@@ -590,7 +608,7 @@ random = rand() % 13 + 1;
    if (random == 13){
        tCard3 = gtk_image_new_from_file ("./images/king_of_hearts.png");}
            }
- random = rand() % 13 + 1;
+random = RecvBuf[7];
    if (RecvBuf[6] == 'H'){
    if (random == 1){
        tCard4 = gtk_image_new_from_file ("./images/ace_of_hearts.png");}
@@ -619,7 +637,7 @@ random = rand() % 13 + 1;
    if (random == 13){
        tCard4 = gtk_image_new_from_file ("./images/king_of_hearts.png");}
            }
- random = rand() % 13 + 1;
+random = RecvBuf[9];
    if (RecvBuf[8] == 'H'){
    if (random == 1){
        tCard5 = gtk_image_new_from_file ("./images/ace_of_hearts.png");}
@@ -648,7 +666,7 @@ random = rand() % 13 + 1;
    if (random == 13){
        tCard5 = gtk_image_new_from_file ("./images/king_of_hearts.png");}
            }
-           random = rand() % 13 + 1;
+random = RecvBuf[1];
  if (RecvBuf[0] == 'S'){
  
    if (random == 1){
@@ -678,7 +696,7 @@ random = rand() % 13 + 1;
    if (random == 13){
        tCard1 = gtk_image_new_from_file ("./images/king_of_spades.png");}
            }
- random = rand() % 13 + 1;
+random = RecvBuf[3];
    if (RecvBuf[2] == 'S'){
    if (random == 1){
        tCard2 = gtk_image_new_from_file ("./images/ace_of_spades.png");}
@@ -707,7 +725,7 @@ random = rand() % 13 + 1;
    if (random == 13){
        tCard2 = gtk_image_new_from_file ("./images/king_of_spades.png");}
            }
-           random = rand() % 13 + 1;
+random = RecvBuf[5];
    if (RecvBuf[4] == 'S'){
  
    if (random == 1){
@@ -737,7 +755,7 @@ random = rand() % 13 + 1;
    if (random == 13){
        tCard3 = gtk_image_new_from_file ("./images/king_of_spades.png");}
            }
- random = rand() % 13 + 1;
+random = RecvBuf[7];
    if (RecvBuf[6] == 'S'){
    if (random == 1){
        tCard4 = gtk_image_new_from_file ("./images/ace_of_spades.png");}
@@ -766,7 +784,7 @@ random = rand() % 13 + 1;
    if (random == 13){
        tCard4 = gtk_image_new_from_file ("./images/king_of_spades.png");}
            }
- random = rand() % 13 + 1;
+random = RecvBuf[9];
 
    if (RecvBuf[8] == 'S'){
    if (random == 1){

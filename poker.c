@@ -159,7 +159,12 @@ void startGame(int players)
     dealer[49] = D13;
     dealer[50] = H13;
     dealer[51] = S13;
-
+    player1data.hasFolded = 0;
+    player2data.hasFolded = 0;
+    player3data.hasFolded = 0;
+    player4data.hasFolded = 0;
+    player5data.hasFolded = 0;
+    player6data.hasFolded = 0;
     newRound();
 }
 

@@ -131,133 +131,16 @@ void ProcessRequest(		/* process a time request by a client */
         strncpy(SendBuf, "", sizeof(SendBuf)-1);
         //cardNum = ((int)river[0].type + '0');               // river card 1
         printf("\n RIVER FIRST CARD IS %c\n", river[0].suit);
-        if(river[0].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[0].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[0].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[0].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-        strcat(SendBuf, "1");
-        if(river[1].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[1].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[1].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[1].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-        strcat(SendBuf, "2");
-        
-        if(river[2].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[2].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[2].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[2].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-        strcat(SendBuf, "3");
-        if(river[3].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[3].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[3].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[3].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-        strcat(SendBuf, "4");
-        if(river[4].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[4].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[4].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[4].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-        strcat(SendBuf, "5");
-        if(player1[0].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(player1[0].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(player1[0].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(player1[0].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-        strcat(SendBuf, "6");
-        if(player1[1].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(player1[1].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(player1[1].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(player1[1].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum); this was commented out for hardcoding for beta release
-        strcat(SendBuf, "7");
+        const char* river1 = riverStringCat(0, SendBuf);
+        strcat(SendBuf, river1);
+        const char* river2 = riverStringCat(1, SendBuf);
+        strcat(SendBuf, river2);
+        const char* river3 = riverStringCat(2, SendBuf);
+        strcat(SendBuf, river3);
+        const char* river4 = riverStringCat(3, SendBuf);
+        strcat(SendBuf, river4);
+        const char* river5 = riverStringCat(4, SendBuf);
+        strcat(SendBuf, river5);
         
         SendBuf[sizeof(SendBuf)-1] = 0;
 
@@ -479,39 +362,39 @@ void ProcessRequest(		/* process a time request by a client */
     if (0 == strcmp(RecvBuf, "GET POINTS SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    //strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 2")){
         strncpy(SendBuf, "OK SEAT 2 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    //strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 3")){
         strncpy(SendBuf, "OK SEAT 3 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    //strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 4")){
         strncpy(SendBuf, "OK SEAT 4 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    //strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 5")){
         strncpy(SendBuf, "OK SEAT 5 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to get buffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    //strncat(SendBuf, /* need function to get buffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 
     else if (0 == strcmp(RecvBuf, "GET POINTS SEAT 6")){
         strncpy(SendBuf, "OK SEAT 6 =", sizeof(SendBuf)-1);
     	SendBuf[sizeof(SendBuf)-1] = 0;
-	    strncat(SendBuf, /* need function to gezbuffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
+	    //strncat(SendBuf, /* need function to gezbuffer for points */, sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
-*/
+
 
 /*   WE DONT NEED TO DO GET SEAT 1 ANYMORE
     // This is for getting information for each client seat
@@ -597,7 +480,7 @@ void ProcessRequest(		/* process a time request by a client */
                             else if(i == 5){
 //                                *player5Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                                strncpy(playerplayer5data.playerName5Name, tokenName, token_destination_size);
+                                strncpy(player5data.playerName, tokenName, token_destination_size);
                                 player5data.playerName[token_destination_size - 1] = '0';
                                 strcat(PlayerBuf, player5data.playerName);
                             }
@@ -735,6 +618,81 @@ void ServerMainLoop(		/* simple server main loop */
 
 /*** main function *******************************************************/
 // this function may not need to be edited
+
+const char* riverStringCat(int i, char* SendBuf){
+        if(river[i].suit == 'H')
+        {
+            strcat(SendBuf, "H"); 
+        }
+        if(river[i].suit == 'D')
+        {
+            strcat(SendBuf, "D"); 
+        }
+        if(river[i].suit == 'S')
+        {
+            strcat(SendBuf, "S"); 
+        }
+        if(river[i].suit == 'C')
+        {
+            strcat(SendBuf, "C"); 
+        }
+
+        if(river[i].type == 2)
+        {
+            strcat(SendBuf, "2"); 
+        }
+        if(river[i].type == 3)
+        {
+            strcat(SendBuf, "3"); 
+        }
+        if(river[i].type == 4)
+        {
+            strcat(SendBuf, "4"); 
+        }
+        if(river[i].type == 5)
+        {
+            strcat(SendBuf, "5"); 
+        }
+        if(river[i].type == 6)
+        {
+            strcat(SendBuf, "6"); 
+        }
+        if(river[i].type == 7)
+        {
+            strcat(SendBuf, "7"); 
+        }
+        if(river[i].type == 8)
+        {
+            strcat(SendBuf, "8"); 
+        }
+        if(river[i].type == 9)
+        {
+            strcat(SendBuf, "9"); 
+        }
+
+        if(river[i].type == 10)
+        {
+            strcat(SendBuf, "10"); 
+        }
+        if(river[i].type == 11)
+        {
+            strcat(SendBuf, "11"); 
+        }
+        if(river[i].type == 12)
+        {
+            strcat(SendBuf, "12"); 
+        }
+        if(river[i].type == 13)
+        {
+            strcat(SendBuf, "13"); 
+        }
+        if(river[i].type == 14)
+        {
+            strcat(SendBuf, "14"); 
+        }
+    return SendBuf;
+}
+
 int main(int argc, char *argv[])
 {
     int ServSocketFD;	/* socket file descriptor for service */

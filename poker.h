@@ -12,12 +12,14 @@ void printDecks();
 void startGame(int players);
 int main(int argc, char *argv[]);
 void newRound();
-char player1Name[16] = "";
-char player2Name[16] = "";
-char player3Name[16] = "";
-char player4Name[16] = "";
-char player5Name[16] = "";
-char player6Name[16] = "";
+/*
+char player1Name[16] = "\0";
+char player2Name[16] = "\0";
+char player3Name[16] = "\0";
+char player4Name[16] = "\0";
+char player5Name[16] = "\0";
+char player6Name[16] = "\0";
+*/
 
 struct CARD
 {
@@ -28,10 +30,10 @@ struct CARD
 
 struct PLAYERDATA
 {
-    char playerName[16] = "";
-    int points = 1000;
-    bool hasFolded = 0;
-    bool connected = 0;
+    char *playerName;
+    int points;
+    bool hasFolded;
+    bool connected;
 };
 
 struct CARD dealer[52];
@@ -44,6 +46,12 @@ struct CARD player5[2];
 struct CARD player6[2];
 struct PLAYERDATA player1data;
 struct PLAYERDATA player2data;
+struct PLAYERDATA player3data;
+struct PLAYERDATA player4data;
+struct PLAYERDATA player5data;
+struct PLAYERDATA player6data;
 
-player1data.playerName = "Test";
+//player1data.playerName = "Test";
+
+const char* riverStringCat(int i, char* SendBuf);
 #endif
