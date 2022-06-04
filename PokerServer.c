@@ -101,6 +101,7 @@ void ProcessRequest(		/* process a time request by a client */
     int  l, n;
     char RecvBuf[256];	/* message buffer for receiving a message */
     char SendBuf[256];	/* message buffer for sending a response */
+    char PlayerBuf[256]; /* message buffer for sending all player names */
     char *tokenName;
     const char s[2] = " "; // stuff for token (victor)
     char *token;
@@ -122,6 +123,9 @@ void ProcessRequest(		/* process a time request by a client */
     if (0 == strcmp(RecvBuf, "GET CARDS SEAT 1")){
         
         //strncpy(SendBuf, "Success", sizeof(SendBuf)-1);
+        
+        
+        
         
         strncpy(SendBuf, "", sizeof(SendBuf)-1);
         //cardNum = ((int)river[0].type + '0');               // river card 1
@@ -256,7 +260,14 @@ void ProcessRequest(		/* process a time request by a client */
         
         SendBuf[sizeof(SendBuf)-1] = 0;
 
-        /*cardNum = (int)river[1].type + '0';               // river card 2
+        
+        
+        //fixed code for river 
+        cardNum = (int)river[0].type + '0';               // river card 1
+        strncat(SendBuf, river[0].suit, sizeof(SendBuf)-1-strlen(SendBuf));  // card suit
+        strncat(SendBuf, &cardNum, sizeof(SendBuf)-1-strlen(SendBuf));    // card type
+        strncat(SendBuf, '1', sizeof(SendBuf)-1-strlen(SendBuf));
+        cardNum = (int)river[1].type + '0';               // river card 2
         strncat(SendBuf, river[1].suit, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
@@ -281,7 +292,7 @@ void ProcessRequest(		/* process a time request by a client */
         strncat(SendBuf, player1[2].suit, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, cardNum, sizeof(SendBuf)-1-strlen(SendBuf));
         strncat(SendBuf, '2', sizeof(SendBuf)-1-strlen(SendBuf));
-*/
+
 
         //SendBuf[sizeof(SendBuf)-1] = 0;
     }
@@ -498,6 +509,8 @@ void ProcessRequest(		/* process a time request by a client */
 	    strncat(SendBuf, /* need function to gezbuffer for points , sizeof(SendBuf)-1-strlen(SendBuf)); 
     }
 */
+
+/*   WE DONT NEED TO DO GET SEAT 1 ANYMORE
     // This is for getting information for each client seat
     if (0 == strcmp(RecvBuf, "GET SEAT 1")){
         strncpy(SendBuf, "OK SEAT 1 =", sizeof(SendBuf)-1);
@@ -534,6 +547,7 @@ void ProcessRequest(		/* process a time request by a client */
     	SendBuf[sizeof(SendBuf)-1] = 0;
 	    //strncat(SendBuf, player6Name, sizeof(SendBuf)-1-strlen(SendBuf)); 
         }
+*/
 
     // parsing RecvBuf string for non hardcodeable string inputs
     token = strtok(RecvBuf, s); 
@@ -550,44 +564,52 @@ void ProcessRequest(		/* process a time request by a client */
                             strncpy(SendBuf, "OK SEAT", sizeof(SendBuf)-1);
 	                        SendBuf[sizeof(SendBuf)-1] = 0;
                             if(i == 1){                      // assigning the player name to a global char varaible in poker.h
- //                               *player1Name = tokenname;       // can we assign a pointer *tokenname to the global char player1Name[16]?
+//                                *player1Name = tokenName;       // can we assign a pointer *tokenname to the global char player1Name[16]?
                                 size_t token_destination_size = sizeof(tokenName);
-                             //   strncpy(player1Name, tokenName, token_destination_size);
-                             //   player1Name[token_destination_size - 1] = '\0';
+                                strncpy(player1Name, tokenName, token_destination_size);
+                                player1Name[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player1Name); 
                             }
                             else if(i == 2){
- //                               *player2Name = tokenname;
+//                                *player2Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                                //strncpy(player2Name, tokenName, token_destination_size);
-                                //player2Name[token_destination_size - 1] = '\0';
+                                strncpy(player2Name, tokenName, token_destination_size);
+                                player2Name[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player1Name);
                             }
                             else if(i == 3){
-//                                *player3Name = tokenname;
+//                                *player3Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                               // strncpy(player3Name, tokenName, token_destination_size);
-                               // player3Name[token_destination_size - 1] = '\0';
+                                strncpy(player3Name, tokenName, token_destination_size);
+                                player3Name[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player1Name);
                             }
                             else if(i == 4){
-//                                *player4Name = tokenname;
+//                                *player4Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                             //   strncpy(player4Name, tokenName, token_destination_size);
-                             //   player4Name[token_destination_size - 1] = '\0';
+                                strncpy(player4Name, tokenName, token_destination_size);
+                                player4Name[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player1Name);
                             }
                             else if(i == 5){
+//                                *player5Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                             //   strncpy(player5Name, tokenName, token_destination_size);
-                             //   player5Name[token_destination_size - 1] = '\0';
-//                                *player5Name = tokenname;
+                                strncpy(player5Name, tokenName, token_destination_size);
+                                player5Name[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player1Name);
                             }
                             else if(i == 6){
+//                                *player6Name = tokenName;
                                 size_t token_destination_size = sizeof(tokenName);
-                             //   strncpy(player6Name, tokenName, token_destination_size);
-                              //  player6Name[token_destination_size - 1] = '\0';
- //                               *player6Name = tokenname;
+                                strncpy(player6Name, tokenName, token_destination_size);
+                                player6Name[token_destination_size - 1] = '0';
+                                strcat(PlayerBuf, player1Name);
                             };
-                        	strncat(SendBuf, token, sizeof(SendBuf)-1-strlen(SendBuf));
-                            strncat(SendBuf, equal, sizeof(SendBuf)-1-strlen(SendBuf));
-                            strncat(SendBuf, tokenName, sizeof(SendBuf)-1-strlen(SendBuf));
+
+                            // WE DONT NEED TO DO THIS CAT
+                    //        strncat(SendBuf, token[0], sizeof(SendBuf)-1-strlen(SendBuf));
+                    //        strncat(SendBuf, , sizeof(SendBuf)-1-strlen(SendBuf));
+                    //        strncat(SendBuf, tokenName, sizeof(SendBuf)-1-strlen(SendBuf));
                             // the message send would be OK SEAT (number) = (cilentname) 
                         }
                         else{
@@ -597,7 +619,6 @@ void ProcessRequest(		/* process a time request by a client */
             }
         while(1){
             switch(token[0]){
-            /*
             case 'R':
                 token = strtok(NULL, s);
                 tokenSeatNum = strtok(NULL, s);
@@ -610,7 +631,6 @@ void ProcessRequest(		/* process a time request by a client */
                 tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
                 //  function_for_fold()
                 break;
-                */
             case 'C':
                 token = strtok(NULL, s);
                 tokenSeatNum = strtok(NULL, s);
@@ -620,6 +640,11 @@ void ProcessRequest(		/* process a time request by a client */
             }
         }
     }
+
+    if (0 == strcmp(RecvBuf, "READY")){
+        strcat(SendBuf, PlayerBuf);
+    }
+
 /*
     if (0 == strcmp(RecvBuf, "TIME"))
     {   strncpy(SendBuf, "OK TIME: ", sizeof(SendBuf)-1);
