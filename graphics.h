@@ -14,7 +14,10 @@
 #include <math.h>
 
 const char *Program;
-
+char your1CardSuit;
+char your1CardType;
+char your2CardSuit;
+char your2CardType;
 
 //Certain constants we want to define (window size etc.) should go here.
 GtkWidget *CreateWindow(int *argc, char **argv[]);
