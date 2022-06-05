@@ -44,8 +44,12 @@ int main(int argc, char *argv[])
 	*Server;	/* server host */
     static char SendBuf[256];	/* message buffer for sending a message */
     static char RecvBuf[256];	/* message buffer for receiving a response */
-    static char PlayerBuf[256]; // long string with names from server to client 
+    static char PlayerBuf[256]; // long string with names from server to client
+    static char TempSendBuf[256];
     static char CardBuf[256];
+    char *token;
+    const char s[2] = " ";
+    int ClientSeatNum;
  //   char PlayerNameTemp[256];  // use to token on client side as strtok messes up original string
     Program = argv[0];	/* publish program name (for diagnostics) */
 
@@ -75,11 +79,12 @@ int main(int argc, char *argv[])
     do
     {	UpdateWindow();
         printf("%s: Enter a command to send to the poker server:\n"
-		"         'ENTER (NAME) SEAT (NUMBER)' to get assigned to a seat (without parenthesis),\n"
-        "         'F SEAT (NUMBER)' to Fold,\n"
+		"         'ENTER (SEAT NUMBER)' to choose a seat (without parenthesis),\n"
+/*        "         'F SEAT (NUMBER)' to Fold,\n"
         "         'R SEAT (NUMBER)' to Raise,\n"
         "         'C SEAT (NUMBER)' to Call,\n"
         "         'READY' to start game,\n"
+*/
 		"         'SHUTDOWN' to terminate the server,\n"
 		"         or 'bye' to quit this client\n"
 		"command: ", argv[0]);
@@ -88,6 +93,12 @@ int main(int argc, char *argv[])
 	if (SendBuf[l-1] == '\n')
 	{   SendBuf[--l] = 0;
 	}
+    strcpy(TempSendBuf, SendBuf);
+    token = strtok(TempSendBuf, s);
+    if (token == "ENTER"){
+        ClientSeatNum = (int)((char)(SendBuf[6])) - 48;
+    }
+    
 	if (0 == strcmp("bye", SendBuf))
 	{   break;
 	}
@@ -122,13 +133,15 @@ int main(int argc, char *argv[])
         if (RecvBuf[0] == "1"){
             strcpy(PlayerBuf, RecvBuf);    // all the player names 
         }
-
-        if (RecvBuf[0] == "0"){
+        else if (RecvBuf[0] == "0"){
             strcpy(CardBuf, RecvBuf);      // all the INFORMATION of poker game
             char your1CardSuit = CardBuf[(11+(4*seat-1))];
             char your1CardType = CardBuf[(12+(4*seat-1))];
             char your2CardSuit = CardBuf[(13+(4*seat-1))];
             char your2CardType = CardBuf[(14+(4*seat-1))];
+
+        }
+        else{
 
         }
 

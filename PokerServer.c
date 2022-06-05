@@ -715,6 +715,7 @@ void ProcessRequest(		/* process a time request by a client */
         if (tokenSeatNumClient == 1){
             if (player1data.playerSeat == 0){
                 player1data.playerSeat = tokenSeatNumClient;
+                strcpy(SendBuf, "You are now assigned to Seat 1, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
                 }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -723,6 +724,7 @@ void ProcessRequest(		/* process a time request by a client */
         else if(tokenSeatNumClient == 2){
             if (player2data.playerSeat == 0){
                 player2data.playerSeat = tokenSeatNumClient;
+                strcpy(SendBuf, "You are now assigned to Seat 2, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -731,6 +733,7 @@ void ProcessRequest(		/* process a time request by a client */
         else if(tokenSeatNumClient == 3){
             if (player3data.playerSeat == 0){
                 player3data.playerSeat = tokenSeatNumClient;
+                strcpy(SendBuf, "You are now assigned to Seat 3, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -739,6 +742,7 @@ void ProcessRequest(		/* process a time request by a client */
         else if(tokenSeatNumClient == 4){
             if (player4data.playerSeat == 0){
                 player4data.playerSeat = tokenSeatNumClient;
+                strcpy(SendBuf, "You are now assigned to Seat 4, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -747,6 +751,7 @@ void ProcessRequest(		/* process a time request by a client */
         else if(tokenSeatNumClient == 5){
             if (player5data.playerSeat == 0){
                  player5data.playerSeat = tokenSeatNumClient;
+                 strcpy(SendBuf, "You are now assigned to Seat 5, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -755,6 +760,7 @@ void ProcessRequest(		/* process a time request by a client */
         else if(tokenSeatNumClient == 6){
             if (player6data.playerSeat == 0){
                  player6data.playerSeat = tokenSeatNumClient;
+                 strcpy(SendBuf, "You are now assigned to Seat 6, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
