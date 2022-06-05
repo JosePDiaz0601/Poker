@@ -3,7 +3,7 @@
  * that is used between client and server for our poker game.
  * Author: Victor Dam, Arhant Katare
  * Based on code from Rainer Doemer in ClockClient.c
- *///
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -119,17 +119,17 @@ int main(int argc, char *argv[])
 	    printf("%s: Received response: %s\n", Program, RecvBuf);
 
         // parsing string for information here (RecvBuf from server - long string)
-        if (RecvBuf[0] == "1"){
+        if (RecvBuf[0] == '1'){
             strcpy(PlayerBuf, RecvBuf);    // all the player names 
         }
 
-        if (RecvBuf[0] == "0"){
+        if (RecvBuf[0] == '0'){
             strcpy(CardBuf, RecvBuf);      // all the INFORMATION of poker game
-            char your1CardSuit = CardBuf[(11+(4*seat-1))];
-            char your1CardType = CardBuf[(12+(4*seat-1))];
-            char your2CardSuit = CardBuf[(13+(4*seat-1))];
-            char your2CardType = CardBuf[(14+(4*seat-1))];
-
+            your1CardSuit = CardBuf[(11+(4*(seat-1)))];
+            your1CardType = CardBuf[(12+(4*(seat-1)))];
+            your2CardSuit = CardBuf[(13+(4*(seat-1)))];
+            your2CardType = CardBuf[(14+(4*(seat-1)))];
+            makeCards();
         }
 
         
