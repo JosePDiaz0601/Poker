@@ -12,8 +12,8 @@ void printDecks();
 void startGame(int players);
 int main(int argc, char *argv[]);
 void newRound();
-int currentPotAmount = 0;
-int currentBetAmount = 0;
+int currentPotAmount;
+int currentBetAmount;
 /*
 char player1Name[16] = "\0";
 char player2Name[16] = "\0";
@@ -47,12 +47,12 @@ struct CARD player3[2];
 struct CARD player4[2];
 struct CARD player5[2];
 struct CARD player6[2];
-struct PLAYERDATA player1data = {"", 0, 1000, '0', '0'};
-struct PLAYERDATA player2data = {"", 0, 1000, '0', '0'};
-struct PLAYERDATA player3data = {"", 0, 1000, '0', '0'};
-struct PLAYERDATA player4data = {"", 0, 1000, '0', '0'};
-struct PLAYERDATA player5data = {"", 0, 1000, '0', '0'};
-struct PLAYERDATA player6data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player1data;
+struct PLAYERDATA player2data;
+struct PLAYERDATA player3data;
+struct PLAYERDATA player4data;
+struct PLAYERDATA player5data;
+struct PLAYERDATA player6data;
 
 // player1data.playerName = "Test";
 

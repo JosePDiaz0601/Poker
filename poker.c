@@ -8,7 +8,14 @@ int pot = 0;
 int round = 0;
 int currentplayerturn = 1;
 int players = 6; // Change this later so that player count isnt hardcoded
-int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
+currentBetAmount = 0;
+currentPotAmount = 0;
+struct PLAYERDATA player1data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player2data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player3data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player4data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player5data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player6data = {"", 0, 1000, '0', '0'};
 
 // Main function of the game
 int pokerMain(void)

@@ -216,7 +216,6 @@ GtkWidget *CreateWindow(	/* create the server window */
 
     gtk_widget_show_all(Window);
 
-    gtk_main();
 
     return 0;
 
