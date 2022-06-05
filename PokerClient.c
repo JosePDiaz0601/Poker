@@ -3,7 +3,7 @@
  * that is used between client and server for our poker game.
  * Author: Victor Dam, Arhant Katare
  * Based on code from Rainer Doemer in ClockClient.c
- */
+ *///
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
