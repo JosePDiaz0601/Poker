@@ -129,7 +129,7 @@ GtkWidget *CreateWindow(	/* create the server window */
         return(Window);
     
 */
-    gtk_init(&argc, &argv);
+    gtk_init(argc, argv);
     printf("test");
     Window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_default_size(GTK_WINDOW(Window), 1920, 1080);
@@ -221,7 +221,7 @@ GtkWidget *CreateWindow(	/* create the server window */
 
 } /* end of CreateWindow */
 
-void makeCards(char* RecvBuf){
+/*void makeCards(char* RecvBuf){
 srand(time(NULL));
 
 random = RecvBuf[1];
@@ -1513,7 +1513,7 @@ if (receivedSuit == 'D' && receivedType == 14 && cardPosition == 5){tCard5 = gtk
 
 */
 
-}
+//}
 
 
 

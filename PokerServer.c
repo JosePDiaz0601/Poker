@@ -103,9 +103,9 @@ void ProcessRequest(		/* process a time request by a client */
 	int DataSocketFD)
 {
     int  l, n;
-    char RecvBuf[256];	/* message buffer for receiving a message */
-    char SendBuf[256];	/* message buffer for sending a response */
-    char PlayerBuf[256]; /* message buffer for sending all player names */
+    static char RecvBuf[256];	/* message buffer for receiving a message */
+    static char SendBuf[256];	/* message buffer for sending a response */
+    static char PlayerBuf[256]; /* message buffer for sending all player names */
     char *tokenName;
     const char s[2] = " "; // stuff for token (victor)
     char *token;
