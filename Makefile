@@ -64,7 +64,7 @@ all: PokerClient PokerServer
 
 clean:
 	rm -f *.o
-	rm -f Poker_Client Poker_Server
+	rm -f PokerClient PokerServer
 
 test:
 	@echo "To run the examples, first start the server in one terminal,"
