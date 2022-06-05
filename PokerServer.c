@@ -769,7 +769,7 @@ void ProcessRequest(		/* process a time request by a client */
             if (player1data.playerName == ""){
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player1data.playerName, tokenName, token_destination_size);
-                player1data.playerName[token_destination_size - 1] = '0';
+                player1data.playerName[token_destination_size] = '0';
                 strcat(PlayerBuf, player1data.playerName);
                 }
             else{
@@ -780,7 +780,7 @@ void ProcessRequest(		/* process a time request by a client */
             if (player2data.playerName == ""){
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player2data.playerName, tokenName, token_destination_size);
-                player2data.playerName[token_destination_size - 1] = '0';
+                player2data.playerName[token_destination_size] = '0';
                 strcat(PlayerBuf, player2data.playerName);
                 }
             else{
@@ -791,7 +791,7 @@ void ProcessRequest(		/* process a time request by a client */
             if (player3data.playerName == ""){
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player3data.playerName, tokenName, token_destination_size);
-                player3data.playerName[token_destination_size - 1] = '0';
+                player3data.playerName[token_destination_size] = '0';
                 strcat(PlayerBuf, player3data.playerName);
             }
             else{
@@ -802,7 +802,7 @@ void ProcessRequest(		/* process a time request by a client */
             if (player4data.playerName == ""){
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player4data.playerName, tokenName, token_destination_size);
-                player4data.playerName[token_destination_size - 1] = '0';
+                player4data.playerName[token_destination_size] = '0';
                 strcat(PlayerBuf, player4data.playerName);
             }
             else{
@@ -813,7 +813,7 @@ void ProcessRequest(		/* process a time request by a client */
             if (player5data.playerName == ""){
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player5data.playerName, tokenName, token_destination_size);
-                player5data.playerName[token_destination_size - 1] = '0';
+                player5data.playerName[token_destination_size] = '0';
                 strcat(PlayerBuf, player5data.playerName);
             }
             else{
@@ -824,7 +824,7 @@ void ProcessRequest(		/* process a time request by a client */
             if (player6data.playerName == ""){
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player6data.playerName, tokenName, token_destination_size);
-                player6data.playerName[token_destination_size - 1] = '0';
+                player6data.playerName[token_destination_size] = '0';
                 strcat(PlayerBuf, player6data.playerName);
             }
             else{
@@ -858,6 +858,7 @@ void ProcessRequest(		/* process a time request by a client */
     }*/
 
     if (0 == strcmp(RecvBuf, "READY")){
+        SendBuf[0] = "0";
         strcat(SendBuf, PlayerBuf);
     }
     printf("\nMade it to End\n");
