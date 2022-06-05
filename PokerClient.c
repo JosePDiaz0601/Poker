@@ -118,11 +118,11 @@ int main(int argc, char *argv[])
 
         // parsing string for information here (RecvBuf from server - long string)
         if (RecvBuf[0] == "1"){
-            PlayerBuf = RecvBuf;    // all the player names 
+            strcpy(PlayerBuf, RecvBuf);    // all the player names 
         }
 
         if (RecvBuf[0] == "0"){
-            LongBuf = RecvBuf;      // all the INFORMATION of poker game
+            strcpy(PlayerBuf, RecvBuf);      // all the INFORMATION of poker game
         }
 
         

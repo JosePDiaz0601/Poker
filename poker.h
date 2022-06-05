@@ -33,6 +33,7 @@ struct CARD
 struct PLAYERDATA
 {
     char *playerName[16];
+    int playerSeat;
     int points;
     bool hasFolded;
     bool connected;
@@ -46,12 +47,12 @@ struct CARD player3[2];
 struct CARD player4[2];
 struct CARD player5[2];
 struct CARD player6[2];
-struct PLAYERDATA player1data = {"", 1000, '0', '0'};
-struct PLAYERDATA player2data = {"", 1000, '0', '0'};
-struct PLAYERDATA player3data = {"", 1000, '0', '0'};
-struct PLAYERDATA player4data = {"", 1000, '0', '0'};
-struct PLAYERDATA player5data = {"", 1000, '0', '0'};
-struct PLAYERDATA player6data = {"", 1000, '0', '0'};
+struct PLAYERDATA player1data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player2data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player3data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player4data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player5data = {"", 0, 1000, '0', '0'};
+struct PLAYERDATA player6data = {"", 0, 1000, '0', '0'};
 
 // player1data.playerName = "Test";
 

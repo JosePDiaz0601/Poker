@@ -111,6 +111,7 @@ void ProcessRequest(		/* process a time request by a client */
     char *token;
     char *tokenSeatNum;
     int tokenSeatNumInt;
+    int tokenSeatNumClient; // this is the seat number that is saved in client side 
     char equal[3] = " = ";
     char clientname[16]; 
     char cardNum;
@@ -996,6 +997,8 @@ void ProcessRequest(		/* process a time request by a client */
         }
 */
 
+
+/*
     // parsing RecvBuf string for non hardcodeable string inputs
     token = strtok(RecvBuf, s); 
     if (0 == strcmp(token, "ENTER")){
@@ -1106,30 +1109,157 @@ void ProcessRequest(		/* process a time request by a client */
                         }
                     }
             }
-        while(1){
-            switch(token[0]){
-            case 'R':
-                token = strtok(NULL, s);
-                tokenSeatNum = strtok(NULL, s);
-                tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
-                //  function_for_Raise()
-               break;
-            case 'F':
-                token = strtok(NULL, s);
-                tokenSeatNum = strtok(NULL, s);
-                tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
-                //  function_for_fold()
-                break;
-            case 'C':
-                token = strtok(NULL, s);
-                tokenSeatNum = strtok(NULL, s);
-                tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
-                call(tokenSeatNumInt);
-                break;
+            */
+
+    // parsing RecvBuf string for string inputs
+    token = strtok(RecvBuf, s); 
+    // setting seat number of client
+    if (0 == strcmp(token, "ENTER")){
+        tokenSeatNum = strtok(NULL, s);
+        tokenSeatNumClient = (int)((char)(tokenSeatNum[0])) - 48;
+        if (tokenSeatNumClient == 1){
+            if (player1data.playerSeat == 0){
+                player1data.playerSeat = tokenSeatNumClient;
+                }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+                }
+        }
+        else if(tokenSeatNumClient == 2){
+            if (player2data.playerSeat == 0){
+                player2data.playerSeat = tokenSeatNumClient;
+            }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+            }
+        }
+        else if(tokenSeatNumClient == 3){
+            if (player3data.playerSeat == 0){
+                player3data.playerSeat = tokenSeatNumClient;
+            }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+            }
+        }
+        else if(tokenSeatNumClient == 4){
+            if (player4data.playerSeat == 0){
+                player4data.playerSeat = tokenSeatNumClient;
+            }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+            }
+        }
+        else if(tokenSeatNumClient == 5){
+            if (player5data.playerSeat == 0){
+                 player5data.playerSeat = tokenSeatNumClient;
+            }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+            }
+        }
+        else if(tokenSeatNumClient == 6){
+            if (player6data.playerSeat == 0){
+                 player6data.playerSeat = tokenSeatNumClient;
+            }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
             }
         }
     }
 
+    // this is for setting name of client
+    if (0 == strcmp(token, "NAME")){
+        tokenName = strtok(NULL, s);
+        if (tokenSeatNumClient == 1){
+            if (player1data.playerName == ""){
+                size_t token_destination_size = sizeof(tokenName);
+                strncpy(player1data.playerName, tokenName, token_destination_size);
+                player1data.playerName[token_destination_size - 1] = '0';
+                strcat(PlayerBuf, player1data.playerName);
+                }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+                }
+        }
+        else if(tokenSeatNumClient == 2){
+            if (player2data.playerName == ""){
+                size_t token_destination_size = sizeof(tokenName);
+                strncpy(player2data.playerName, tokenName, token_destination_size);
+                player2data.playerName[token_destination_size - 1] = '0';
+                strcat(PlayerBuf, player2data.playerName);
+                }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+            }
+        }
+        else if(tokenSeatNumClient == 3){
+            if (player3data.playerName == ""){
+                size_t token_destination_size = sizeof(tokenName);
+                strncpy(player3data.playerName, tokenName, token_destination_size);
+                player3data.playerName[token_destination_size - 1] = '0';
+                strcat(PlayerBuf, player3data.playerName);
+            }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+            }
+        }
+        else if(tokenSeatNumClient == 4){
+            if (player4data.playerName == ""){
+                size_t token_destination_size = sizeof(tokenName);
+                strncpy(player4data.playerName, tokenName, token_destination_size);
+                player4data.playerName[token_destination_size - 1] = '0';
+                strcat(PlayerBuf, player4data.playerName);
+            }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+            }
+        }
+        else if(tokenSeatNumClient == 5){
+            if (player5data.playerName == ""){
+                size_t token_destination_size = sizeof(tokenName);
+                strncpy(player5data.playerName, tokenName, token_destination_size);
+                player5data.playerName[token_destination_size - 1] = '0';
+                strcat(PlayerBuf, player5data.playerName);
+            }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+            }
+        }
+        else if(tokenSeatNumClient == 6){
+            if (player6data.playerName == ""){
+                size_t token_destination_size = sizeof(tokenName);
+                strncpy(player6data.playerName, tokenName, token_destination_size);
+                player6data.playerName[token_destination_size - 1] = '0';
+                strcat(PlayerBuf, player6data.playerName);
+            }
+            else{
+                strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+            }
+        }
+    }
+
+    while(1){
+        switch(token[0]){
+        case 'R':
+            token = strtok(NULL, s);
+            tokenSeatNum = strtok(NULL, s);
+            tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
+            //  function_for_Raise()
+            break;
+        case 'F':
+            token = strtok(NULL, s);
+            tokenSeatNum = strtok(NULL, s);
+            tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
+            //  function_for_fold()
+            break;
+        case 'C':
+            token = strtok(NULL, s);
+            tokenSeatNum = strtok(NULL, s);
+            tokenSeatNumInt = (int)((char)(tokenSeatNum[0])) - 48;
+            call(tokenSeatNumInt);
+            break;
+        }
+    }
     if (0 == strcmp(RecvBuf, "READY")){
         strcat(SendBuf, PlayerBuf);
     }
