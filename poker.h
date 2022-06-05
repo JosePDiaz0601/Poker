@@ -12,6 +12,8 @@ void printDecks();
 void startGame(int players);
 int main(int argc, char *argv[]);
 void newRound();
+int currentPotAmount = 0;
+int currentBetAmount = 0;
 /*
 char player1Name[16] = "\0";
 char player2Name[16] = "\0";

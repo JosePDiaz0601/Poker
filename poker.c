@@ -5,6 +5,7 @@
 
 int player1points, player2points, player3points, player4points, player5points, player6points = 1000;
 int pot = 0;
+int round = 0;
 int currentplayerturn = 1;
 int players = 6; // Change this later so that player count isnt hardcoded
 int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
@@ -13,13 +14,21 @@ int points[6] = {1000, 1000, 1000, 1000, 1000, 1000};
 int pokerMain(void)
 {
     printf("Welcome to poker");
-    // Change this later so that player count isnt hardcoded
+    // Change this later so that it prompts for player count
     printf("How many players do we have in this game?: ");
-    scanf("%d", &players);
+
     startGame(players);
+    newRound();
+    round++;
     return 0;
 }
 
+void runGame()
+{
+    while ((player1data.points != (players * 1000)) || (player1data.points != (players * 1000)) || (player1data.points != (players * 1000)) || (player1data.points != (players * 1000)) || (player1data.points != (players * 1000)) || (player1data.points != (players * 1000)))
+    {
+    }
+}
 // Starts the game by creating all the cards and placing them in the appropriate deck
 void startGame(int players)
 {
@@ -159,13 +168,6 @@ void startGame(int players)
     dealer[49] = D13;
     dealer[50] = H13;
     dealer[51] = S13;
-    player1data.hasFolded = 0;
-    player2data.hasFolded = 0;
-    player3data.hasFolded = 0;
-    player4data.hasFolded = 0;
-    player5data.hasFolded = 0;
-    player6data.hasFolded = 0;
-    newRound();
 }
 
 // This function gives the river its proper cards and all the players are given new cards
@@ -593,15 +595,6 @@ void printDecks(struct CARD deck[])
     }
 }
 
-void call(int player)
-{
-    currentplayerturn++;
-    if (currentplayerturn > players)
-    {
-        currentplayerturn = 1;
-    }
-}
-
 // This function finds who is the winner after a round and returns an int with the 2 winners or 1 winner
 int roundOver()
 {
@@ -729,4 +722,23 @@ int roundOver()
     {
         return topScore;
     }
+}
+
+void call(struct PLAYERDATA player)
+{
+    currentPotAmount = currentBetAmount + currentPotAmount;
+    player.points = player.points - currentBetAmount;
+    currentplayerturn++;
+}
+
+void fold(struct PLAYERDATA player)
+{
+    player.hasFolded = 1;
+}
+
+void raise(struct PLAYERDATA player, int raiseAmount)
+{
+    currentBetAmount = currentBetAmount + raiseAmount;
+    currentPotAmount = currentBetAmount + currentPotAmount;
+    player.points = player.points - currentBetAmount;
 }
