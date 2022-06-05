@@ -42,10 +42,10 @@ int main(int argc, char *argv[])
 	ServerAddress;	/* server address we connect with */
     struct hostent
 	*Server;	/* server host */
-    char SendBuf[256];	/* message buffer for sending a message */
-    char RecvBuf[256];	/* message buffer for receiving a response */
-    char PlayerBuf[256]; // long string with names from server to client 
-    char CardBuf[256];
+    static char SendBuf[256];	/* message buffer for sending a message */
+    static char RecvBuf[256];	/* message buffer for receiving a response */
+    static char PlayerBuf[256]; // long string with names from server to client 
+    static char CardBuf[256];
  //   char PlayerNameTemp[256];  // use to token on client side as strtok messes up original string
     Program = argv[0];	/* publish program name (for diagnostics) */
 
@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
         }
 
         
-        makeCards(RecvBuf); // GTK
+        //makeCards(RecvBuf); // GTK
 
 #ifdef DEBUG
 	    printf("%s: Closing the connection...\n", Program);
