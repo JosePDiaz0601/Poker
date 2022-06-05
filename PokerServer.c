@@ -1012,45 +1012,87 @@ void ProcessRequest(		/* process a time request by a client */
 	                        SendBuf[sizeof(SendBuf)-1] = 0;
                             if(i == 1){                      // assigning the player name to a global char varaible in poker.h
 //                                *player1Name = tokenName;       // can we assign a pointer *tokenname to the global char player1Name[16]?
-                                size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player1data.playerName, tokenName, token_destination_size);
-                                player1data.playerName[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player1data.playerName); 
+//include condition if seat is occupied
+                            	if (player1data.playerName != ""){
+
+									size_t token_destination_size = sizeof(tokenName);
+									strncpy(player1data.playerName, tokenName, token_destination_size);
+									player1data.playerName[token_destination_size - 1] = '0';
+									strcat(PlayerBuf, player1data.playerName);
+                                }
+                                else{
+                                    strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+                                }
                             }
                             else if(i == 2){
 //                                *player2Name = tokenName;
-                                size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player2data.playerName, tokenName, token_destination_size);
-                                player2data.playerName[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player2data.playerName);
+                                //include condition if seat is occupied
+								if (player1data.playerName != ""){
+
+									size_t token_destination_size = sizeof(tokenName);
+									strncpy(player2data.playerName, tokenName, token_destination_size);
+									player2data.playerName[token_destination_size - 1] = '0';
+									strcat(PlayerBuf, player2data.playerName);
+								}
+								else{
+									strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+								}
                             }
                             else if(i == 3){
 //                                *player3Name = tokenName;
-                                size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player3data.playerName, tokenName, token_destination_size);
-                                player3data.playerName[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player3data.playerName);
+                                //include condition if seat is occupied
+								if (player1data.playerName != ""){
+
+									size_t token_destination_size = sizeof(tokenName);
+									strncpy(player3data.playerName, tokenName, token_destination_size);
+									player3data.playerName[token_destination_size - 1] = '0';
+									strcat(PlayerBuf, player3data.playerName);
+								}
+								else{
+									strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+								}
                             }
                             else if(i == 4){
 //                                *player4Name = tokenName;
-                                size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player4data.playerName, tokenName, token_destination_size);
-                                player4data.playerName[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player4data.playerName);
+                                //include condition if seat is occupied
+								if (player1data.playerName != ""){
+
+									size_t token_destination_size = sizeof(tokenName);
+									strncpy(player4data.playerName, tokenName, token_destination_size);
+									player4data.playerName[token_destination_size - 1] = '0';
+									strcat(PlayerBuf, player4data.playerName);
+								}
+								else{
+									strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+								}
                             }
                             else if(i == 5){
 //                                *player5Name = tokenName;
-                                size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player5data.playerName, tokenName, token_destination_size);
-                                player5data.playerName[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player5data.playerName);
+                                //include condition if seat is occupied
+								if (player1data.playerName != ""){
+
+									size_t token_destination_size = sizeof(tokenName);
+									strncpy(player5data.playerName, tokenName, token_destination_size);
+									player5data.playerName[token_destination_size - 1] = '0';
+									strcat(PlayerBuf, player5data.playerName);
+								}
+								else{
+									strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+								}
                             }
                             else if(i == 6){
 //                                *player6Name = tokenName;
-                                size_t token_destination_size = sizeof(tokenName);
-                                strncpy(player6data.playerName, tokenName, token_destination_size);
-                                player6data.playerName[token_destination_size - 1] = '0';
-                                strcat(PlayerBuf, player6data.playerName);
+                                //include condition if seat is occupied
+								if (player1data.playerName != ""){
+
+									size_t token_destination_size = sizeof(tokenName);
+									strncpy(player6data.playerName, tokenName, token_destination_size);
+									player6data.playerName[token_destination_size - 1] = '0';
+									strcat(PlayerBuf, player6data.playerName);
+								}
+								else{
+									strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
+								}
                             };
 
                             // WE DONT NEED TO DO THIS CAT

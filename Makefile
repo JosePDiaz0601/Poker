@@ -74,22 +74,22 @@ test:
 	@echo "crystalcove% ./PokerServer 10000"
 	@echo "crystalcove% ./PokerClient crystalcove 10000"
 
-PokerClient.o: PokerClient.c graphics.h
+PokerClient.o:  
 	gcc ./src/PokerClient.c  $(CFLAGS) -o ./bin/PokerClient.o
 
-graphics.o:  graphics.c graphics.h
+graphics.o:  
 	gcc ./src/graphics.c $(CFLAGS) -o ./bin/graphics.o
 
-Poker.o: poker.c poker.h
+Poker.o: 
 	gcc ./src/poker.c $(CFLAGS) -o ./bin/Poker.o
 
-PokerClient: PokerClient.o graphics.o
+PokerClient: 
 	gcc ./bin/PokerClient.o ./bin/graphics.o $(LFLAGS) -o ./bin/PokerClient
 
-PokerServer.o: PokerServer.c poker.h
+PokerServer.o: 
 	gcc ./src/PokerServer.c $(CFLAGS) -o ./bin/PokerServer.o
 
-PokerServer: PokerServer.o Poker.o
+PokerServer: 
 	gcc ./bin/PokerServer.o ./bin/Poker.o $(LFLAGS) -o ./bin/PokerServer
 
 All:
