@@ -104,12 +104,15 @@ void ProcessRequest(		/* process a time request by a client */
 {
     int  l, n;
     static char RecvBuf[256];	/* message buffer for receiving a message */
+    static char TempRecvBuf[256];
     static char SendBuf[256];	/* message buffer for sending a response */
     static char PlayerBuf[256]; /* message buffer for sending all player names */
     char *tokenName;
     const char s[2] = " "; // stuff for token (victor)
     char *token;
     char *tokenSeatNum;
+    char playerseatchar;    // for call, raise, and fold
+    int playerseatint;      // for call, raise, and fold
     int tokenSeatNumInt;
     int tokenSeatNumClient; // this is the seat number that is saved in client side 
     char equal[3] = " = ";
@@ -707,7 +710,8 @@ void ProcessRequest(		/* process a time request by a client */
         SendBuf[sizeof(SendBuf)-1] = 0;
 
     // parsing RecvBuf string for string inputs
-    token = strtok(RecvBuf, s); 
+    strcpy(TempRecvBuf, RecvBuf);
+    token = strtok(TempRecvBuf, s); 
     // setting seat number of client
     if (0 == strcmp(token, "ENTER")){
         tokenSeatNum = strtok(NULL, s);
@@ -769,7 +773,7 @@ void ProcessRequest(		/* process a time request by a client */
     }
 
     // this is for setting name of client
-    if (0 == strcmp(token, "NAME")){
+    else if (0 == strcmp(token, "NAME")){
         tokenName = strtok(NULL, s);
         if (tokenSeatNumClient == 1){
             if (player1data.playerName == ""){
@@ -839,6 +843,11 @@ void ProcessRequest(		/* process a time request by a client */
         }
     }
 
+    if (0 == strcmp(RecvBuf[0], '2')){
+        playerseatchar = RecvBuf[2];
+        playerseatint = (int)((char)(RecvBuf[2])) - 48;
+        call(playerseatint);
+    }
     /*while(1){
         switch(token[0]){
         case 'R':

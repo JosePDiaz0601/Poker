@@ -49,7 +49,8 @@ int main(int argc, char *argv[])
     static char CardBuf[256];
     char *token;
     const char s[2] = " ";
-    int ClientSeatNum;
+    char ClientSeatNumChar;
+    int ClientSeatNumInt;   // client seat num 
  //   char PlayerNameTemp[256];  // use to token on client side as strtok messes up original string
     Program = argv[0];	/* publish program name (for diagnostics) */
 
@@ -93,15 +94,22 @@ int main(int argc, char *argv[])
 	if (SendBuf[l-1] == '\n')
 	{   SendBuf[--l] = 0;
 	}
-    strcpy(TempSendBuf, SendBuf);
-    token = strtok(TempSendBuf, s);
+
+    strcpy(TempSendBuf, SendBuf);   // copy string for temp Send Buffer
+    token = strtok(TempSendBuf, s);     // ENTER player input
     if (token == "ENTER"){
-        ClientSeatNum = (int)((char)(SendBuf[6])) - 48;
+        ClientSeatNumChar = SendBuf[6];
+        ClientSeatNumInt = (int)((char)(SendBuf[6])) - 48;     // Set client to a number for later comparison 
     }
     
+
 	if (0 == strcmp("bye", SendBuf))
 	{   break;
 	}
+    else if (0 == strcmp(SendBuf, "Call")){     // call from client to server
+        strcpy(SendBuf, "2");                   // setting SendBuf to '2'
+        strcat(SendBuf, ClientSeatNumChar);     // setting SendBuf to '2(client seat number)'
+    }
 
 	if (l)
 	{   SocketFD = socket(AF_INET, SOCK_STREAM, 0);
@@ -134,15 +142,25 @@ int main(int argc, char *argv[])
             strcpy(PlayerBuf, RecvBuf);    // all the player names 
         }
         else if (RecvBuf[0] == "0"){
-            strcpy(CardBuf, RecvBuf);      // all the INFORMATION of poker game
+            strcpy(CardBuf, RecvBuf);      // all the card INFORMATION of poker game
             char your1CardSuit = CardBuf[(11+(4*seat-1))];
             char your1CardType = CardBuf[(12+(4*seat-1))];
             char your2CardSuit = CardBuf[(13+(4*seat-1))];
             char your2CardType = CardBuf[(14+(4*seat-1))];
-
         }
-        else{
+        else if (RecvBuf[0] == "2"){    // client recieving string from server (who called?)
+            int tempplayernum;
+            tempplayernum = (int)((char)(RecvBuf[1])) - 48;
+            if (tempplayernum == ClientSeatNumInt){         // checking if this specific client called
+                printf("Player at Seat %d, you have called.", tempplayernum);
+            }
+            else{
 
+            }
+        }
+
+        else{
+            // use this section to printf the server telling the client what commands they can do :)
         }
 
         
