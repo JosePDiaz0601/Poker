@@ -12,6 +12,8 @@
 #include <netdb.h>
 #include "graphics.h"
 
+int seat;
+
 /* #define DEBUG */	/* be verbose */
 /*** global variables ****************************************************/
 const char *Program = NULL;
@@ -43,7 +45,7 @@ int main(int argc, char *argv[])
     char SendBuf[256];	/* message buffer for sending a message */
     char RecvBuf[256];	/* message buffer for receiving a response */
     char PlayerBuf[256]; // long string with names from server to client 
-    char LongBuf[256];
+    char CardBuf[256];
  //   char PlayerNameTemp[256];  // use to token on client side as strtok messes up original string
     Program = argv[0];	/* publish program name (for diagnostics) */
 
@@ -122,7 +124,12 @@ int main(int argc, char *argv[])
         }
 
         if (RecvBuf[0] == "0"){
-            strcpy(PlayerBuf, RecvBuf);      // all the INFORMATION of poker game
+            strcpy(CardBuf, RecvBuf);      // all the INFORMATION of poker game
+            char your1CardSuit = CardBuf[(11+(4*seat-1))];
+            char your1CardType = CardBuf[(12+(4*seat-1))];
+            char your2CardSuit = CardBuf[(13+(4*seat-1))];
+            char your2CardType = CardBuf[(14+(4*seat-1))];
+
         }
 
         

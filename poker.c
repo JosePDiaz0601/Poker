@@ -32,9 +32,13 @@ int pokerMain(void)
 
 void runGame()
 {
-    while ((player1data.points != (players * 1000)) || (player1data.points != (players * 1000)) || (player1data.points != (players * 1000)) || (player1data.points != (players * 1000)) || (player1data.points != (players * 1000)) || (player1data.points != (players * 1000)))
+    startGame(6);
+    /*while ((player1data.points != (players * 1000)) || (player2data.points != (players * 1000)) || (player3data.points != (players * 1000)) || (player4data.points != (players * 1000)) || (player5data.points != (players * 1000)) || (player6data.points != (players * 1000)))
     {
+        printf("\nNEW ROUND STARTED\n");
+        newRound();
     }
+    */
 }
 // Starts the game by creating all the cards and placing them in the appropriate deck
 void startGame(int players)
@@ -175,6 +179,7 @@ void startGame(int players)
     dealer[49] = D13;
     dealer[50] = H13;
     dealer[51] = S13;
+    newRound();
 }
 
 // This function gives the river its proper cards and all the players are given new cards
