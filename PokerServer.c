@@ -858,7 +858,7 @@ void ProcessRequest(		/* process a time request by a client */
     }*/
 
     if (0 == strcmp(RecvBuf, "READY")){
-        SendBuf[0] = "0";
+        SendBuf[0] = "1";
         strcat(SendBuf, PlayerBuf);
     }
     printf("\nMade it to End\n");
