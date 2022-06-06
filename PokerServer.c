@@ -33,6 +33,7 @@ const char *Program	/* program name for descriptive diagnostics */
 	= NULL;
 int Shutdown		/* keep running until Shutdown == 1 */
 	= 0;
+int hasGameStarted = 0;
 char ClockBuffer[26]	/* current time in printable format */
 	= "";
 players = 0;
@@ -131,7 +132,10 @@ void ProcessRequest(		/* process a time request by a client */
 #endif
     // get cards each cilent has
     if (0 == strcmp(RecvBuf, "READY")){
+        if(hasGameStarted == 0){
         startGame(players);
+        hasGameStarted++;
+        }
         //strncpy(SendBuf, "Success", sizeof(SendBuf)-1);
         
         strncpy(SendBuf, "", sizeof(SendBuf)-1);

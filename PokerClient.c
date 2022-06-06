@@ -13,7 +13,7 @@
 #include "graphics.h"
  
 int seat;
-int currentTurn;
+int currentTurn = 1;
  
 /* #define DEBUG */ /* be verbose */
 /*** global variables ****************************************************/
@@ -83,6 +83,7 @@ int main(int argc, char *argv[])
    do
    {   
        UpdateWindow();
+       //printf("\n%d\n", ClientSeatNumInt);
        while((currentTurn != ClientSeatNumInt) && (isReady != 0))
        {
            strcpy(SendBuf, "");
