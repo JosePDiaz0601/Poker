@@ -101,8 +101,14 @@ int main(int argc, char *argv[])
    if (0 == strcmp(token, "ENTER")){
        //printf("\n\n\nENTERED THIS IF\n\n\n\n");
        ClientSeatNumChar = SendBuf[6];
-       ClientSeatNumInt = (SendBuf[6] - '0');     // Set client to a number for later comparison
+       ClientSeatNumInt = (SendBuf[6] - '0');     // Set client to a int number for later comparison
        //printf("\n\nCLIENT SEAT NUMBER IS %d\n\n", ClientSeatNumInt);
+   }
+   else if (0 == strcmp(token, "RAISE")){
+       strcpy(SendBuf, "3");                                            // sending 3 for raise
+       strncat(SendBuf, ClientSeatNumChar, 256 - strlen(SendBuf) - 1);  // sending client seat number
+       token = strtok(NULL, s);
+       strncat(SendBuf, token, 256 - strlen(SendBuf) - 1);                // outcome would be 31150 if raise, seat 1, $150
    }
   
  
@@ -113,7 +119,7 @@ int main(int argc, char *argv[])
        strcpy(SendBuf, "2");                   // setting SendBuf to '2'
        strcat(SendBuf, ClientSeatNumChar);     // setting SendBuf to '2(client seat number)'
    }
- 
+
    if (l)
    {   SocketFD = socket(AF_INET, SOCK_STREAM, 0);
        if (SocketFD < 0)
@@ -157,19 +163,31 @@ int main(int argc, char *argv[])
 
        else if (RecvBuf[0] == "2"){    // client recieving string from server (who called?)
            int tempplayernum;
-           tempplayernum = (int)((char)(RecvBuf[1])) - 48;
+           tempplayernum = (RecvBuf[1] - '0');
            if (tempplayernum == ClientSeatNumInt){         // checking if this specific client called
-               printf("Player at Seat %d, you have called.", tempplayernum);
+               printf("Player at Seat %d, you have called.", tempplayernum);        // print for client who called
            }
            else{
- 
+               // do nothing since this client didn't call 
            }
        }
+
+       else if (RecvBuf[0] == "3"){     // client recieving string from server (who raised?)
+           int tempplayernum;
+           tempplayernum = (RecvBuf[1] - '0');
+           if (tempplayernum == ClientSeatNumInt){  
+               printf("Player at Seat %d, you have raised.", tempplayernum);
+           }
+           else{
+               // do nothing since this client didn't call
+           }
+       }
+
  
        else{
            // use this section to printf the server telling the client what commands they can do :)
        }
- 
+
       
        //makeCards(RecvBuf); // GTK
  

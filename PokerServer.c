@@ -104,7 +104,8 @@ void ProcessRequest(		/* process a time request by a client */
 {
     int  l, n;
     static char RecvBuf[256];	/* message buffer for receiving a message */
-    static char TempRecvBuf[256];
+    static char TempRecvBuf[256]; // temperary RecvBuf for comparison (for ENTER, NAME comparisons)
+    static char Temp2RecvBuf[256];  // another temp RecvBuf for comparison (for RAISE)
     static char SendBuf[256];	/* message buffer for sending a response */
     static char PlayerBuf[256]; /* message buffer for sending all player names */
     char *tokenName;
@@ -113,6 +114,7 @@ void ProcessRequest(		/* process a time request by a client */
     char *tokenSeatNum;
     char playerseatchar;    // for call, raise, and fold
     int playerseatint;      // for call, raise, and fold
+    int pointsraised;       // amount of points raised
     int tokenSeatNumInt;
     int tokenSeatNumClient; // this is the seat number that is saved in client side 
     char equal[3] = " = ";
@@ -642,6 +644,7 @@ printf("passed p2 statement\n");
 printf("%s\n", SendBuf);
     // parsing RecvBuf string for string inputs
     strcpy(TempRecvBuf, RecvBuf);
+    strcpy(Temp2RecvBuf, RecvBuf);
     token = strtok(TempRecvBuf, s); 
     // setting seat number of client
     if (0 == strcmp(token, "ENTER")){
@@ -702,7 +705,7 @@ printf("%s\n", SendBuf);
             }
         }
     }
-/*
+
     // this is for setting name of client
     else if (0 == strcmp(token, "NAME")){
         tokenName = strtok(NULL, s);
@@ -774,13 +777,76 @@ printf("%s\n", SendBuf);
         }
     }
 
-    if (0 == strcmp(RecvBuf[0], '2')){
-        playerseatchar = RecvBuf[2];
-        playerseatint = (int)((char)(RecvBuf[2])) - 48;
-        call(playerseatint);
+    if (0 == strcmp(RecvBuf[0], '2')){   // RecvBuf should be like 21, 2 for call; 1 for seat number
+        playerseatchar = RecvBuf[1];     
+        playerseatint = (RecvBuf[1] - '0'); // char to int
+        if (playerseatint == 1){            // conditional to send parameter for call
+            player1data.playerSeat = 1;
+            call(player1data.playerSeat);
+        }
+        else if (playerseatint == 2){
+            player2data.playerSeat = 2;
+            call(player2data.playerSeat);
+        }
+        else if (playerseatint == 3){
+            player3data.playerSeat = 3;
+            call(player3data.playerSeat);
+        }
+        else if (playerseatint == 4){
+            player4data.playerSeat = 4;
+            call(player4data.playerSeat);
+        }
+        else if (playerseatint == 5){
+            player5data.playerSeat = 5;
+            call(player5data.playerSeat);
+        }
+        else if (playerseatint == 6){
+            player6data.playerSeat = 6;
+            call(player6data.playerSeat);
+        }
+        strcpy(SendBuf, RecvBuf);       // sending back to client 
     } 
 
-    while(1){
+    else if (0 == strcmp(RecvBuf[0], '3')){     // RecvBuf and Temp2RecvBuf = 31150; 3 = raise; 1 = seat number; 150 = raise amount
+        Temp2RecvBuf[0] = 'a';                       // "a1150"
+        playerseatchar = RecvBuf[1];            
+        playerseatint = (RecvBuf[1] - '0');
+        Temp2RecvBuf[1] = " ";                       // "a 150"
+        token = strtok(Temp2RecvBuf, s);
+        if (0 == strcmp(token, "a")){
+            token = strtok(NULL, s);                // token = "150"
+            pointsraised = atoi(token);             // pointsraised = 150    
+        }
+        if (playerseatint == 1){                    // conditional to send parameter for call
+            player1data.playerSeat = 1;
+            raise(player1data.playerSeat, pointsraised);
+        }
+        else if (playerseatint == 2){
+            player2data.playerSeat = 2;
+            raise(player2data.playerSeat, pointsraised);
+        }
+        else if (playerseatint == 3){
+            player3data.playerSeat = 3;
+            raise(player3data.playerSeat, pointsraised);
+        }
+        else if (playerseatint == 4){
+            player4data.playerSeat = 4;
+            raise(player4data.playerSeat, pointsraised);
+        }
+        else if (playerseatint == 5){
+            player5data.playerSeat = 5;
+            raise(player5data.playerSeat, pointsraised);
+        }
+        else if (playerseatint == 6){
+            player6data.playerSeat = 6;
+            raise(player6data.playerSeat, pointsraised);
+        }
+        strcpy(SendBuf, RecvBuf);   // sending back to client 
+    }
+
+
+    // WE DONT NEED THIS WHILE LOOP
+   /* while(1){
         switch(token[0]){
         case 'R':
             token = strtok(NULL, s);
