@@ -16,7 +16,6 @@ void runGame();
 int currentPotAmount;
 int currentBetAmount;
 int players;
-int currentplayerturn;
 /*
 char player1Name[16] = "\0";
 char player2Name[16] = "\0";

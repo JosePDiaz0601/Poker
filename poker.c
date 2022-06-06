@@ -7,6 +7,8 @@ int player1points, player2points, player3points, player4points, player5points, p
 int pot = 0;
 int round = 0;
 int currentplayerturn = 1;
+int raiseLoop = 0;
+int raise = 0;
  // Change this later so that player count isnt hardcoded
 currentBetAmount = 0;
 currentPotAmount = 0;
@@ -620,8 +622,13 @@ int roundOver()
     int highScore = 0;
     if (players >= 2)
     {
+        if(player1data.hasfolded = 0)
+        {
         player1Score = playerPoints(player1);
+        }if(player2data.hasfolded = 0)
+        {
         player2Score = playerPoints(player2);
+        }
         if (player1Score >= player2Score)
         {
             topScore = 1;
@@ -635,7 +642,10 @@ int roundOver()
     }
     if (players >= 3)
     {
+        if(player3data.hasfolded = 0)
+        {
         player3Score = playerPoints(player3);
+        }
         if (player3Score >= highScore)
         {
             topScore = 3;
@@ -644,7 +654,10 @@ int roundOver()
     }
     if (players >= 4)
     {
+        if(player4data.hasfolded = 0)
+        {
         player4Score = playerPoints(player4);
+        }
         if (player4Score >= highScore)
         {
             topScore = 4;
@@ -653,7 +666,10 @@ int roundOver()
     }
     if (players >= 5)
     {
+        if(player5data.hasfolded = 0)
+        {
         player5Score = playerPoints(player5);
+        }
         if (player5Score >= highScore)
         {
             topScore = 5;
@@ -662,7 +678,10 @@ int roundOver()
     }
     if (players >= 6)
     {
+        if(player1data.hasfolded = 0)
+        {
         player6Score = playerPoints(player6);
+        }
         if (player6Score >= highScore)
         {
             topScore = 6;
@@ -671,7 +690,7 @@ int roundOver()
     }
 
     // Find out if we have a tie
-    int tiePerson;
+/*    int tiePerson;
     for (int i = 1; i < players; i++)
     {
         if (i == topScore)
@@ -729,11 +748,10 @@ int roundOver()
     if (tiePerson != 0)
     {
         return ((tiePerson * 10) + topScore);
-    }
-    else
-    {
+    }*/
+        round = 0;
         return topScore;
-    }
+    
 }
 
 void call(struct PLAYERDATA player)
@@ -741,11 +759,18 @@ void call(struct PLAYERDATA player)
     currentPotAmount = currentBetAmount + currentPotAmount;
     player.points = player.points - currentBetAmount;
     currentplayerturn++;
+    if(raise == 1)
+    {
+        raiseLoop ++;
+    }
+    turnChecker();
 }
 
 void fold(struct PLAYERDATA player)
 {
     player.hasFolded = 1;
+    currentplayerturn++;
+    turnChecker();
 }
 
 void raise(struct PLAYERDATA player, int raiseAmount)
@@ -753,4 +778,19 @@ void raise(struct PLAYERDATA player, int raiseAmount)
     currentBetAmount = currentBetAmount + raiseAmount;
     currentPotAmount = currentBetAmount + currentPotAmount;
     player.points = player.points - currentBetAmount;
+    raise = 1;
+    
+}
+
+void turnChecker()
+{
+    if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }
+    if (round == 4)
+    {
+        roundOver();
+    }
 }
