@@ -762,11 +762,43 @@ void call(struct PLAYERDATA player)
     if(hasraise == 1)
     {
         raiseLoop ++;
+        currentplayerturn++;
         if(raiseLoop == (players-1))
         {
             hasraise =0;
             raiseLoop = 0;
             currentplayerturn ++;
+            if (currentplayerturn == 1 && player1data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 2 && player2data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 3 && player3data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 4 && player4data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 5 && player5data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 6 && player6data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+
             if (currentplayerturn == (players + 1))
             {
                 currentplayerturn = 1;
@@ -787,11 +819,43 @@ void fold(struct PLAYERDATA player)
     if(hasraise == 1)
     {
         raiseLoop ++;
+        currentplayerturn++;
         if(raiseLoop == (players-1))
         {
             hasraise =0;
             raiseLoop = 0;
             currentplayerturn ++;
+            if (currentplayerturn == 1 && player1data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 2 && player2data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 3 && player3data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 4 && player4data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 5 && player5data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+            if (currentplayerturn == 6 && player6data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+        round++;
+    }}
+
             if (currentplayerturn == (players + 1))
             {
                 currentplayerturn = 1;
@@ -827,7 +891,13 @@ void turnChecker()
         currentplayerturn = 1;
         round++;
     }
-    if (round == 4)
+    if (currentplayerturn == 1 && player1data.hasFolded == 1){currentplayerturn++; turnChecker;}
+    if (currentplayerturn == 2 && player2data.hasFolded == 1){currentplayerturn++; turnChecker;}
+    if (currentplayerturn == 3 && player3data.hasFolded == 1){currentplayerturn++; turnChecker;}
+    if (currentplayerturn == 4 && player4data.hasFolded == 1){currentplayerturn++; turnChecker;}
+    if (currentplayerturn == 5 && player5data.hasFolded == 1){currentplayerturn++; turnChecker;}
+    if (currentplayerturn == 6 && player6data.hasFolded == 1){currentplayerturn++; turnChecker;}
+    if (round == 4 ||(player1data.hasFolded + player2data.hasFolded +player3data.hasFolded +player4data.hasFolded +player5data.hasFolded + player6data.hasFolded == (players -1)))
     {
         winner = roundOver();
     }

@@ -861,6 +861,13 @@ if(strlen(RecvBuf) >= 1){
             player6data.playerSeat = 6;
             raise(player6data, pointsraised);
         }
+        if (winner != 0){
+            strcpy(SendBuf, "");
+            SendBuf[0] = "5";
+            char winnerchar;
+            winnerchar = (winner + '0');
+            SendBuf[1] = winnerchar;
+        }
         strcpy(SendBuf, RecvBuf);   // sending back to client 
         char currentplayerturnchar = (currentplayerturn + '0');
         SendBuf[strlen(SendBuf) -1] = currentplayerturnchar;     // adding player turn
@@ -892,6 +899,13 @@ if(strlen(RecvBuf) >= 1){
         else if (playerseatint == 6){
             player6data.playerSeat = 6;
             fold(player6data);
+        }
+        if (winner != 0){
+            strcpy(SendBuf, "");
+            SendBuf[0] = "5";
+            char winnerchar;
+            winnerchar = (winner + '0');
+            SendBuf[1] = winnerchar;
         }
         strcpy(SendBuf, RecvBuf);       // sending back to client 
         char currentplayerturnchar = (currentplayerturn + '0');

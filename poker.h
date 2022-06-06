@@ -40,7 +40,7 @@ struct PLAYERDATA
     char *playerName[16];
     int playerSeat;
     int points;
-    bool hasFolded;
+    int hasFolded;
     bool connected;
 };
 
