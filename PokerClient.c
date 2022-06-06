@@ -162,7 +162,8 @@ int main(int argc, char *argv[])
            your1CardType = CardBuf[(12+(4*(ClientSeatNumInt-1)))];
            your2CardSuit = CardBuf[(13+(4*(ClientSeatNumInt-1)))];
            your2CardType = CardBuf[(14+(4*(ClientSeatNumInt-1)))];
-           makeCards();
+           makeCards(your1CardSuit, your1CardType, pCard1);
+           makeCards(your2CardSuit, your2CardType, pCard2);
        }
 
        else if (RecvBuf[0] == "2"){    // client recieving string from server (who called?)
@@ -203,7 +204,7 @@ int main(int argc, char *argv[])
            switch (gameState)
            {
             case 1:
-    
+                
                break;
             case 2:
 

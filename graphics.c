@@ -251,7 +251,7 @@ void makeCards(char cardSuit, char cardType, GtkWidget *Card){
  
            case 'Q' :
            printf("\nEntered");
-           gtk_image_set_from_file(Card, "./images/queen_of_hearts2.png");
+           gtk_image_set_from_file(Card, "./images/queen_of_hearts.png");
            break;
  
            case 'K' :
@@ -312,7 +312,7 @@ void makeCards(char cardSuit, char cardType, GtkWidget *Card){
            break;
  
            case 'Q' :
-           gtk_image_set_from_file(Card, "./images/queen_of_diamonds2.png");
+           gtk_image_set_from_file(Card, "./images/queen_of_diamonds.png");
            break;
  
            case  'K' :
@@ -371,7 +371,7 @@ void makeCards(char cardSuit, char cardType, GtkWidget *Card){
            break;
  
            case 'Q' :
-           gtk_image_set_from_file(Card, "./images/queen_of_spades2.png");
+           gtk_image_set_from_file(Card, "./images/queen_of_spades.png");
            break;
  
            case 'K' :
@@ -385,18 +385,6 @@ void makeCards(char cardSuit, char cardType, GtkWidget *Card){
            default:
            printf("Somehow couldn't get the right cards? This is spades");
                          }}
- 
- 
- 
- 
-       }
- 
- 
-   gtk_layout_put(GTK_LAYOUT(layout), pCard1, 450, 600);
-   gtk_widget_set_size_request(pCard1, 100, 145);
-   gtk_layout_put(GTK_LAYOUT(layout), pCard2, 850, 600);
-   gtk_widget_set_size_request(pCard2, 100, 145);
- 
        printf("\nExit Make Cards\n");
        return;
 }
