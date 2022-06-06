@@ -58,4 +58,9 @@ struct PLAYERDATA player6data;
 // player1data.playerName = "Test";
 
 const char *riverStringCat(int i, char *SendBuf);
+
+void raise(struct PLAYERDATA player, int raiseAmount);
+void fold(struct PLAYERDATA player);
+void call(struct PLAYERDATA player);
+
 #endif
