@@ -708,10 +708,10 @@ printf("%s\n", SendBuf);
         tokenName = strtok(NULL, s);
         if (tokenSeatNumClient == 1){
             if (player1data.playerName == ""){
-                size_t token_destination_size = sizeof(tokenName);
-                strncpy(player1data.playerName, tokenName, token_destination_size);
-                player1data.playerName[token_destination_size] = '0';
-                strcat(PlayerBuf, player1data.playerName);
+                size_t token_destination_size = sizeof(tokenName);                              
+                strncpy(player1data.playerName, tokenName, token_destination_size);             // copying data into data structure
+                player1data.playerName[token_destination_size] = '0';                           // setting name VICTOR with 0 at end = VICTOR0
+                strncat(PlayerBuf, player1data.playerName, 256 - strlen(PlayerBuf) - 1);        // 3 parameter (- 1) because of terminating character 
                 }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -722,7 +722,7 @@ printf("%s\n", SendBuf);
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player2data.playerName, tokenName, token_destination_size);
                 player2data.playerName[token_destination_size] = '0';
-                strcat(PlayerBuf, player2data.playerName);
+                strncat(PlayerBuf, player2data.playerName, 256 - strlen(PlayerBuf) - 1);
                 }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -733,7 +733,7 @@ printf("%s\n", SendBuf);
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player3data.playerName, tokenName, token_destination_size);
                 player3data.playerName[token_destination_size] = '0';
-                strcat(PlayerBuf, player3data.playerName);
+                strncat(PlayerBuf, player3data.playerName, 256 - strlen(PlayerBuf) - 1);
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -744,7 +744,7 @@ printf("%s\n", SendBuf);
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player4data.playerName, tokenName, token_destination_size);
                 player4data.playerName[token_destination_size] = '0';
-                strcat(PlayerBuf, player4data.playerName);
+                strncat(PlayerBuf, player4data.playerName, 256 - strlen(PlayerBuf) - 1);
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -755,7 +755,7 @@ printf("%s\n", SendBuf);
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player5data.playerName, tokenName, token_destination_size);
                 player5data.playerName[token_destination_size] = '0';
-                strcat(PlayerBuf, player5data.playerName);
+                strncat(PlayerBuf, player5data.playerName, 256 - strlen(PlayerBuf) - 1);
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -766,7 +766,7 @@ printf("%s\n", SendBuf);
                 size_t token_destination_size = sizeof(tokenName);
                 strncpy(player6data.playerName, tokenName, token_destination_size);
                 player6data.playerName[token_destination_size] = '0';
-                strcat(PlayerBuf, player6data.playerName);
+                strncat(PlayerBuf, player6data.playerName, 256 - strlen(PlayerBuf) - 1);
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -778,8 +778,9 @@ printf("%s\n", SendBuf);
         playerseatchar = RecvBuf[2];
         playerseatint = (int)((char)(RecvBuf[2])) - 48;
         call(playerseatint);
-    }
-    /*while(1){
+    } 
+
+    while(1){
         switch(token[0]){
         case 'R':
             token = strtok(NULL, s);
