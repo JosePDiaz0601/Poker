@@ -97,9 +97,12 @@ int main(int argc, char *argv[])
  
    strcpy(TempSendBuf, SendBuf);   // copy string for temp Send Buffer
    token = strtok(TempSendBuf, s);     // ENTER player input
-   if (token == "ENTER"){
+    //printf("\n\n Token is %s. \n\n", token);
+   if (0 == strcmp(token, "ENTER")){
+       //printf("\n\n\nENTERED THIS IF\n\n\n\n");
        ClientSeatNumChar = SendBuf[6];
-       ClientSeatNumInt = (int)((char)(SendBuf[6])) - 48;     // Set client to a number for later comparison
+       ClientSeatNumInt = (SendBuf[6] - '0');     // Set client to a number for later comparison
+       //printf("\n\nCLIENT SEAT NUMBER IS %d\n\n", ClientSeatNumInt);
    }
   
  
@@ -141,23 +144,17 @@ int main(int argc, char *argv[])
        if (RecvBuf[0] == '1'){
            strcpy(PlayerBuf, RecvBuf);    // all the player names
        }
-
  
-       if (RecvBuf[0] == '0'){
+       else if (RecvBuf[0] == '0'){
            strcpy(CardBuf, RecvBuf);      // all the INFORMATION of poker game
-           your1CardSuit = CardBuf[(11+(4*(seat-1)))];
-           your1CardType = CardBuf[(12+(4*(seat-1)))];
-           your2CardSuit = CardBuf[(13+(4*(seat-1)))];
-           your2CardType = CardBuf[(14+(4*(seat-1)))];
+           printf("\n%s\n", CardBuf);
+           your1CardSuit = CardBuf[(11+(4*(ClientSeatNumInt-1)))];
+           your1CardType = CardBuf[(12+(4*(ClientSeatNumInt-1)))];
+           your2CardSuit = CardBuf[(13+(4*(ClientSeatNumInt-1)))];
+           your2CardType = CardBuf[(14+(4*(ClientSeatNumInt-1)))];
            makeCards();
        }
-       else if (RecvBuf[0] == "0"){
-           strcpy(CardBuf, RecvBuf);      // all the card INFORMATION of poker game
-           char your1CardSuit = CardBuf[(11+(4*seat-1))];
-           char your1CardType = CardBuf[(12+(4*seat-1))];
-           char your2CardSuit = CardBuf[(13+(4*seat-1))];
-           char your2CardType = CardBuf[(14+(4*seat-1))];
-       }
+
        else if (RecvBuf[0] == "2"){    // client recieving string from server (who called?)
            int tempplayernum;
            tempplayernum = (int)((char)(RecvBuf[1])) - 48;
