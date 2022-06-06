@@ -59,12 +59,17 @@ DEBUG	= -O2
 CFLAGS	= -w -std=c11 $(DEBUG) $(GTKINC) -c
 LFLAGS	= -w -std=c11 $(DEBUG) $(GTKLIBS) -lm
 
-
-all: PokerClient PokerServer
+all:
+	gcc ./src/PokerClient.c  $(CFLAGS) -o ./bin/PokerClient.o
+	gcc ./src/graphics.c $(CFLAGS) -o ./bin/graphics.o
+	gcc ./src/poker.c $(CFLAGS) -o ./bin/Poker.o
+	gcc ./src/PokerServer.c $(CFLAGS) -o ./bin/PokerServer.o
+	gcc ./bin/PokerClient.o ./bin/graphics.o $(LFLAGS) -o ./bin/PokerClient
+	gcc ./bin/PokerServer.o ./bin/Poker.o $(LFLAGS) -o ./bin/PokerServer
 
 clean:
-	rm -f *.o
-	rm -f PokerClient PokerServer
+	rm -f ./bin/*.o
+	rm -f ./bin/PokerClient ./bin/PokerServer
 
 test:
 	@echo "To run the examples, first start the server in one terminal,"
@@ -73,6 +78,8 @@ test:
 	@echo "For example:"
 	@echo "crystalcove% ./PokerServer 10000"
 	@echo "crystalcove% ./PokerClient crystalcove 10000"
+
+
 
 PokerClient.o:  
 	gcc ./src/PokerClient.c  $(CFLAGS) -o ./bin/PokerClient.o
@@ -92,10 +99,4 @@ PokerServer.o:
 PokerServer: 
 	gcc ./bin/PokerServer.o ./bin/Poker.o $(LFLAGS) -o ./bin/PokerServer
 
-All:
-	gcc ./src/PokerClient.c  $(CFLAGS) -o ./bin/PokerClient.o
-	gcc ./src/graphics.c $(CFLAGS) -o ./bin/graphics.o
-	gcc ./src/poker.c $(CFLAGS) -o ./bin/Poker.o
-	gcc ./src/PokerServer.c $(CFLAGS) -o ./bin/PokerServer.o
-	gcc ./bin/PokerClient.o ./bin/graphics.o $(LFLAGS) -o ./bin/PokerClient
-	gcc ./bin/PokerServer.o ./bin/Poker.o $(LFLAGS) -o ./bin/PokerServer
+
