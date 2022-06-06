@@ -130,7 +130,7 @@ void ProcessRequest(		/* process a time request by a client */
     printf("%s: Received message: %s\n", Program, RecvBuf);
 #endif
     // get cards each cilent has
-    if (0 == strcmp(RecvBuf, "GET CARDS SEAT 1")){
+    if (0 == strcmp(RecvBuf, "READY")){
         
         //strncpy(SendBuf, "Success", sizeof(SendBuf)-1);
         
@@ -899,10 +899,11 @@ printf("%s\n", SendBuf);
         
     }*/
 
-    if (0 == strcmp(RecvBuf, "READY")){
+ /*   if (0 == strcmp(RecvBuf, "READY")){
         strcat(SendBuf, PlayerBuf);
     }
     printf("\nMade it to End\n");
+    */
 
 //Debug messages for Server response, in case it fails
 #ifdef DEBUG
