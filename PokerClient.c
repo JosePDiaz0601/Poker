@@ -238,17 +238,41 @@ int main(int argc, char *argv[])
            int gameState = (RecvBuf[1] -'0');
            switch (gameState)
            {
-            case 1:
-                
+            case 0:
+                your1CardSuit = CardBuf[(11+(4*(ClientSeatNumInt-1)))];
+                your1CardType = CardBuf[(12+(4*(ClientSeatNumInt-1)))];
+                your2CardSuit = CardBuf[(13+(4*(ClientSeatNumInt-1)))];
+                your2CardType = CardBuf[(14+(4*(ClientSeatNumInt-1)))];
+                makeCards(your1CardSuit, your1CardType, pCard1);
+                makeCards(your2CardSuit, your2CardType, pCard2);
                break;
-            case 2:
+            case 1:
+                char river1s, river2s, river3s;
+                char river1t, river2t, river3t;
+                river1s = CardBuf[1];
+                river2s = CardBuf[3];
+                river3s = CardBuf[5];
+                river1t = CardBuf[2];
+                river2t = CardBuf[4];
+                river3t = CardBuf[6];
 
+                makeCards(river1s, river1t, tCard1);
+                makeCards(river2s, river2t, tCard2);
+                makeCards(river3s, river3t, tCard3);
+                break;
+            case 2:
+                char river4s, river4t;
+                river4s = CardBuf[7];
+                river4t = CardBuf[8];
+
+                makeCards(river4s, river4t, tCard4);
                 break;
             case 3:
+                char river5s, river5t;
+                river5s = CardBuf[9];
+                river5t = CardBuf[10];
 
-                break;
-            case 4:
-
+                makeCards(river5s, river5t, tCard5);
                 break;
            
            default:
