@@ -233,6 +233,10 @@ int main(int argc, char *argv[])
            currentTurn = currentplayerturn;
            }
 
+        else if (RecvBuf[0] == "5"){
+            int winner;
+            winner = (RecvBuf[1] - '0');
+        }
 
         else if (RecvBuf[0] == "6"){    // client recieving string from server (who called?)
            int gameState = (RecvBuf[1] -'0');

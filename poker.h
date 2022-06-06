@@ -13,6 +13,8 @@ void startGame(int players);
 int main(int argc, char *argv[]);
 void newRound();
 void runGame();
+int roundOver();
+int winner;
 int currentPotAmount;
 int currentBetAmount;
 int players;

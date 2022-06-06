@@ -829,6 +829,6 @@ void turnChecker()
     }
     if (round == 4)
     {
-        roundOver();
+        winner = roundOver();
     }
 }
