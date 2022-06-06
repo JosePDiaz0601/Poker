@@ -57,7 +57,7 @@ int MakeServerSocket(		/* create a socket on this server */
     struct sockaddr_in ServSocketName;
 
     //Updated from Doemer's outline, Delimiter for changes from skeleton code
-    startGame(7);                             // THIS STARTS THE GAME!! REMEMBER!!
+    startGame(6);                             // THIS STARTS THE GAME!! REMEMBER!!
     /* create the socket */
     ServSocketFD = socket(PF_INET, SOCK_STREAM, 0);
     if (ServSocketFD < 0)
@@ -134,7 +134,7 @@ void ProcessRequest(		/* process a time request by a client */
         
         strncpy(SendBuf, "", sizeof(SendBuf)-1);
         //cardNum = ((int)river[0].type + '0');               // river card 1
-        printf("\n FIRST CARD IS %c%d\n", player1[0].suit, player1[0].type);
+        printf("\n FIRST CARD IS %c%d\n", river[0].suit, river[0].type);
         strcat(SendBuf, "0");
         for(int i = 0; i <= 4; i++){
         
@@ -207,81 +207,7 @@ void ProcessRequest(		/* process a time request by a client */
             strcat(SendBuf, "A"); 
         }
         }
-        //strcat(SendBuf, cardNum);
- /*       
-        if(river[1].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[1].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[1].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[1].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-        
-        
-        if(river[2].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[2].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[2].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[2].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-        
-        if(river[3].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[3].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[3].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[3].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-        
-        if(river[4].suit == 'H')
-        {
-            strcat(SendBuf, "H"); 
-        }
-        if(river[4].suit == 'D')
-        {
-            strcat(SendBuf, "D"); 
-        }
-        if(river[4].suit == 'S')
-        {
-            strcat(SendBuf, "S"); 
-        }
-        if(river[4].suit == 'C')
-        {
-            strcat(SendBuf, "C"); 
-        }
-        //strcat(SendBuf, cardNum);
-*/
+        printf("passed river statement\n");
         for(int i = 0; i <= 1; i++){
         if(player1[i].suit == 'H')
         {
@@ -352,6 +278,7 @@ void ProcessRequest(		/* process a time request by a client */
             strcat(SendBuf, "A"); 
         }
         }
+        printf("passed p1 statement\n");
         for(int i = 0; i <= 1; i++){
         if(player2[i].suit == 'H')
         {
@@ -422,7 +349,7 @@ void ProcessRequest(		/* process a time request by a client */
             strcat(SendBuf, "A"); 
         }
         }
-
+printf("passed p2 statement\n");
         for(int i = 0; i <= 1; i++){
         if(player3[i].suit == 'H')
         {
@@ -493,6 +420,7 @@ void ProcessRequest(		/* process a time request by a client */
             strcat(SendBuf, "A"); 
         }
         }
+        printf("passed p3 statement\n");
 
                 for(int i = 0; i <= 1; i++){
         if(player4[i].suit == 'H')
@@ -543,7 +471,7 @@ void ProcessRequest(		/* process a time request by a client */
         {
             strcat(SendBuf, "9"); 
         }
-        if(player4[i].type == 10)
+        if(player4[i].type == 10) 
         {
             strcat(SendBuf, "T"); 
         }
@@ -564,6 +492,7 @@ void ProcessRequest(		/* process a time request by a client */
             strcat(SendBuf, "A"); 
         }
         }
+        printf("passed p4 statement\n");
 
                 for(int i = 0; i <= 1; i++){
         if(player5[i].suit == 'H')
@@ -635,8 +564,9 @@ void ProcessRequest(		/* process a time request by a client */
             strcat(SendBuf, "A"); 
         }
         }
+        printf("passed p5 statement\n");
 
-                for(int i = 0; i <= 1; i++){
+        for(int i = 0; i <= 1; i++){
         if(player6[i].suit == 'H')
         {
             strcat(SendBuf, "H"); 
@@ -706,9 +636,10 @@ void ProcessRequest(		/* process a time request by a client */
             strcat(SendBuf, "A"); 
         }
         }
-    }
         SendBuf[sizeof(SendBuf)-1] = 0;
-
+        
+    }
+printf("%s\n", SendBuf);
     // parsing RecvBuf string for string inputs
     strcpy(TempRecvBuf, RecvBuf);
     token = strtok(TempRecvBuf, s); 
@@ -771,7 +702,7 @@ void ProcessRequest(		/* process a time request by a client */
             }
         }
     }
-
+/*
     // this is for setting name of client
     else if (0 == strcmp(token, "NAME")){
         tokenName = strtok(NULL, s);
