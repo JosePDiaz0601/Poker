@@ -15,6 +15,7 @@ void newRound();
 void runGame();
 int currentPotAmount;
 int currentBetAmount;
+int players;
 /*
 char player1Name[16] = "\0";
 char player2Name[16] = "\0";
