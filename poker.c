@@ -812,6 +812,7 @@ void raise(struct PLAYERDATA player, int raiseAmount)
     currentPotAmount = currentBetAmount + currentPotAmount;
     player.points = player.points - currentBetAmount;
     hasraise = 1;
+    raiseLoop = 0;
     currentplayerturn++;
     if (currentplayerturn == (players + 1))
     {
