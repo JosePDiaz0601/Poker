@@ -187,6 +187,9 @@ void startGame(int players)
 // This function gives the river its proper cards and all the players are given new cards
 void newRound()
 {
+    winner = 0;
+    currentplayerturn = 1;
+    pot = 0;
     for (int i = 0; i < 52; i++)
     {
         dealer[i].taken = 'N';
