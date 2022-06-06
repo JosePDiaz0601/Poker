@@ -7,7 +7,7 @@ int player1points, player2points, player3points, player4points, player5points, p
 int pot = 0;
 int round = 0;
 int currentplayerturn = 1;
-int players = 6; // Change this later so that player count isnt hardcoded
+ // Change this later so that player count isnt hardcoded
 currentBetAmount = 0;
 currentPotAmount = 0;
 struct PLAYERDATA player1data = {"", 0, 1000, '0', '0'};
