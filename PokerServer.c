@@ -816,6 +816,8 @@ if(strlen(RecvBuf) >= 1){
             call(player6data);
         }
         strcpy(SendBuf, RecvBuf);       // sending back to client 
+        char currentplayerturnchar = (currentplayerturn + '0');
+        SendBuf[strlen(SendBuf) -1] = currentplayerturnchar;     // adding player turn
     } 
 
     else if (RecvBuf[0] == '3'){     // RecvBuf and Temp2RecvBuf = 31150; 3 = raise; 1 = seat number; 150 = raise amount
@@ -853,6 +855,8 @@ if(strlen(RecvBuf) >= 1){
             raise(player6data, pointsraised);
         }
         strcpy(SendBuf, RecvBuf);   // sending back to client 
+        char currentplayerturnchar = (currentplayerturn + '0');
+        SendBuf[strlen(SendBuf) -1] = currentplayerturnchar;     // adding player turn
     }
 
     else if (RecvBuf[0] == '4'){   // RecvBuf should be like 41, 4 fold; 1 for seat number
@@ -883,6 +887,8 @@ if(strlen(RecvBuf) >= 1){
             fold(player6data);
         }
         strcpy(SendBuf, RecvBuf);       // sending back to client 
+        char currentplayerturnchar = (currentplayerturn + '0');
+        SendBuf[strlen(SendBuf) -1] = currentplayerturnchar;       // adding player turn
     }
 } 
 
