@@ -90,9 +90,9 @@ int main(int argc, char *argv[])
        "         'ENTER (SEAT NUMBER)' to choose a seat (without parenthesis),\n"
 /*        "         'F SEAT (NUMBER)' to Fold,\n"
        "         'R SEAT (NUMBER)' to Raise,\n"
-       "         'C SEAT (NUMBER)' to Call,\n"
+       "         'C SEAT (NUMBER)' to Call,\n"*/
        "         'READY' to start game,\n"
-*/
+
        "         'SHUTDOWN' to terminate the server,\n"
        "         or 'bye' to quit this client\n"
        "command: ", argv[0]);
