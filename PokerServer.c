@@ -57,7 +57,7 @@ int MakeServerSocket(		/* create a socket on this server */
     struct sockaddr_in ServSocketName;
 
     //Updated from Doemer's outline, Delimiter for changes from skeleton code
-    runGame();                             // THIS STARTS THE GAME!! REMEMBER!!
+    startGame(7);                             // THIS STARTS THE GAME!! REMEMBER!!
     /* create the socket */
     ServSocketFD = socket(PF_INET, SOCK_STREAM, 0);
     if (ServSocketFD < 0)
