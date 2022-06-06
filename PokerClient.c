@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
        if (RecvBuf[0] == '1'){
            strcpy(PlayerBuf, RecvBuf);    // all the player names
        }
-<<<<<<< HEAD
+
  
        if (RecvBuf[0] == '0'){
            strcpy(CardBuf, RecvBuf);      // all the INFORMATION of poker game
@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
            your2CardSuit = CardBuf[(13+(4*(seat-1)))];
            your2CardType = CardBuf[(14+(4*(seat-1)))];
            makeCards();
-=======
+
        else if (RecvBuf[0] == "0"){
            strcpy(CardBuf, RecvBuf);      // all the card INFORMATION of poker game
            char your1CardSuit = CardBuf[(11+(4*seat-1))];
