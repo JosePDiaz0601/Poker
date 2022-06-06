@@ -85,39 +85,7 @@ int main(int argc, char *argv[])
    {   
        UpdateWindow();
        //printf("\n%d\n", ClientSeatNumInt);
-       while((currentTurn != ClientSeatNumInt) && (isReady != 0))
-       {
-           strcpy(SendBuf, "");
-           UpdateWindow();
-            
-               SocketFD = socket(AF_INET, SOCK_STREAM, 0);
-                if (SocketFD < 0)
-                {   FatalError("socket creation failed");
-                }
-                printf("%s: Connecting to the server at port %d...\n",
-                    Program, PortNo);
-                if (connect(SocketFD, (struct sockaddr*)&ServerAddress,
-                    sizeof(ServerAddress)) < 0)
-                {   FatalError("connecting to server failed");
-                }
-                printf("%s: Sending message '%s'...\n", Program, SendBuf);
-                n = write(SocketFD, SendBuf, l);
-                if (n < 0)
-                {   FatalError("writing to socket failed");
-                }
-            #ifdef DEBUG
-                printf("%s: Waiting for response...\n", Program);
-            #endif
-                n = read(SocketFD, RecvBuf, sizeof(RecvBuf)-1);
-                if (n < 0)
-                {   FatalError("reading from socket failed");
-                }else{
-                RecvBuf[n] = 0;
-                printf("%s: Received response: %s\n", Program, RecvBuf);
-                    close(SocketFD);
-                
-            }
-        }
+       
        printf("%s: Enter a command to send to the poker server:\n"
        "         'ENTER (SEAT NUMBER)' to choose a seat (without parenthesis),\n"
 /*        "         'F SEAT (NUMBER)' to Fold,\n"
@@ -165,7 +133,13 @@ int main(int argc, char *argv[])
        strcpy(SendBuf, "4");                   // setting SendBuf to '2'
        SendBuf[1] = ClientSeatNumChar;     // setting SendBuf to '2(client seat number)'
    }
-
+   UpdateWindow();
+do{
+    UpdateWindow();
+    if(ClientSeatNumInt != currentTurn){
+        strcpy(SendBuf, "");
+    }
+    
    if (l)
    {   SocketFD = socket(AF_INET, SOCK_STREAM, 0);
        if (SocketFD < 0)
@@ -191,7 +165,7 @@ int main(int argc, char *argv[])
        }
        RecvBuf[n] = 0;
        printf("%s: Received response: %s\n", Program, RecvBuf);
-        if(0 != strcmp(RecvBuf, oldRecvBuf)){
+if(0 != strcmp(RecvBuf, oldRecvBuf)){
        // parsing string for information here (RecvBuf from server - long string)
        strcpy(oldRecvBuf, RecvBuf);
        if (RecvBuf[0] == '1'){
@@ -306,10 +280,110 @@ int main(int argc, char *argv[])
 #endif
        close(SocketFD);
    }
+   }while(isReady != 0);
    } while(0 != strcmp("SHUTDOWN", SendBuf));
    printf("%s: Exiting...\n", Program);
    return 0;
 }
+
+
+void clientFold()
+{
+    strcpy(SendBuf, "");
+    SendBuf[0] = '4';
+    SendBuf[1] = ClientSeatNumChar;
+                SocketFD = socket(AF_INET, SOCK_STREAM, 0);
+                if (SocketFD < 0)
+                {   FatalError("socket creation failed");
+                }
+                printf("%s: Connecting to the server at port %d...\n",
+                    Program, PortNo);
+                if (connect(SocketFD, (struct sockaddr*)&ServerAddress,
+                    sizeof(ServerAddress)) < 0)
+                {   FatalError("connecting to server failed");
+                }
+                printf("%s: Sending message '%s'...\n", Program, SendBuf);
+                n = write(SocketFD, SendBuf, l);
+                if (n < 0)
+                {   FatalError("writing to socket failed");
+                }
+            #ifdef DEBUG
+                printf("%s: Waiting for response...\n", Program);
+            #endif
+                n = read(SocketFD, RecvBuf, sizeof(RecvBuf)-1);
+                if (n < 0)
+                {   FatalError("reading from socket failed");
+                }else{
+                RecvBuf[n] = 0;
+                printf("%s: Received response: %s\n", Program, RecvBuf);
+                    close(SocketFD);
+                }
+}
+void clientCall()
+{
+    strcpy(SendBuf, "");
+    SendBuf[0] = '2';
+    SendBuf[1] = ClientSeatNumChar;
+                SocketFD = socket(AF_INET, SOCK_STREAM, 0);
+                if (SocketFD < 0)
+                {   FatalError("socket creation failed");
+                }
+                printf("%s: Connecting to the server at port %d...\n",
+                    Program, PortNo);
+                if (connect(SocketFD, (struct sockaddr*)&ServerAddress,
+                    sizeof(ServerAddress)) < 0)
+                {   FatalError("connecting to server failed");
+                }
+                printf("%s: Sending message '%s'...\n", Program, SendBuf);
+                n = write(SocketFD, SendBuf, l);
+                if (n < 0)
+                {   FatalError("writing to socket failed");
+                }
+            #ifdef DEBUG
+                printf("%s: Waiting for response...\n", Program);
+            #endif
+                n = read(SocketFD, RecvBuf, sizeof(RecvBuf)-1);
+                if (n < 0)
+                {   FatalError("reading from socket failed");
+                }else{
+                RecvBuf[n] = 0;
+                printf("%s: Received response: %s\n", Program, RecvBuf);
+                    close(SocketFD);
+                }
+}
+void clientRaise()
+{
+    strcpy(SendBuf, "");
+    SendBuf[0] = '3';
+    SendBuf[1] = ClientSeatNumChar;
+                SocketFD = socket(AF_INET, SOCK_STREAM, 0);
+                if (SocketFD < 0)
+                {   FatalError("socket creation failed");
+                }
+                printf("%s: Connecting to the server at port %d...\n",
+                    Program, PortNo);
+                if (connect(SocketFD, (struct sockaddr*)&ServerAddress,
+                    sizeof(ServerAddress)) < 0)
+                {   FatalError("connecting to server failed");
+                }
+                printf("%s: Sending message '%s'...\n", Program, SendBuf);
+                n = write(SocketFD, SendBuf, l);
+                if (n < 0)
+                {   FatalError("writing to socket failed");
+                }
+            #ifdef DEBUG
+                printf("%s: Waiting for response...\n", Program);
+            #endif
+                n = read(SocketFD, RecvBuf, sizeof(RecvBuf)-1);
+                if (n < 0)
+                {   FatalError("reading from socket failed");
+                }else{
+                RecvBuf[n] = 0;
+                printf("%s: Received response: %s\n", Program, RecvBuf);
+                    close(SocketFD);
+                }
+}
+
  
 /* EOF PokerClient.c */
  

@@ -173,6 +173,10 @@ if(check == 0){
    
    g_signal_connect(foldButton, "clicked",
 			G_CALLBACK(clientFold), NULL);
+   g_signal_connect(callButton, "clicked",
+			G_CALLBACK(clientCall), NULL);
+   g_signal_connect(raiseButton, "clicked",
+			G_CALLBACK(clientRaise), NULL);
  
    return 0;
  
@@ -188,10 +192,7 @@ if(check == 0){
 			G_CALLBACK(clientRaise, NULL);*/
 }
 
-void clientFold()
-{
-   printf("\n\n\nFOLD\n\n\n");
-}
+
  
 void makeCards(char cardSuit, char cardType, GtkWidget *Card){
 

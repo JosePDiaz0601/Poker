@@ -811,9 +811,15 @@ void call(struct PLAYERDATA player)
     }
     if(hasraise == 0)
     {   
+        if(currentplayerturn != players){
         currentplayerturn++;
         turnChecker();
+        }else{
+            currentplayerturn = 1;
+            turnChecker();
+        }
     }
+    return;
 }
 
 void fold(struct PLAYERDATA player)
@@ -871,6 +877,7 @@ void fold(struct PLAYERDATA player)
         currentplayerturn++;
         turnChecker();
     }
+    return;
 }
 
 void raise(struct PLAYERDATA player, int raiseAmount)
@@ -885,6 +892,7 @@ void raise(struct PLAYERDATA player, int raiseAmount)
     {
         currentplayerturn = 1;
     }
+    return;
 }
 
 void turnChecker()
@@ -904,4 +912,5 @@ void turnChecker()
     {
         winner = roundOver();
     }
+    return;
 }
