@@ -2,7 +2,7 @@
 * This file has been adapted to fit the needs of the socket communication
 * that is used between client and server for our poker game.
 * Author: Victor Dam, Arhant Katare
-* Based on code from Rainer Doemer in ClockClient.c
+* Based on code from Rainer Doemer in ClockClient.c//
 */
 #include <stdio.h>
 #include <stdlib.h>

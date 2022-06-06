@@ -1,6 +1,6 @@
 //GUI Functions
 //Worked on by: Jose Diaz | Cameron Bagheri
- 
+ //
 #include "graphics.h"
  
 //const char *Program = NULL;
