@@ -788,7 +788,7 @@ if(strlen(RecvBuf) >= 1){
         }
     }
 
-    if (RecvBuf[0] == '2'){   // RecvBuf should be like 21, 2 for call; 1 for seat number
+    if (RecvBuf[0] == '2'){   // RecvBuf should be like 21; 2 for call; 1 for seat number
         playerseatchar = RecvBuf[1];     
         playerseatint = (RecvBuf[1] - '0'); // char to int
         if (playerseatint == 1){            // conditional to send parameter for call
@@ -814,6 +814,13 @@ if(strlen(RecvBuf) >= 1){
         else if (playerseatint == 6){
             player6data.playerSeat = 6;
             call(player6data);
+        }
+        if (winner != 0){
+            strcpy(SendBuf, "");
+            SendBuf[0] = "5";
+            char winnerchar;
+            winnerchar = (winner + '0');
+            SendBuf[1] = winnerchar;
         }
         strcpy(SendBuf, RecvBuf);       // sending back to client 
         char currentplayerturnchar = (currentplayerturn + '0');
