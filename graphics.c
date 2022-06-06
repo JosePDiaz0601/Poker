@@ -11,19 +11,6 @@ time_t t;
  
 int random;
  
-   GtkWidget *Window, *layout;
-  
-   GtkWidget *background; //poker table background image
- 
-   GtkWidget *NewLabel;
- 
-GtkWidget *foldButton, *callButton, *raiseButton;
-   GtkWidget *table;
-   GtkWidget *pCard1, *pCard2;
-   GtkWidget *o1Card1, *o1Card2, *o2Card1, *o2Card2, *o3Card1, *o3Card2, *o4Card1, *o4Card2, *o5Card1, *o5Card2; //opponents cards
-   GtkWidget *tCard1, *tCard2, *tCard3, *tCard4, *tCard5;
- 
-   GtkWidget *tLabel, *pLabel; //just player and table label
  
  
 GtkWidget *CreateWindow(    /* create the server window */
