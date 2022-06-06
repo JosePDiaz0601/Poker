@@ -116,21 +116,27 @@ if(check == 0){
    G_CALLBACK(gtk_main_quit), NULL);
  
    gtk_widget_show_all(Window);
- 
+   
+   g_signal_connect(foldButton, "clicked",
+			G_CALLBACK(clientFold), NULL);
  
    return 0;
  
 
  //for example, when foldbutton "clicked", we run clientFold, passing the argument NULL into it. 
 
- g_signal_connect(foldButton, "clicked",
-			G_CALLBACK(clientFold, NULL);
+ 
 
- g_signal_connect(callButton, "clicked",
+ /*g_signal_connect(callButton, "clicked",
 			G_CALLBACK(clientCall, NULL);
 
  g_signal_connect(raiseButton, "clicked",
-			G_CALLBACK(clientRaise, NULL);
+			G_CALLBACK(clientRaise, NULL);*/
+}
+
+void clientFold()
+{
+   printf("\n\n\nFOLD\n\n\n");
 }
  
 void makeCards(char cardSuit, char cardType, GtkWidget *Card){

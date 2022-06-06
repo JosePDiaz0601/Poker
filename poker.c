@@ -758,19 +758,51 @@ void call(struct PLAYERDATA player)
 {
     currentPotAmount = currentBetAmount + currentPotAmount;
     player.points = player.points - currentBetAmount;
-    currentplayerturn++;
     if(raise == 1)
     {
         raiseLoop ++;
+        if(raiseLoop == (players-1))
+        {
+            raise =0;
+            raiseLoop = 0;
+            currentplayerturn ++;
+            if (currentplayerturn == (players + 1))
+            {
+                currentplayerturn = 1;
+            }
+            
+        }
     }
-    turnChecker();
+    if(raise == 0)
+    {   
+        currentplayerturn++;
+        turnChecker();
+    }
 }
 
 void fold(struct PLAYERDATA player)
 {
     player.hasFolded = 1;
-    currentplayerturn++;
-    turnChecker();
+    if(raise == 1)
+    {
+        raiseLoop ++;
+        if(raiseLoop == (players-1))
+        {
+            raise =0;
+            raiseLoop = 0;
+            currentplayerturn ++;
+            if (currentplayerturn == (players + 1))
+            {
+                currentplayerturn = 1;
+            }
+            
+        }
+    }
+    if(raise == 0)
+    {   
+        currentplayerturn++;
+        turnChecker();
+    }
 }
 
 void raise(struct PLAYERDATA player, int raiseAmount)
@@ -779,7 +811,11 @@ void raise(struct PLAYERDATA player, int raiseAmount)
     currentPotAmount = currentBetAmount + currentPotAmount;
     player.points = player.points - currentBetAmount;
     raise = 1;
-    
+    currentplayerturn++;
+    if (currentplayerturn == (players + 1))
+    {
+        currentplayerturn = 1;
+    }
 }
 
 void turnChecker()

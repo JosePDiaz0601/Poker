@@ -38,5 +38,5 @@ GtkWidget *CreateWindow(int *argc, char **argv[]);
 
 void makeCards(char cardSuit, char cardType, GtkWidget *Card);
 void UpdateWindow(void);
-
+void clientFold();
 #endif
