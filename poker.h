@@ -14,7 +14,7 @@ int main(int argc, char *argv[]);
 void newRound();
 void runGame();
 int roundOver();
-int winner;
+int winner = 0;
 int currentPotAmount;
 int currentBetAmount;
 int players;
