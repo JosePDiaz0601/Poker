@@ -159,11 +159,11 @@ int main(int argc, char *argv[])
    }
    else if (0 == strcmp(SendBuf, "Call")){     // call from client to server
        strcpy(SendBuf, "2");                   // setting SendBuf to '2'
-       strcat(SendBuf, ClientSeatNumChar);     // setting SendBuf to '2(client seat number)'
+       SendBuf[1] = ClientSeatNumChar;      // setting SendBuf to '2(client seat number)'
    }
    else if (0 == strcmp(SendBuf, "Fold")){     // call from client to server
        strcpy(SendBuf, "4");                   // setting SendBuf to '2'
-       strcat(SendBuf, ClientSeatNumChar);     // setting SendBuf to '2(client seat number)'
+       SendBuf[1] = ClientSeatNumChar;     // setting SendBuf to '2(client seat number)'
    }
 
    if (l)
