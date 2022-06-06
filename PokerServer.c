@@ -777,7 +777,7 @@ printf("%s\n", SendBuf);
         }
     }
 
-    if (0 == strcmp(RecvBuf[0], '2')){   // RecvBuf should be like 21, 2 for call; 1 for seat number
+    if (RecvBuf[0] == '2'){   // RecvBuf should be like 21, 2 for call; 1 for seat number
         playerseatchar = RecvBuf[1];     
         playerseatint = (RecvBuf[1] - '0'); // char to int
         if (playerseatint == 1){            // conditional to send parameter for call
@@ -807,13 +807,13 @@ printf("%s\n", SendBuf);
         strcpy(SendBuf, RecvBuf);       // sending back to client 
     } 
 
-    else if (0 == strcmp(RecvBuf[0], '3')){     // RecvBuf and Temp2RecvBuf = 31150; 3 = raise; 1 = seat number; 150 = raise amount
+    else if (RecvBuf[0] = '3'){     // RecvBuf and Temp2RecvBuf = 31150; 3 = raise; 1 = seat number; 150 = raise amount
         Temp2RecvBuf[0] = 'a';                       // "a1150"
         playerseatchar = RecvBuf[1];            
         playerseatint = (RecvBuf[1] - '0');
         Temp2RecvBuf[1] = " ";                       // "a 150"
         token = strtok(Temp2RecvBuf, s);
-        if (0 == strcmp(token, "a")){
+        if (token == "a"){
             token = strtok(NULL, s);                // token = "150"
             pointsraised = atoi(token);             // pointsraised = 150    
         }
