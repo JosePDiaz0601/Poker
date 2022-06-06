@@ -13,6 +13,7 @@
 #include "graphics.h"
  
 int seat;
+int currentTurn;
  
 /* #define DEBUG */ /* be verbose */
 /*** global variables ****************************************************/
@@ -50,7 +51,8 @@ int main(int argc, char *argv[])
    char *token;
    const char s[2] = " ";
    char ClientSeatNumChar;
-   int ClientSeatNumInt;   // client seat num
+   int ClientSeatNumInt = 0;   // client seat num
+   int isReady = 0;
 //   char PlayerNameTemp[256];  // use to token on client side as strtok messes up original string
    Program = argv[0];  /* publish program name (for diagnostics) */
  
@@ -78,7 +80,40 @@ int main(int argc, char *argv[])
    ServerAddress.sin_port = htons(PortNo);
    ServerAddress.sin_addr = *(struct in_addr*)Server->h_addr_list[0];
    do
-   {   UpdateWindow();
+   {   
+       UpdateWindow();
+       while((currentTurn != ClientSeatNumInt) && (isReady != 0))
+       {
+           strcpy(SendBuf, "");
+            if (l)
+            {   SocketFD = socket(AF_INET, SOCK_STREAM, 0);
+                if (SocketFD < 0)
+                {   FatalError("socket creation failed");
+                }
+                printf("%s: Connecting to the server at port %d...\n",
+                    Program, PortNo);
+                if (connect(SocketFD, (struct sockaddr*)&ServerAddress,
+                    sizeof(ServerAddress)) < 0)
+                {   FatalError("connecting to server failed");
+                }
+                printf("%s: Sending message '%s'...\n", Program, SendBuf);
+                n = write(SocketFD, SendBuf, l);
+                if (n < 0)
+                {   FatalError("writing to socket failed");
+                }
+            #ifdef DEBUG
+                printf("%s: Waiting for response...\n", Program);
+            #endif
+                n = read(SocketFD, RecvBuf, sizeof(RecvBuf)-1);
+                if (n < 0)
+                {   FatalError("reading from socket failed");
+                }else{
+                RecvBuf[n] = 0;
+                printf("%s: Received response: %s\n", Program, RecvBuf);
+                    close(SocketFD);
+                }
+            }
+        }
        printf("%s: Enter a command to send to the poker server:\n"
        "         'ENTER (SEAT NUMBER)' to choose a seat (without parenthesis),\n"
 /*        "         'F SEAT (NUMBER)' to Fold,\n"
@@ -114,6 +149,9 @@ int main(int argc, char *argv[])
  
    if (0 == strcmp("bye", SendBuf))
    {   break;
+   }
+   else if (0 == strcmp(SendBuf, "READY")){     // call from client to server
+       isReady = 1;
    }
    else if (0 == strcmp(SendBuf, "Call")){     // call from client to server
        strcpy(SendBuf, "2");                   // setting SendBuf to '2'
@@ -156,6 +194,7 @@ int main(int argc, char *argv[])
        }
  
        else if (RecvBuf[0] == '0'){
+           isReady = 1;
            strcpy(CardBuf, RecvBuf);      // all the INFORMATION of poker game
            printf("\n%s\n", CardBuf);
            your1CardSuit = CardBuf[(11+(4*(ClientSeatNumInt-1)))];
@@ -220,6 +259,9 @@ int main(int argc, char *argv[])
                 printf("\n\nSOMETHING WENT WRONG IN GAMESTATE\n\n");
                break;
            }
+       }
+       else if (RecvBuf[0] == "7"){    // client recieving string from server (who called?)
+           currentTurn = (RecvBuf[1] -'0');
        }
  
        else{
@@ -287,3 +329,15 @@ while(1){
  
  
 
+
+/*
+while(currentTurn != ClientSeatNumInt)
+{
+    strcpy(SendBuf, "EMPTY");
+    SEND EMPTY __STRING
+    RECIEVE DATA FROM SERVER
+}
+ASK PLAYER INPUT
+SEND STRING
+RECEIVE DATA FROM SERVER
+*/

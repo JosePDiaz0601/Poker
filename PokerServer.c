@@ -35,7 +35,7 @@ int Shutdown		/* keep running until Shutdown == 1 */
 	= 0;
 char ClockBuffer[26]	/* current time in printable format */
 	= "";
-
+players = 0;
 /*** global functions ****************************************************/
 
 void FatalError(		/* print error diagnostics and abort */
@@ -57,7 +57,7 @@ int MakeServerSocket(		/* create a socket on this server */
     struct sockaddr_in ServSocketName;
 
     //Updated from Doemer's outline, Delimiter for changes from skeleton code
-    startGame(6);                             // THIS STARTS THE GAME!! REMEMBER!!
+                                 // THIS STARTS THE GAME!! REMEMBER!!
     /* create the socket */
     ServSocketFD = socket(PF_INET, SOCK_STREAM, 0);
     if (ServSocketFD < 0)
@@ -131,7 +131,7 @@ void ProcessRequest(		/* process a time request by a client */
 #endif
     // get cards each cilent has
     if (0 == strcmp(RecvBuf, "READY")){
-        
+        startGame(players);
         //strncpy(SendBuf, "Success", sizeof(SendBuf)-1);
         
         strncpy(SendBuf, "", sizeof(SendBuf)-1);
@@ -643,6 +643,7 @@ printf("passed p2 statement\n");
     }
 printf("%s\n", SendBuf);
     // parsing RecvBuf string for string inputs
+if(strlen(RecvBuf) >= 1){
     strcpy(TempRecvBuf, RecvBuf);
     strcpy(Temp2RecvBuf, RecvBuf);
     token = strtok(TempRecvBuf, s); 
@@ -654,6 +655,7 @@ printf("%s\n", SendBuf);
             if (player1data.playerSeat == 0){
                 player1data.playerSeat = tokenSeatNumClient;
                 strcpy(SendBuf, "You are now assigned to Seat 1, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
+                players++;
                 }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -663,6 +665,7 @@ printf("%s\n", SendBuf);
             if (player2data.playerSeat == 0){
                 player2data.playerSeat = tokenSeatNumClient;
                 strcpy(SendBuf, "You are now assigned to Seat 2, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
+                players++;
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -672,6 +675,7 @@ printf("%s\n", SendBuf);
             if (player3data.playerSeat == 0){
                 player3data.playerSeat = tokenSeatNumClient;
                 strcpy(SendBuf, "You are now assigned to Seat 3, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
+                players++;
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -681,6 +685,7 @@ printf("%s\n", SendBuf);
             if (player4data.playerSeat == 0){
                 player4data.playerSeat = tokenSeatNumClient;
                 strcpy(SendBuf, "You are now assigned to Seat 4, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
+                players++;
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -690,6 +695,7 @@ printf("%s\n", SendBuf);
             if (player5data.playerSeat == 0){
                  player5data.playerSeat = tokenSeatNumClient;
                  strcpy(SendBuf, "You are now assigned to Seat 5, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
+                 players++;
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -699,6 +705,7 @@ printf("%s\n", SendBuf);
             if (player6data.playerSeat == 0){
                  player6data.playerSeat = tokenSeatNumClient;
                  strcpy(SendBuf, "You are now assigned to Seat 6, use command NAME (PLAYER NAME) to enter name (wihtout parenthesis)");
+                 players++;
             }
             else{
                 strncpy(SendBuf, "Seat already occupied. Please enter a different seat number with proper format.", sizeof(SendBuf)-1);
@@ -872,7 +879,8 @@ printf("%s\n", SendBuf);
             fold(player6data);
         }
         strcpy(SendBuf, RecvBuf);       // sending back to client 
-    } 
+    }
+} 
 
     // WE DONT NEED THIS WHILE LOOP
    /* while(1){
