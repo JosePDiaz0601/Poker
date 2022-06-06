@@ -782,27 +782,27 @@ printf("%s\n", SendBuf);
         playerseatint = (RecvBuf[1] - '0'); // char to int
         if (playerseatint == 1){            // conditional to send parameter for call
             player1data.playerSeat = 1;
-            call(player1data.playerSeat);
+            call(player1data);
         }
         else if (playerseatint == 2){
             player2data.playerSeat = 2;
-            call(player2data.playerSeat);
+            call(player2data);
         }
         else if (playerseatint == 3){
             player3data.playerSeat = 3;
-            call(player3data.playerSeat);
+            call(player3data);
         }
         else if (playerseatint == 4){
             player4data.playerSeat = 4;
-            call(player4data.playerSeat);
+            call(player4data);
         }
         else if (playerseatint == 5){
             player5data.playerSeat = 5;
-            call(player5data.playerSeat);
+            call(player5data);
         }
         else if (playerseatint == 6){
             player6data.playerSeat = 6;
-            call(player6data.playerSeat);
+            call(player6data);
         }
         strcpy(SendBuf, RecvBuf);       // sending back to client 
     } 
@@ -819,27 +819,27 @@ printf("%s\n", SendBuf);
         }
         if (playerseatint == 1){                    // conditional to send parameter for call
             player1data.playerSeat = 1;
-            raise(player1data.playerSeat, pointsraised);
+            raise(player1data, pointsraised);
         }
         else if (playerseatint == 2){
             player2data.playerSeat = 2;
-            raise(player2data.playerSeat, pointsraised);
+            raise(player2data, pointsraised);
         }
         else if (playerseatint == 3){
             player3data.playerSeat = 3;
-            raise(player3data.playerSeat, pointsraised);
+            raise(player3data, pointsraised);
         }
         else if (playerseatint == 4){
             player4data.playerSeat = 4;
-            raise(player4data.playerSeat, pointsraised);
+            raise(player4data, pointsraised);
         }
         else if (playerseatint == 5){
             player5data.playerSeat = 5;
-            raise(player5data.playerSeat, pointsraised);
+            raise(player5data, pointsraised);
         }
         else if (playerseatint == 6){
             player6data.playerSeat = 6;
-            raise(player6data.playerSeat, pointsraised);
+            raise(player6data, pointsraised);
         }
         strcpy(SendBuf, RecvBuf);   // sending back to client 
     }
