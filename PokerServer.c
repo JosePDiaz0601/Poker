@@ -807,7 +807,7 @@ printf("%s\n", SendBuf);
         strcpy(SendBuf, RecvBuf);       // sending back to client 
     } 
 
-    else if (RecvBuf[0] = '3'){     // RecvBuf and Temp2RecvBuf = 31150; 3 = raise; 1 = seat number; 150 = raise amount
+    else if (RecvBuf[0] == '3'){     // RecvBuf and Temp2RecvBuf = 31150; 3 = raise; 1 = seat number; 150 = raise amount
         Temp2RecvBuf[0] = 'a';                       // "a1150"
         playerseatchar = RecvBuf[1];            
         playerseatint = (RecvBuf[1] - '0');
@@ -844,6 +844,35 @@ printf("%s\n", SendBuf);
         strcpy(SendBuf, RecvBuf);   // sending back to client 
     }
 
+    else if (RecvBuf[0] == '4'){   // RecvBuf should be like 41, 4 fold; 1 for seat number
+        playerseatchar = RecvBuf[1];     
+        playerseatint = (RecvBuf[1] - '0'); // char to int
+        if (playerseatint == 1){            // conditional to send parameter for call
+            player1data.playerSeat = 1;
+            fold(player1data);
+        }
+        else if (playerseatint == 2){
+            player2data.playerSeat = 2;
+            fold(player2data);
+        }
+        else if (playerseatint == 3){
+            player3data.playerSeat = 3;
+            fold(player3data);
+        }
+        else if (playerseatint == 4){
+            player4data.playerSeat = 4;
+            fold(player4data);
+        }
+        else if (playerseatint == 5){
+            player5data.playerSeat = 5;
+            fold(player5data);
+        }
+        else if (playerseatint == 6){
+            player6data.playerSeat = 6;
+            fold(player6data);
+        }
+        strcpy(SendBuf, RecvBuf);       // sending back to client 
+    } 
 
     // WE DONT NEED THIS WHILE LOOP
    /* while(1){

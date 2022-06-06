@@ -119,6 +119,10 @@ int main(int argc, char *argv[])
        strcpy(SendBuf, "2");                   // setting SendBuf to '2'
        strcat(SendBuf, ClientSeatNumChar);     // setting SendBuf to '2(client seat number)'
    }
+   else if (0 == strcmp(SendBuf, "Fold")){     // call from client to server
+       strcpy(SendBuf, "4");                   // setting SendBuf to '2'
+       strcat(SendBuf, ClientSeatNumChar);     // setting SendBuf to '2(client seat number)'
+   }
 
    if (l)
    {   SocketFD = socket(AF_INET, SOCK_STREAM, 0);
@@ -182,6 +186,7 @@ int main(int argc, char *argv[])
                // do nothing since this client didn't call
            }
        }
+
 
  
        else{
