@@ -32,6 +32,9 @@ GtkWidget *foldButton, *callButton, *raiseButton;
    GtkWidget *tCard1, *tCard2, *tCard3, *tCard4, *tCard5;
  
    GtkWidget *tLabel, *pLabel; //just player and table label
+   GtkWidget *white;
+
+   GtkWidget *player1Score, *player2Score, *player3Score, *player4Score, *player5Score, *player6Score;
 
 //Certain constants we want to define (window size etc.) should go here.
 GtkWidget *CreateWindow(int *argc, char **argv[]);

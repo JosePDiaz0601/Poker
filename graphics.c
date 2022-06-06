@@ -43,6 +43,60 @@ GtkWidget *CreateWindow(    /* create the server window */
    callButton = gtk_button_new_with_label("call");
    gtk_layout_put(GTK_LAYOUT(layout), callButton, 1150, 650);
    gtk_widget_set_size_request(callButton, 80, 35);
+
+   //Test
+   int p1Points = 1000;
+   int p2Points = 1000;
+   int p3Points = 1000;
+   int p4Points = 1000;
+   int p5Points = 1000;
+   int p6Points = 1000;
+   char* display = "";
+   
+   white = gtk_image_new_from_file ("./images/white_image.png");
+   gtk_layout_put(GTK_LAYOUT(layout), white, 1075, 35);
+   gtk_widget_set_size_request(white, 180, 150);
+
+   //Display labels for players scores/points
+   gtk_label_set_text(GTK_LABEL (player1Score), " NEW STRING"); 
+   display = g_strdup_printf("Player 1 Score: %d", p1Points);
+   player1Score = gtk_label_new(display);
+   gtk_layout_put(GTK_LAYOUT(layout), player1Score, 1100, 40);
+   gtk_widget_set_size_request(callButton, 80, 35);
+   display = g_strdup_printf("Player 1 Score: %d", (p1Points-100));
+   gtk_label_set_text(GTK_LABEL (player1Score), display);
+   g_free(display);   
+
+   display = g_strdup_printf("Player 2 Score: %d", p2Points); 
+   player2Score = gtk_label_new(display);
+   gtk_layout_put(GTK_LAYOUT(layout), player2Score, 1100, 65);
+   gtk_widget_set_size_request(callButton, 80, 35);
+   g_free(display);   
+
+   display = g_strdup_printf("Player 3 Score: %d", p3Points); 
+   player3Score = gtk_label_new(display);
+   gtk_layout_put(GTK_LAYOUT(layout), player3Score, 1100, 90);
+   gtk_widget_set_size_request(callButton, 80, 35);
+   g_free(display);   
+
+   display = g_strdup_printf("Player 4 Score: %d", p4Points); 
+   player4Score = gtk_label_new(display);
+   gtk_layout_put(GTK_LAYOUT(layout), player4Score, 1100, 115);
+   gtk_widget_set_size_request(callButton, 80, 35);
+   g_free(display);   
+
+   display = g_strdup_printf("Player 5 Score: %d", p5Points); 
+   player5Score = gtk_label_new(display);
+   gtk_layout_put(GTK_LAYOUT(layout), player5Score, 1100, 140);
+   gtk_widget_set_size_request(callButton, 80, 35);
+   g_free(display);   
+
+   display = g_strdup_printf("Player 6 Score: %d", p6Points); 
+   player6Score = gtk_label_new(display);
+   gtk_layout_put(GTK_LAYOUT(layout), player6Score, 1100, 165);
+   gtk_widget_set_size_request(callButton, 80, 35);
+   g_free(display);   
+
  
    //CARD DISPLAYS
    // *TEMPORARY* ASSIGNING ALL OPPONENTS TO BLANK CARDS
