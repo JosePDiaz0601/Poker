@@ -171,7 +171,6 @@ int main(int argc, char *argv[])
  
        else{
            // use this section to printf the server telling the client what commands they can do :)
->>>>>>> df853aec1c9e91e2c9590142cac7e61f5e4853ea
        }
  
       
