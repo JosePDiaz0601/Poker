@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
    *Server;    /* server host */
    static char SendBuf[256];   /* message buffer for sending a message */
    static char RecvBuf[256];   /* message buffer for receiving a response */
+   static char oldRecvBuf[256];
    static char PlayerBuf[256]; // long string with names from server to client
    static char TempSendBuf[256];
    static char CardBuf[256];
@@ -187,8 +188,9 @@ int main(int argc, char *argv[])
        }
        RecvBuf[n] = 0;
        printf("%s: Received response: %s\n", Program, RecvBuf);
- 
+        if(0 != strcmp(RecvBuf, oldRecvBuf)){
        // parsing string for information here (RecvBuf from server - long string)
+       strcpy(oldRecvBuf, RecvBuf);
        if (RecvBuf[0] == '1'){
            strcpy(PlayerBuf, RecvBuf);    // all the player names
        }
@@ -268,7 +270,7 @@ int main(int argc, char *argv[])
            // use this section to printf the server telling the client what commands they can do :)
        }
 
-      
+   }
        //makeCards(RecvBuf); // GTK
  
 #ifdef DEBUG
