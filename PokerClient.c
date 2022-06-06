@@ -197,6 +197,29 @@ int main(int argc, char *argv[])
                // do nothing since this client didn't call 
            }
        }
+
+        else if (RecvBuf[0] == "6"){    // client recieving string from server (who called?)
+           int gameState = (RecvBuf[1] -'0');
+           switch (gameState)
+           {
+            case 1:
+    
+               break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+           
+           default:
+                printf("\n\nSOMETHING WENT WRONG IN GAMESTATE\n\n");
+               break;
+           }
+       }
  
        else{
            // use this section to printf the server telling the client what commands they can do :)
