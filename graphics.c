@@ -122,245 +122,244 @@ if(check == 0){
  
 }
  
-void makeCards(){
-   //gtk_image_clear (pCard1);
-   //gtk_image_clear (pCard2);
+void makeCards(char cardSuit, char cardType, GtkWidget *Card){
+
    printf("\nEntered Make Cards %c %c\n", your1CardSuit, your1CardType);
-   if(your1CardSuit == 'C'){
-       switch(your1CardType){
+   if(cardSuit == 'C'){
+       switch(cardType){
  
            case  '2' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/2_of_clubs.png");
+           gtk_image_set_from_file(Card, "./images/2_of_clubs.png");
            break;
  
            case  '3' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/3_of_clubs.png");
+           gtk_image_set_from_file(Card, "./images/3_of_clubs.png");
            break;
  
            case '4' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/4_of_clubs.png");
+           gtk_image_set_from_file(Card, "./images/4_of_clubs.png");
            break;
  
            case '5' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/5_of_clubs.png");
+           gtk_image_set_from_file(Card, "./images/5_of_clubs.png");
            break;
  
            case  '6' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/6_of_clubs.png");
+           gtk_image_set_from_file(Card, "./images/6_of_clubs.png");
            break;
  
            case '7' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/7_of_clubs.png");
+           gtk_image_set_from_file(Card, "./images/7_of_clubs.png");
            break;
  
            case  '8' :
            printf("\nEntered");
-          gtk_image_set_from_file(pCard1, "./images/8_of_clubs.png");
+          gtk_image_set_from_file(Card, "./images/8_of_clubs.png");
            break;
  
            case '9' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/9_of_clubs.png");
+           gtk_image_set_from_file(Card, "./images/9_of_clubs.png");
            break;
  
            case  'T' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/10_of_clubs.png");
+           gtk_image_set_from_file(Card, "./images/10_of_clubs.png");
            break;
  
            case  'J' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/jack_of_clubs2.png");
+           gtk_image_set_from_file(Card, "./images/jack_of_clubs2.png");
            break;
  
            case  'Q' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/queen_of_clubs2.png");
+           gtk_image_set_from_file(Card, "./images/queen_of_clubs2.png");
            break;
  
            case 'K' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/king_of_clubs2.png");
+           gtk_image_set_from_file(Card, "./images/king_of_clubs2.png");
            break;
  
            case  'A' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/ace_of_clubs.png");
+           gtk_image_set_from_file(Card, "./images/ace_of_clubs.png");
            break;
  
            default:
            printf("Somehow couldn't get the right cards? This is Clubs"); }
                   
-           }if(your1CardSuit == 'H'){
-           switch(your1CardType){
+           }if(cardSuit == 'H'){
+           switch(cardType){
  
            case  '2' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/2_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/2_of_hearts.png");
            break;
  
            case '3' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/3_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/3_of_hearts.png");
            break;
  
            case  '4' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/4_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/4_of_hearts.png");
            break;
  
            case  '5' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/5_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/5_of_hearts.png");
            break;
  
            case '6' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/6_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/6_of_hearts.png");
            break;
  
            case  '7' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/7_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/7_of_hearts.png");
            break;
  
            case  '8' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/8_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/8_of_hearts.png");
            break;
  
            case  '9' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/9_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/9_of_hearts.png");
            break;
  
            case 'T' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/10_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/10_of_hearts.png");
            break;
  
            case 'J' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/jack_of_hearts2.png");
+           gtk_image_set_from_file(Card, "./images/jack_of_hearts2.png");
            break;
  
            case 'Q' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/queen_of_hearts2.png");
+           gtk_image_set_from_file(Card, "./images/queen_of_hearts2.png");
            break;
  
            case 'K' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/king_of_hearts2.png");
+           gtk_image_set_from_file(Card, "./images/king_of_hearts2.png");
            break;
  
            case  'A' :
            printf("\nEntered");
-           gtk_image_set_from_file(pCard1, "./images/ace_of_hearts.png");
+           gtk_image_set_from_file(Card, "./images/ace_of_hearts.png");
            break;
  
            default:
            printf("Somehow couldn't get the right cards? This is hearts");
                          }
  
-       }if(your1CardSuit == 'D'){
-           switch(your1CardType){
+       }if(cardSuit == 'D'){
+           switch(cardType){
  
            case  '2' :
-           gtk_image_set_from_file(pCard1, "./images/2_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/2_of_diamonds.png");
            break;
  
            case  '3' :
-           gtk_image_set_from_file(pCard1, "./images/3_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/3_of_diamonds.png");
            break;
  
            case  '4' :
-           gtk_image_set_from_file(pCard1, "./images/4_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/4_of_diamonds.png");
            break;
  
            case  '5' :
-           gtk_image_set_from_file(pCard1, "./images/5_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/5_of_diamonds.png");
            break;
  
            case '6' :
-           gtk_image_set_from_file(pCard1, "./images/6_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/6_of_diamonds.png");
            break;
  
            case  '7' :
-           gtk_image_set_from_file(pCard1, "./images/7_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/7_of_diamonds.png");
            break;
  
            case  '8' :
-           gtk_image_set_from_file(pCard1, "./images/8_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/8_of_diamonds.png");
            break;
  
            case  '9' :
-           gtk_image_set_from_file(pCard1, "./images/9_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/9_of_diamonds.png");
            break;
  
            case  'T' :
-           gtk_image_set_from_file(pCard1, "./images/10_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/10_of_diamonds.png");
            break;
  
            case  'J' :
-           gtk_image_set_from_file(pCard1, "./images/jack_of_diamonds2.png");
+           gtk_image_set_from_file(Card, "./images/jack_of_diamonds2.png");
            break;
  
            case 'Q' :
-           gtk_image_set_from_file(pCard1, "./images/queen_of_diamonds2.png");
+           gtk_image_set_from_file(Card, "./images/queen_of_diamonds2.png");
            break;
  
            case  'K' :
-           gtk_image_set_from_file(pCard1, "./images/king_of_diamonds2.png");
+           gtk_image_set_from_file(Card, "./images/king_of_diamonds2.png");
            break;
  
            case  'A' :
-           gtk_image_set_from_file(pCard1, "./images/ace_of_diamonds.png");
+           gtk_image_set_from_file(Card, "./images/ace_of_diamonds.png");
            break;
  
            default:
            printf("Somehow couldn't get the right cards? This is diamonds");
                          }
        }
-       if(your1CardSuit == 'S'){
-           switch(your1CardType){
+       if(cardSuit == 'S'){
+           switch(cardType){
  
            case  '2' :
-           gtk_image_set_from_file(pCard1, "./images/2_of_spades.png");
+           gtk_image_set_from_file(Card, "./images/2_of_spades.png");
            break;
  
            case  '3' :
-           gtk_image_set_from_file(pCard1, "./images/3_of_spades.png");
+           gtk_image_set_from_file(Card, "./images/3_of_spades.png");
            break;
  
            case  '4' :
-           gtk_image_set_from_file(pCard1, "./images/4_of_spades.png");
+           gtk_image_set_from_file(Card, "./images/4_of_spades.png");
            break;
  
            case  '5' :
-           gtk_image_set_from_file(pCard1, "./images/5_of_spades.png");
+           gtk_image_set_from_file(Card, "./images/5_of_spades.png");
            break;
  
            case  '6' :
-           gtk_image_set_from_file(pCard1, "./images/6_of_spades.png");
+           gtk_image_set_from_file(Card, "./images/6_of_spades.png");
            break;
  
            case '7' :
-           gtk_image_set_from_file(pCard1, "./images/7_of_spades.png");
+           gtk_image_set_from_file(Card, "./images/7_of_spades.png");
            break;
  
            case  '8' :
-           gtk_image_set_from_file(pCard1, "./images/8_of_spades.png");
+           gtk_image_set_from_file(Card, "./images/8_of_spades.png");
            break;
  
            case '9' :
-           gtk_image_set_from_file(pCard1, "./images/9_of_spades.png");
+           gtk_image_set_from_file(Card, "./images/9_of_spades.png");
            break;
  
            case 'T' :
@@ -368,266 +367,31 @@ void makeCards(){
            break;
  
            case 'J' :
-           gtk_image_set_from_file(pCard1, "./images/jack_of_spades2.png");
+           gtk_image_set_from_file(Card, "./images/jack_of_spades2.png");
            break;
  
            case 'Q' :
-           gtk_image_set_from_file(pCard1, "./images/queen_of_spades2.png");
+           gtk_image_set_from_file(Card, "./images/queen_of_spades2.png");
            break;
  
            case 'K' :
-           gtk_image_set_from_file(pCard1, "./images/king_of_spades2.png");
+           gtk_image_set_from_file(Card, "./images/king_of_spades2.png");
            break;
  
            case 'A' :
-           gtk_image_set_from_file(pCard1, "./images/ace_of_spades.png");
+           gtk_image_set_from_file(Card, "./images/ace_of_spades.png");
            break;
  
            default:
            printf("Somehow couldn't get the right cards? This is spades");
-                         }
+                         }}
  
  
  
  
        }
-   if(your2CardSuit == 'C'){
-       switch(your2CardType){
  
-           case  '2' :
-           gtk_image_set_from_file(pCard2, "./images/2_of_clubs.png");
-           break;
  
-           case  '3' :
-           gtk_image_set_from_file(pCard2, "./images/3_of_clubs.png");
-           break;
- 
-           case  '4' :
-           gtk_image_set_from_file(pCard2, "./images/4_of_clubs.png");
-           break;
- 
-           case  '5' :
-           gtk_image_set_from_file(pCard2, "./images/5_of_clubs.png");
-           break;
- 
-           case  '6' :
-           gtk_image_set_from_file(pCard2, "./images/6_of_clubs.png");
-           break;
- 
-           case  '7' :
-           gtk_image_set_from_file(pCard2, "./images/7_of_clubs.png");
-           break;
- 
-           case '8' :
-           gtk_image_set_from_file(pCard2, "./images/8_of_clubs.png");
-           break;
- 
-           case  '9' :
-           gtk_image_set_from_file(pCard2, "./images/9_of_clubs.png");
-           break;
- 
-           case  'T' :
-           gtk_image_set_from_file(pCard2, "./images/10_of_clubs.png");
-           break;
- 
-           case  'J' :
-           gtk_image_set_from_file(pCard2, "./images/jack_of_clubs2.png");
-           break;
- 
-           case 'Q' :
-           gtk_image_set_from_file(pCard2, "./images/queen_of_clubs2.png");
-           break;
- 
-           case  'K' :
-           gtk_image_set_from_file(pCard2, "./images/king_of_clubs2.png");
-           break;
- 
-           case  'A' :
-           gtk_image_set_from_file(pCard2, "./images/ace_of_clubs.png");
-           break;
- 
-           default:
-           printf("Somehow couldn't get the right cards? This is Clubs");
-                         }
-   }
-           if(your2CardSuit == 'H'){
-           switch(your2CardType){
- 
-           case '2' :
-           gtk_image_set_from_file(pCard2, "./images/2_of_hearts.png");
-           break;
- 
-           case  '3' :
-           gtk_image_set_from_file(pCard2, "./images/3_of_hearts.png");
-           break;
- 
-           case  '4' :
-           gtk_image_set_from_file(pCard2, "./images/4_of_hearts.png");
-           break;
- 
-           case  '5' :
-           gtk_image_set_from_file(pCard2, "./images/5_of_hearts.png");
-           break;
- 
-           case  '6' :
-           gtk_image_set_from_file(pCard2, "./images/6_of_hearts.png");
-           break;
- 
-           case  '7' :
-           gtk_image_set_from_file(pCard2, "./images/7_of_hearts.png");
-           break;
- 
-           case  '8' :
-           gtk_image_set_from_file(pCard2, "./images/8_of_hearts.png");
-           break;
- 
-           case  '9' :
-           gtk_image_set_from_file(pCard2, "./images/9_of_hearts.png");
-           break;
- 
-           case  'T' :
-           gtk_image_set_from_file(pCard2, "./images/10_of_hearts.png");
-           break;
- 
-           case  'J' :
-           gtk_image_set_from_file(pCard2, "./images/jack_of_hearts2.png");
-           break;
- 
-           case 'Q' :
-           gtk_image_set_from_file(pCard2, "./images/queen_of_hearts2.png");
-           break;
- 
-           case  'K' :
-           gtk_image_set_from_file(pCard2, "./images/king_of_hearts2.png");
-           break;
- 
-           case  'A' :
-           gtk_image_set_from_file(pCard2, "./images/ace_of_hearts.png");
-           break;
- 
-           default:
-           printf("Somehow couldn't get the right cards? This is hearts");
-                         }
-           }
-       if(your2CardSuit == 'D'){
-           switch(your2CardType){
- 
-           case '2' :
-           gtk_image_set_from_file(pCard2, "./images/2_of_diamonds.png");
-           break;
- 
-           case '3' :
-           gtk_image_set_from_file(pCard2, "./images/3_of_diamonds.png");
-           break;
- 
-           case '4' :
-           gtk_image_set_from_file(pCard2, "./images/4_of_diamonds.png");
-           break;
- 
-           case '5' :
-           gtk_image_set_from_file(pCard2, "./images/5_of_diamonds.png");
-           break;
- 
-           case '6' :
-           gtk_image_set_from_file(pCard2, "./images/6_of_diamonds.png");
-           break;
- 
-           case '7' :
-           gtk_image_set_from_file(pCard2, "./images/7_of_diamonds.png");
-           break;
- 
-           case '8' :
-           gtk_image_set_from_file(pCard2, "./images/8_of_diamonds.png");
-           break;
- 
-           case '9' :
-           gtk_image_set_from_file(pCard2, "./images/9_of_diamonds.png");
-           break;
- 
-           case 'T' :
-           gtk_image_set_from_file(pCard2, "./images/10_of_diamonds.png");
-           break;
- 
-           case 'J' :
-           gtk_image_set_from_file(pCard2, "./images/jack_of_diamonds2.png");
-           break;
- 
-           case 'Q' :
-           gtk_image_set_from_file(pCard2, "./images/queen_of_diamonds2.png");
-           break;
- 
-           case 'K' :
-           gtk_image_set_from_file(pCard2, "./images/king_of_diamonds2.png");
-           break;
- 
-           case 'A' :
-           gtk_image_set_from_file(pCard2, "./images/ace_of_diamonds.png");
-           break;
- 
-           default:
-           printf("Somehow couldn't get the right cards? This is diamonds");
-                         }
- 
-       }if(your2CardSuit == 'S'){
-           switch(your2CardType)
-       {
- 
-           case '2' :
-           gtk_image_set_from_file(pCard2, "./images/2_of_spades.png");
-           break;
- 
-           case '3' :
-           gtk_image_set_from_file(pCard2, "./images/3_of_spades.png");
-           break;
- 
-           case '4' :
-           gtk_image_set_from_file(pCard2, "./images/4_of_spades.png");
-           break;
- 
-           case '5' :
-           gtk_image_set_from_file(pCard2, "./images/5_of_spades.png");
-           break;
- 
-           case '6' :
-           gtk_image_set_from_file(pCard2, "./images/6_of_spades.png");
-           break;
- 
-           case '7' :
-           gtk_image_set_from_file(pCard2, "./images/7_of_spades.png");
-           break;
- 
-           case  '8' :
-           gtk_image_set_from_file(pCard2, "./images/8_of_spades.png");
-           break;
- 
-           case  '9' :
-           gtk_image_set_from_file(pCard2, "./images/9_of_spades.png");
-           break;
- 
-           case  'T' :
-           gtk_image_set_from_file(pCard2, "./images/10_of_spades.png");
-           break;
- 
-           case  'J' :
-           gtk_image_set_from_file(pCard2, "./images/jack_of_spades2.png");
-           break;
- 
-           case  'Q' :
-           gtk_image_set_from_file(pCard2, "./images/queen_of_spades2.png");
-           break;
- 
-           case  'K' :
-           gtk_image_set_from_file(pCard2, "./images/king_of_spades2.png");
-           break;
- 
-           case 'A' :
-           gtk_image_set_from_file(pCard2, "./images/ace_of_spades.png");
-           break;
- 
-           default:
-           printf("Somehow couldn't get the right cards? This is spades");
-           }
-       }
    gtk_layout_put(GTK_LAYOUT(layout), pCard1, 450, 600);
    gtk_widget_set_size_request(pCard1, 100, 145);
    gtk_layout_put(GTK_LAYOUT(layout), pCard2, 850, 600);
