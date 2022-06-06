@@ -5,7 +5,7 @@
 
 int player1points, player2points, player3points, player4points, player5points, player6points = 1000;
 int pot = 0;
-int round = 0;
+round = 0;
 int currentplayerturn = 1;
 int raiseLoop = 0;
 int hasraise = 0;
@@ -771,32 +771,32 @@ void call(struct PLAYERDATA player)
             hasraise =0;
             raiseLoop = 0;
             currentplayerturn ++;
-            if (currentplayerturn == 1 && player1data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+            if (currentplayerturn == 1 && player1data.hasFolded == 1){raiseLoop ++;currentplayerturn++;     if (currentplayerturn == (players + 1))
     {
         currentplayerturn = 1;
         round++;
     }}
-            if (currentplayerturn == 2 && player2data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+            if (currentplayerturn == 2 && player2data.hasFolded == 1){raiseLoop ++;currentplayerturn++;     if (currentplayerturn == (players + 1))
     {
         currentplayerturn = 1;
         round++;
     }}
-            if (currentplayerturn == 3 && player3data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+            if (currentplayerturn == 3 && player3data.hasFolded == 1){raiseLoop ++;currentplayerturn++;     if (currentplayerturn == (players + 1))
     {
         currentplayerturn = 1;
         round++;
     }}
-            if (currentplayerturn == 4 && player4data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+            if (currentplayerturn == 4 && player4data.hasFolded == 1){raiseLoop ++;currentplayerturn++;     if (currentplayerturn == (players + 1))
     {
         currentplayerturn = 1;
         round++;
     }}
-            if (currentplayerturn == 5 && player5data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+            if (currentplayerturn == 5 && player5data.hasFolded == 1){raiseLoop ++;currentplayerturn++;     if (currentplayerturn == (players + 1))
     {
         currentplayerturn = 1;
         round++;
     }}
-            if (currentplayerturn == 6 && player6data.hasFolded == 1){currentplayerturn++;     if (currentplayerturn == (players + 1))
+            if (currentplayerturn == 6 && player6data.hasFolded == 1){raiseLoop ++;currentplayerturn++;     if (currentplayerturn == (players + 1))
     {
         currentplayerturn = 1;
         round++;

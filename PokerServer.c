@@ -34,6 +34,7 @@ const char *Program	/* program name for descriptive diagnostics */
 int Shutdown		/* keep running until Shutdown == 1 */
 	= 0;
 int hasGameStarted = 0;
+int oldRound = 0;
 char ClockBuffer[26]	/* current time in printable format */
 	= "";
 players = 0;
@@ -131,6 +132,19 @@ void ProcessRequest(		/* process a time request by a client */
     printf("%s: Received message: %s\n", Program, RecvBuf);
 #endif
     // get cards each cilent has
+
+    
+    if(oldRound != round)
+    {
+        oldRound = round;
+
+        strcpy(SendBuf, "");
+        SendBuf[0] = 6;
+        SendBuf[1] = (char)(round + '0');
+        l = strlen(SendBuf);
+        n = write(DataSocketFD, SendBuf, l);
+    }
+
     if (0 == strcmp(RecvBuf, "READY")){
         if(hasGameStarted == 0){
         startGame(players);
