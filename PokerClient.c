@@ -2,7 +2,7 @@
 * This file has been adapted to fit the needs of the socket communication
 * that is used between client and server for our poker game.
 * Author: Victor Dam, Arhant Katare
-* Based on code from Rainer Doemer in ClockClient.c//
+* Based on code from Rainer Doemer in ClockClient.c
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -187,7 +187,16 @@ int main(int argc, char *argv[])
            }
        }
 
-
+       else if (RecvBuf[0] == "4"){    // client recieving string from server (who called?)
+           int tempplayernum;
+           tempplayernum = (RecvBuf[1] - '0');
+           if (tempplayernum == ClientSeatNumInt){         // checking if this specific client called
+               printf("Player at Seat %d, you have folded.", tempplayernum);        // print for client who called
+           }
+           else{
+               // do nothing since this client didn't call 
+           }
+       }
  
        else{
            // use this section to printf the server telling the client what commands they can do :)
